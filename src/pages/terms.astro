@@ -1,13 +1,21 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PageBanner from "../components/PageBanner.astro";
 ---
 
 <BaseLayout title="Website Terms" description="Website terms for Atlantis Property Services.">
-  <section class="page-hero">
-    <div class="wrap measure">
-      <h1>Website Terms</h1>
-      <p class="notice">Legal copy to be supplied and approved. This page is a structure placeholder, not binding terms.</p>
-      <p class="muted">Separate Atlantis Service Partner Terms apply to approved providers and are not the same as these website terms.</p>
+  <PageBanner title="Website Terms" image="/images/interior-clean.jpg" />
+
+  <section class="page-body">
+    <div class="wrap page-body--narrow legal-body">
+      <p class="notice">
+        Legal copy to be supplied and approved. This page is a structure placeholder, not binding
+        terms.
+      </p>
+      <p>
+        Separate Atlantis Service Partner Terms apply to approved providers and are not the same as
+        these website terms.
+      </p>
     </div>
   </section>
 </BaseLayout>

@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageBanner from "../components/PageBanner.astro";
+import PageCta from "../components/PageCta.astro";
+import { galleryItems } from "../data/gallery";
+---
+
+<BaseLayout
+  title="Gallery"
+  description="A look at the kinds of homes, apartments and commercial sites Atlantis coordinates property services for across Melbourne."
+>
+  <PageBanner title="Gallery" image="/images/garden-care.jpg" />
+
+  <section class="page-body">
+    <div class="wrap">
+      <p class="page-intro__text" style="margin-bottom: 2.5rem;">
+        Selected property contexts we work across — homes, gardens, interiors and commercial sites.
+        More project photography will be added as the portfolio grows.
+      </p>
+      <div class="gallery-grid">
+        {
+          galleryItems.map((item) => (
+            <figure class="gallery-item">
+              <img src={item.src} alt={item.alt} width="1200" height="630" loading="lazy" />
+              <figcaption>
+                <span class="gallery-item__category">{item.category}</span>
+                <span class="gallery-item__caption">{item.caption}</span>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <PageCta />
+</BaseLayout>

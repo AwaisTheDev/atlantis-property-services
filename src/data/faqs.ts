@@ -5,11 +5,11 @@ export const faqs = [
   },
   {
     q: "Where do you service?",
-    a: "We are locally based and focused on Melbourne’s inner suburbs, initially around 50 km from the CBD. Enter your postcode with your request — we review every enquiry and do not automatically reject out-of-area jobs.",
+    a: "We are locally based and focused on Melbourne’s inner suburbs, within about 50 km of the CBD. Enter your postcode with your request — we review every enquiry and do not automatically reject out-of-area jobs.",
   },
   {
     q: "How do requests and quotes work?",
-    a: "Tell us what you need through the request form. Atlantis reviews the job, coordinates a suitable approved partner, and comes back with a quote. Pricing is quote-only, unless an emergency call-out applies.",
+    a: "Use Request / book a service on the Contact page. Atlantis reviews the job, coordinates a suitable approved partner, and comes back with a quote. Pricing is quote-only.",
   },
   {
     q: "How is a booking confirmed?",
@@ -22,10 +22,6 @@ export const faqs = [
   {
     q: "How does Atlantis work?",
     a: "You contact Atlantis. We arrange a suitable approved partner and manage the quote or service. Partners are not listed or compared on this site. You have one point of contact, and we remain accountable for the experience.",
-  },
-  {
-    q: "What if I need something urgently?",
-    a: "Use Emergency / Urgent Service. Flag the job as urgent, tell us what you need, and we will prioritise the request. Call us as well once the public number is confirmed.",
   },
   {
     q: "Are your partners insured and vetted?",

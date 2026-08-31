@@ -5,8 +5,7 @@ export const site = {
     "A locally based Melbourne property services company. Tell us what you need — we arrange it, and we get it done.",
   email: "info@atlantisps.com.au",
   phone: "",
-  phoneLabel: "Number to be confirmed",
-  serviceArea: "Melbourne’s inner suburbs, initially about 50 km from the CBD",
+  serviceArea: "Melbourne’s inner suburbs, within about 50 km of the CBD",
   howItWorks: [
     { step: "1", title: "Tell us what you need", body: "Share the job in a few steps — services, timing, and a few photos if you have them." },
     { step: "2", title: "We arrange it", body: "Atlantis coordinates a suitable approved partner and manages the quote or booking." },

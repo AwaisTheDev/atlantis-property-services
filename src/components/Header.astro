@@ -2,17 +2,16 @@
 import ArrowLink from "./ArrowLink.astro";
 
 const path = Astro.url.pathname;
-const isHome = path === "/" || path === "";
 
 const links = [
   { href: "/services", label: "Services" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/faqs", label: "FAQs" },
   { href: "/partners", label: "Partners" },
-  { href: "/contact", label: "Contact" },
 ];
 ---
 
-<header class:list={["site-header", { "site-header--transparent": isHome }]} id="site-header">
+<header class="site-header site-header--transparent" id="site-header">
   <div class="wrap header-inner">
     <a class="logo-link" href="/" aria-label="Atlantis Property Services, home">
       <img class="logo-light" src="/logo-on-light.svg" alt="" width="493" height="341" />
@@ -21,14 +20,14 @@ const links = [
     <nav class="nav" aria-label="Primary">
       {
         links.map((link) => (
-          <a href={link.href} aria-current={path === link.href ? "page" : undefined}>
+          <a href={link.href} aria-current={path === link.href || (link.href !== "/" && path.startsWith(link.href + "/")) ? "page" : undefined}>
             {link.label}
           </a>
         ))
       }
     </nav>
     <div class="header-actions">
-      <ArrowLink href="/request" label="Tell us what you need" class="header-cta" />
+      <ArrowLink href="/contact?tab=request" label="Request / book a service" class="header-cta" />
       <button
         class="menu-toggle"
         type="button"
@@ -49,8 +48,7 @@ const links = [
         <a href={link.href}>{link.label}</a>
       ))
     }
-    <ArrowLink href="/request" label="Tell us what you need" />
-    <ArrowLink href="/emergency" label="Urgent" />
+    <ArrowLink href="/contact?tab=request" label="Request / book a service" />
   </div>
 </header>
 
@@ -65,7 +63,7 @@ const links = [
     toggle?.classList.toggle("is-open", !!open);
   });
 
-  if (header?.classList.contains("site-header--transparent")) {
+  if (header) {
     const onScroll = () => {
       header.classList.toggle("is-scrolled", window.scrollY > 40);
     };

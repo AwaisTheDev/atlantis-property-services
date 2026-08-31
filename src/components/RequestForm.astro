@@ -3,17 +3,22 @@ import { services } from "../data/services";
 import { customerTypes, frequencies } from "../data/site";
 
 type Props = {
-  urgent?: boolean;
   service?: string;
-  intent?: string;
+  property?: string;
 };
 
-const { urgent = false, service = "", intent = "request" } = Astro.props;
+const { service = "", property = "" } = Astro.props;
 const selected = service ? service.split(",").filter(Boolean) : [];
+const propertyType =
+  property.toLowerCase() === "commercial"
+    ? "Commercial"
+    : property.toLowerCase() === "residential"
+      ? "Residential"
+      : "";
 ---
 
-<form id="request-form" class="card" novalidate>
-  <input type="hidden" name="intent" value={intent} />
+<form id="request-form" novalidate>
+  <input type="hidden" name="intent" value="request" />
   <div class="progress" aria-hidden="true">
     <span class="active" data-bar="1"></span>
     <span data-bar="2"></span>
@@ -24,7 +29,7 @@ const selected = service ? service.split(",").filter(Boolean) : [];
 
   <section class="step active" data-step="1">
     <h2>What do you need?</h2>
-    <p class="muted">Select one or more services. Pricing is quote-only unless this is an emergency call-out.</p>
+    <p class="muted">Select one or more services. Pricing is quote-only.</p>
     <fieldset>
       <legend class="eyebrow">Services</legend>
       <div class="checkbox-grid">
@@ -50,10 +55,6 @@ const selected = service ? service.split(",").filter(Boolean) : [];
       <select name="frequency">
         {frequencies.map((f) => <option value={f}>{f}</option>)}
       </select>
-    </label>
-    <label>
-      <input type="checkbox" name="urgent" value="yes" checked={urgent} />
-      This is urgent / emergency
     </label>
   </section>
 
@@ -94,8 +95,8 @@ const selected = service ? service.split(",").filter(Boolean) : [];
     <label>
       Property type
       <select name="propertyType" required>
-        <option value="Residential">Residential</option>
-        <option value="Commercial">Commercial</option>
+        <option value="Residential" selected={propertyType === "Residential" || !propertyType}>Residential</option>
+        <option value="Commercial" selected={propertyType === "Commercial"}>Commercial</option>
       </select>
     </label>
     <label>
@@ -200,6 +201,23 @@ const selected = service ? service.split(",").filter(Boolean) : [];
       if (!stepValid()) return;
       window.location.href = "/thank-you";
     });
+
+    // Hydrate from URL on static hosting (service, property)
+    const params = new URLSearchParams(window.location.search);
+    const servicesParam = params.get("service");
+    if (servicesParam) {
+      servicesParam.split(",").forEach((id) => {
+        const box = form.querySelector<HTMLInputElement>(`[name="services"][value="${id}"]`);
+        if (box) box.checked = true;
+      });
+    }
+    const propertyParam = params.get("property")?.toLowerCase();
+    if (propertyParam === "residential" || propertyParam === "commercial") {
+      const select = form.querySelector<HTMLSelectElement>('[name="propertyType"]');
+      if (select) {
+        select.value = propertyParam === "commercial" ? "Commercial" : "Residential";
+      }
+    }
 
     render();
   }

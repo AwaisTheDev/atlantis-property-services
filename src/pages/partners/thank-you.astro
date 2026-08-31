@@ -1,14 +1,21 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageBanner from "../../components/PageBanner.astro";
+import ArrowLink from "../../components/ArrowLink.astro";
 ---
 
 <BaseLayout title="Application received" description="Your Atlantis partner application has been received." showMobileCta={false}>
-  <section class="page-hero">
-    <div class="wrap measure">
-      <p class="eyebrow">Thank you</p>
-      <h1>Application received</h1>
-      <p>We’ll review your details and documents and contact you about next steps. Approval does not guarantee a set amount of work.</p>
-      <p><a class="btn btn-primary" href="/">Back to home</a></p>
+  <PageBanner title="Application received" image="/images/garden-care.jpg" />
+
+  <section class="page-body">
+    <div class="wrap page-body--narrow">
+      <p class="page-intro__text">
+        We’ll review your details and documents and contact you about next steps. Approval does not
+        guarantee a set amount of work.
+      </p>
+      <p style="margin-top: 2.5rem;">
+        <ArrowLink href="/" label="Back to home" dark />
+      </p>
     </div>
   </section>
 </BaseLayout>

@@ -1,0 +1,31 @@
+---
+type Props = {
+  title: string;
+  image?: string;
+  wide?: boolean;
+};
+
+const {
+  title,
+  image = "/images/interior-clean.jpg",
+  wide = false,
+} = Astro.props;
+---
+
+<section class="banner banner--subpage">
+  <div class="banner__bg" aria-hidden="true">
+    <div class="banner__image">
+      <img src={image} alt="" width="1600" height="900" fetchpriority="high" />
+    </div>
+    <div class="banner__overlay"></div>
+  </div>
+  <div class="banner__content">
+    <div class="wrap">
+      <div class:list={["banner__inner", { "banner__inner--wide": wide }]}>
+        <div class="banner__text">
+          <h1>{title}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

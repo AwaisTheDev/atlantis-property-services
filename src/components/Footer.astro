@@ -16,15 +16,15 @@ import { site } from "../data/site";
           <p>
             <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
           </p>
-        ) : (
-          <p class="muted">{site.phoneLabel}</p>
-        )
+        ) : null
       }
+      <p class="muted">{site.serviceArea}</p>
     </div>
     <div>
       <p class="eyebrow">Site</p>
       <p>
         <a href="/services">Services</a><br />
+        <a href="/gallery">Gallery</a><br />
         <a href="/faqs">FAQs</a><br />
         <a href="/partners">Partners</a><br />
         <a href="/contact">Contact</a><br />
@@ -35,6 +35,7 @@ import { site } from "../data/site";
   <div class="wrap legal-links">
     <span class="muted">© {new Date().getFullYear()} {site.name}</span>
     <a href="/terms">Website Terms</a>
+    <a href="/partner-terms">Partner Terms</a>
     <a href="/cookies">Cookie notice</a>
   </div>
 </footer>

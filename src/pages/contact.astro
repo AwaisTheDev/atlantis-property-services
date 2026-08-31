@@ -1,27 +1,148 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PageBanner from "../components/PageBanner.astro";
+import RequestForm from "../components/RequestForm.astro";
+import ContactForm from "../components/ContactForm.astro";
 import { site } from "../data/site";
+
+const params = Astro.url.searchParams;
+const service = params.get("service") ?? "";
+const property = params.get("property") ?? "";
 ---
 
-<BaseLayout title="Contact" description="Contact Atlantis Property Services for quotes, bookings, and urgent property work in Melbourne.">
-  <section class="page-hero">
-    <div class="wrap measure">
-      <p class="eyebrow">Contact</p>
-      <h1>Talk to Atlantis</h1>
-      <p>Email <a href={`mailto:${site.email}`}>{site.email}</a></p>
-      {
-        site.phone ? (
-          <p>
-            Phone <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
+<BaseLayout
+  title="Contact"
+  description="Request or book a service, or contact Atlantis Property Services across Melbourne’s inner suburbs."
+  showMobileCta={false}
+>
+  <PageBanner title="Talk to Atlantis" image="/images/cta-building.jpg" wide />
+
+  <section class="page-body">
+    <div class="wrap">
+      <div class="contact-layout">
+        <aside class="contact-layout__aside">
+          <h2 class="contact-layout__heading">Get in touch</h2>
+          <p class="page-intro__text">
+            One point of contact for quotes and bookings across Melbourne’s inner suburbs.
           </p>
-        ) : (
-          <p class="notice">A dedicated business number will be shown here for tap-to-call once it is confirmed.</p>
-        )
-      }
-      <p class="muted">Service area: {site.serviceArea}. We review every postcode — we do not auto-reject out-of-area requests.</p>
-      <p>
-        <a class="text-cta" href="/request">Tell us what you need</a>
-      </p>
+          <div class="contact-rows">
+            <div class="contact-row">
+              <span class="contact-row__label">Email</span>
+              <p class="contact-row__value">
+                <a href={`mailto:${site.email}`}>{site.email}</a>
+              </p>
+            </div>
+            {
+              site.phone ? (
+                <div class="contact-row">
+                  <span class="contact-row__label">Phone</span>
+                  <p class="contact-row__value">
+                    <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
+                  </p>
+                </div>
+              ) : null
+            }
+            <div class="contact-row">
+              <span class="contact-row__label">Service area</span>
+              <p class="contact-row__value">{site.serviceArea}</p>
+            </div>
+          </div>
+          <p class="muted contact-details__note">
+            We review every postcode manually. Out-of-area requests are not auto-rejected.
+          </p>
+        </aside>
+
+        <div class="contact-layout__main">
+          <div class="page-tabs" data-page-tabs>
+            <div class="page-tabs__list" role="tablist" aria-label="Contact forms">
+              <button
+                type="button"
+                class="page-tabs__tab is-active"
+                role="tab"
+                id="tab-request"
+                aria-controls="panel-request"
+                aria-selected="true"
+                data-tab="request"
+              >
+                Request / book a service
+              </button>
+              <button
+                type="button"
+                class="page-tabs__tab"
+                role="tab"
+                id="tab-contact"
+                aria-controls="panel-contact"
+                aria-selected="false"
+                data-tab="contact"
+              >
+                Contact
+              </button>
+            </div>
+
+            <div
+              class="page-tabs__panel is-active"
+              role="tabpanel"
+              id="panel-request"
+              aria-labelledby="tab-request"
+              data-panel="request"
+            >
+              <p class="page-intro__text" style="margin-bottom: 0;">
+                Request a quote or book a service — tell us what you need, timing, and a few photos if
+                you have them.
+              </p>
+              <RequestForm service={service} property={property} />
+            </div>
+
+            <div
+              class="page-tabs__panel"
+              role="tabpanel"
+              id="panel-contact"
+              aria-labelledby="tab-contact"
+              data-panel="contact"
+              hidden
+            >
+              <ContactForm />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  const root = document.querySelector("[data-page-tabs]");
+  if (root) {
+    const tabs = root.querySelectorAll("[data-tab]");
+    const panels = root.querySelectorAll("[data-panel]");
+
+    function activate(name, updateUrl = true) {
+      tabs.forEach((tab) => {
+        const on = tab.dataset.tab === name;
+        tab.classList.toggle("is-active", on);
+        tab.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      panels.forEach((panel) => {
+        const on = panel.dataset.panel === name;
+        panel.classList.toggle("is-active", on);
+        panel.hidden = !on;
+      });
+
+      if (updateUrl) {
+        const url = new URL(window.location.href);
+        url.searchParams.set("tab", name);
+        window.history.replaceState({}, "", url);
+      }
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => activate(tab.dataset.tab));
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get("tab");
+    if (tab === "contact" || tab === "request" || tab === "quote") {
+      activate(tab === "quote" ? "request" : tab, false);
+    }
+  }
+</script>

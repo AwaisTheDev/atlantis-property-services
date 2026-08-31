@@ -1,23 +1,20 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import RequestForm from "../components/RequestForm.astro";
-
-const service = Astro.url.searchParams.get("service") ?? "";
-const urgent = Astro.url.searchParams.get("urgent") === "1";
-const intent = Astro.url.searchParams.get("intent") ?? "request";
+// Legacy /request URL — client redirect so query params (service, urgent) are preserved on static hosting.
 ---
 
-<BaseLayout
-  title="Tell Us What You Need"
-  description="Request a property service, quote, or booking from Atlantis. Fast, mobile-first job request."
-  showMobileCta={false}
->
-  <section class="page-hero">
-    <div class="wrap">
-      <p class="eyebrow">Request</p>
-      <h1>Tell us what you need</h1>
-      <p class="muted">A short job request — not a generic contact form. You can go back a step at any time.</p>
-      <RequestForm urgent={urgent} service={service} intent={intent} />
-    </div>
-  </section>
-</BaseLayout>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Redirecting…</title>
+    <meta http-equiv="refresh" content="0;url=/contact?tab=request" />
+    <script is:inline>
+      const params = new URLSearchParams(window.location.search);
+      params.set("tab", "quote");
+      window.location.replace("/contact?" + params.toString());
+    </script>
+  </head>
+  <body>
+    <p><a href="/contact?tab=request">Continue to contact / get a quote</a></p>
+  </body>
+</html>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PageBanner from "../components/PageBanner.astro";
 import PartnerForm from "../components/PartnerForm.astro";
 ---
 
@@ -8,21 +9,31 @@ import PartnerForm from "../components/PartnerForm.astro";
   description="Apply to receive suitable work through Atlantis. Applications are reviewed. Approval does not guarantee job volume."
   showMobileCta={false}
 >
-  <section class="page-hero">
-    <div class="wrap measure">
-      <p class="eyebrow">Partners</p>
-      <h1>Become a service partner</h1>
-      <p>
-        Join the approved Atlantis network and receive suitable work as it comes through.
-        This is an ongoing working relationship — not a public marketplace, and not a promise of job volumes.
+  <PageBanner title="Become a service partner" image="/images/garden-care.jpg" wide />
+
+  <section class="page-body">
+    <div class="wrap">
+      <p class="page-intro__text" style="margin-bottom: 2.5rem;">
+        Join the approved Atlantis network and receive suitable work as it comes through. This is an
+        ongoing working relationship — not a public marketplace, and not a promise of job volumes.
       </p>
-      <ul class="muted">
-        <li>Applications are subject to review and approval.</li>
-        <li>Atlantis may request extra information or documents.</li>
-        <li>Approved partners accept separate Service Partner Terms before onboarding is final.</li>
-        <li>Later, jobs, availability, and pricing will run through a private Atlantis system — never as competing public profiles.</li>
-      </ul>
-      <PartnerForm />
+      <div class="page-split">
+        <div>
+          <h2 style="margin-top: 0; font-size: clamp(22px, 18px + 0.8vw, 28px);">Before you apply</h2>
+          <ul class="page-points">
+            <li>Applications are subject to review and approval.</li>
+            <li>Atlantis may request extra information or documents.</li>
+            <li>Approved partners accept separate <a href="/partner-terms">Service Partner Terms</a> before onboarding is final.</li>
+            <li>
+              Later, jobs, availability, and pricing will run through a private Atlantis system —
+              never as competing public profiles.
+            </li>
+          </ul>
+        </div>
+        <div>
+          <PartnerForm />
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>

@@ -1,0 +1,46 @@
+---
+---
+
+<form id="contact-form" class="form-stack contact-form" novalidate>
+  <p class="muted">
+    Send a general enquiry. For a quote or booking, use the Request / book a service tab.
+  </p>
+  <p class="error" id="contact-error" hidden></p>
+
+  <label>
+    Name
+    <input type="text" name="name" required autocomplete="name" />
+  </label>
+  <label>
+    Email
+    <input type="email" name="email" required autocomplete="email" />
+  </label>
+  <label>
+    Mobile
+    <input type="tel" name="mobile" required autocomplete="tel" />
+  </label>
+  <label>
+    Message
+    <textarea name="message" required minlength="10" placeholder="How can we help?"></textarea>
+  </label>
+
+  <button class="btn btn-primary" type="submit">Send message</button>
+</form>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const err = document.getElementById("contact-error") as HTMLElement | null;
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    if (err) {
+      err.hidden = true;
+      err.textContent = "";
+    }
+    window.location.href = "/thank-you";
+  });
+</script>

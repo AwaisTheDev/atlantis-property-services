@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PageBanner from "../components/PageBanner.astro";
+import PageCta from "../components/PageCta.astro";
 import { servicesByGroup } from "../data/services";
 ---
 
@@ -7,23 +9,48 @@ import { servicesByGroup } from "../data/services";
   title="Services"
   description="Cleaning, gardens, maintenance, presentation, waste, and building support — coordinated by Atlantis across Melbourne’s inner suburbs."
 >
-  <section class="page-hero">
+  <PageBanner title="All services, one point of contact" image="/images/window-cleaning.jpg" wide />
+
+  <section class="page-intro">
     <div class="wrap">
-      <p class="eyebrow">Services</p>
-      <h1>All services, one point of contact</h1>
-      <p class="muted">
-        Quote-only pricing unless an emergency call-out applies. Select a service to start a request.
+      <p class="page-intro__text">
+        Quote-only pricing. Open a service for details, or start a request.
         You will not be asked to choose between public providers.
       </p>
+    </div>
+  </section>
+
+  <section class="page-body page-body--flush-top">
+    <div class="wrap">
       {
         servicesByGroup().map(({ group, items }) => (
           <div class="service-group">
             <h2>{group}</h2>
             <div class="service-list">
               {items.map((item) => (
-                <a href={`/request?service=${item.id}`}>
-                  <h3>{item.name}</h3>
-                  <p class="muted">{item.short}</p>
+                <a href={`/services/${item.id}`}>
+                  <div>
+                    <h3>{item.name}</h3>
+                    <p>{item.short}</p>
+                  </div>
+                  <svg
+                    class="service-list__arrow"
+                    width="29"
+                    height="29"
+                    viewBox="0 0 29 29"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <circle cx="14.5005" cy="14.5005" r="14.5005" fill="#9B7336"></circle>
+                    <path
+                      d="M12.5698 10.5493L17.4326 14.1965L13.1776 18.4515"
+                      stroke="#fff"
+                      stroke-width="1.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
                 </a>
               ))}
             </div>
@@ -32,4 +59,6 @@ import { servicesByGroup } from "../data/services";
       }
     </div>
   </section>
+
+  <PageCta />
 </BaseLayout>

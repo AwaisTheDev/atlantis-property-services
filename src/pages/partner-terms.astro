@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageBanner from "../components/PageBanner.astro";
+import ArrowLink from "../components/ArrowLink.astro";
+---
+
+<BaseLayout
+  title="Service Partner Terms"
+  description="Overview of Atlantis Service Partner Terms for approved providers."
+>
+  <PageBanner title="Service Partner Terms" image="/images/interior-clean.jpg" />
+
+  <section class="page-body">
+    <div class="wrap page-body--narrow legal-body">
+      <p class="notice">
+        Full legal copy to be supplied and approved. This page outlines the structure of the separate
+        Atlantis Service Partner Terms that apply to approved providers — not the public Website Terms.
+      </p>
+      <p>
+        Approved partners must accept the Atlantis Service Partner Terms before onboarding is final.
+        Those terms govern the working relationship between Atlantis and its approved partner network,
+        including how work may be offered, verification of ABN, licences and insurance, and expectations
+        around delivery quality.
+      </p>
+      <h2>What partners should expect</h2>
+      <ul class="page-points">
+        <li>Applications are reviewed. Approval does not guarantee a minimum volume of work.</li>
+        <li>Atlantis may request extra information or documents at any time.</li>
+        <li>
+          Future job opportunities and pricing may run through a private Atlantis system — not a public
+          marketplace of competing profiles.
+        </li>
+        <li>Partners are not presented to customers as a directory of providers to compare.</li>
+      </ul>
+      <p>
+        Until the final Partner Terms document is published here, applicants can continue through the
+        partner application form. Acceptance of the full terms will be required before onboarding is
+        complete.
+      </p>
+      <p style="margin-top: 2.5rem;">
+        <ArrowLink href="/partners" label="Become a service partner" dark />
+      </p>
+    </div>
+  </section>
+</BaseLayout>

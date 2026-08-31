@@ -1,0 +1,120 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageBanner from "../../components/PageBanner.astro";
+import PageCta from "../../components/PageCta.astro";
+import ArrowLink from "../../components/ArrowLink.astro";
+import { getServiceById, relatedServices, services } from "../../data/services";
+import { getServicePageContent } from "../../data/serviceContent";
+import { site } from "../../data/site";
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { id: service.id },
+  }));
+}
+
+const { id } = Astro.params;
+const service = getServiceById(id!);
+
+if (!service) {
+  return Astro.redirect("/services");
+}
+
+const content = getServicePageContent(service);
+const related = relatedServices(service, 5);
+const requestHref = `/contact?tab=request&service=${service.id}`;
+---
+
+<BaseLayout title={service.name} description={`${service.short} Coordinated by Atlantis across ${site.serviceArea}.`}>
+  <PageBanner title={service.name} image={service.image} wide />
+
+  <!-- Overview -->
+  <section class="page-body">
+    <div class="wrap service-prose">
+      <p class="eyebrow">{service.group}</p>
+      <h2 class="service-detail__title">Melbourne {service.name.toLowerCase()} coordinated by Atlantis</h2>
+      {content.overview.map((paragraph) => <p class="page-intro__text">{paragraph}</p>)}
+
+      <dl class="service-meta">
+        <div>
+          <dt>Pricing</dt>
+          <dd>Quote only</dd>
+        </div>
+        <div>
+          <dt>Service area</dt>
+          <dd>{site.serviceArea}</dd>
+        </div>
+        <div>
+          <dt>You deal with</dt>
+          <dd>Atlantis — one point of contact</dd>
+        </div>
+        <div>
+          <dt>Delivery</dt>
+          <dd>Approved partner network</dd>
+        </div>
+      </dl>
+
+      <p style="margin-top: 2rem;">
+        <ArrowLink href={requestHref} label="Request / book a service" dark />
+      </p>
+    </div>
+  </section>
+
+  <!-- What to expect -->
+  <section class="section section-tint">
+    <div class="wrap service-prose">
+      <h2>What to expect</h2>
+      {content.expect.map((paragraph) => <p class="page-intro__text">{paragraph}</p>)}
+
+      <h3 class="service-prose__subhead">Typically included</h3>
+      <p class="muted">
+        Exact scope is confirmed in your quote. These are the usual building blocks for this service.
+      </p>
+      <ul class="service-checklist">
+        {content.includes.map((item) => <li>{item}</li>)}
+      </ul>
+
+      <p class="page-intro__text" style="margin-top: 2rem;">
+        The path is the same every time: you tell us what you need, Atlantis arranges a suitable approved
+        partner and manages the quote or booking, and you stay with one company until the work is done.
+      </p>
+      <p style="margin-top: 2rem;">
+        <ArrowLink href={requestHref} label="Start a request" dark />
+      </p>
+    </div>
+  </section>
+
+  <!-- Related -->
+  {
+    related.length > 0 && (
+      <section class="page-body">
+        <div class="wrap">
+          <h2>Related services</h2>
+          <p class="page-intro__text" style="margin-bottom: 1.5rem;">
+            Other work in {service.group.toLowerCase()} that customers often combine in one request.
+          </p>
+          <ul class="service-related service-related--grid">
+            {related.map((item) => (
+              <li>
+                <a href={`/services/${item.id}`}>
+                  <span>{item.name}</span>
+                  <span class="muted">{item.short}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p style="margin-top: 2rem;">
+            <ArrowLink href="/services" label="View all services" dark />
+          </p>
+        </div>
+      </section>
+    )
+  }
+
+  <PageCta
+    title={`Ready for ${service.name.toLowerCase()}?`}
+    body="Send a request and Atlantis will coordinate a suitable approved partner — one conversation, quote-led pricing."
+    href={requestHref}
+    label="Request / book a service"
+  />
+</BaseLayout>

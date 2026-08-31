@@ -1,26 +1,34 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PageBanner from "../components/PageBanner.astro";
+import ArrowLink from "../components/ArrowLink.astro";
+import PageCta from "../components/PageCta.astro";
 import { faqs } from "../data/faqs";
 ---
 
 <BaseLayout title="FAQs" description="How Atlantis requests, quotes, bookings, recurring work, and service area work.">
-  <section class="page-hero">
-    <div class="wrap measure">
-      <p class="eyebrow">Help</p>
-      <h1>Frequently asked questions</h1>
+  <PageBanner title="Frequently asked questions" image="/images/interior-clean.jpg" />
+
+  <section class="page-body">
+    <div class="wrap page-body--narrow">
+      <p class="page-intro__text" style="margin-bottom: 2.5rem;">
+        How requests, quotes, bookings, recurring work and our Melbourne service area work.
+      </p>
       <div class="faq">
         {
           faqs.map((item) => (
             <details>
               <summary>{item.q}</summary>
-              <p class="muted">{item.a}</p>
+              <p>{item.a}</p>
             </details>
           ))
         }
       </div>
-      <p>
-        <a class="text-cta" href="/request">Tell us what you need</a>
-      </p>
+      <div class="faq-footer">
+        <ArrowLink href="/contact?tab=request" label="Request / book a service" dark />
+      </div>
     </div>
   </section>
+
+  <PageCta />
 </BaseLayout>
