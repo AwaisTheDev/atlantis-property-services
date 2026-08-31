@@ -1596,6 +1596,50 @@ fieldset .checkbox-grid {
   padding-bottom: 0.2rem;
 }
 
+.gallery-filter {
+  margin-bottom: 2.5rem;
+}
+
+.gallery-filter .eyebrow {
+  margin-bottom: 0.85rem;
+}
+
+.gallery-filter__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  border-bottom: 1px solid rgba(14, 18, 27, 0.12);
+  padding-bottom: 0.15rem;
+}
+
+.gallery-filter__btn {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0.65rem 0;
+  margin: 0;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: rgba(14, 18, 27, 0.55);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.gallery-filter__btn:hover {
+  color: var(--color-ink);
+}
+
+.gallery-filter__btn.is-active {
+  color: var(--color-ink);
+  border-bottom-color: var(--color-gold-deep);
+}
+
+.gallery-empty {
+  margin-top: 2rem;
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -1617,6 +1661,10 @@ fieldset .checkbox-grid {
 
 .gallery-item {
   margin: 0;
+}
+
+.gallery-item[hidden] {
+  display: none;
 }
 
 .gallery-item img {
