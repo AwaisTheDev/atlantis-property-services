@@ -1,0 +1,24 @@
+---
+type Props = {
+  href: string;
+  label: string;
+  dark?: boolean;
+};
+
+const { href, label, dark = false } = Astro.props;
+---
+
+<a class:list={["arrow-link", { "arrow-link--dark": dark }]} href={href}>
+  <span class="arrow-link__label">{label}</span>
+  <span class="arrow-link__icon" aria-hidden="true">
+    <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="14.5005" cy="14.5005" r="14.5005" fill="#9B7336"></circle>
+      <path
+        d="M12.5698 10.5493L17.4326 14.1965L13.1776 18.4515"
+        stroke="#fff"
+        stroke-width="1.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"></path>
+    </svg>
+  </span>
+</a>

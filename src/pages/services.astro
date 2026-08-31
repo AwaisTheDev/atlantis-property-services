@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { servicesByGroup } from "../data/services";
+---
+
+<BaseLayout
+  title="Services"
+  description="Cleaning, gardens, maintenance, presentation, waste, and building support — coordinated by Atlantis across Melbourne’s inner suburbs."
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Services</p>
+      <h1>All services, one point of contact</h1>
+      <p class="muted">
+        Quote-only pricing unless an emergency call-out applies. Select a service to start a request.
+        You will not be asked to choose between public providers.
+      </p>
+      {
+        servicesByGroup().map(({ group, items }) => (
+          <div class="service-group">
+            <h2>{group}</h2>
+            <div class="service-list">
+              {items.map((item) => (
+                <a href={`/request?service=${item.id}`}>
+                  <h3>{item.name}</h3>
+                  <p class="muted">{item.short}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

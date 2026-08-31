@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import RequestForm from "../components/RequestForm.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout
+  title="Emergency / Urgent Service"
+  description="Urgent property service requests coordinated by Atlantis in Melbourne."
+  showMobileCta={false}
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Priority</p>
+      <h1>Emergency / urgent service</h1>
+      <p>
+        Flag the job as urgent and tell us what you need. We will prioritise the request.
+        {
+          site.phone ? (
+            <>
+              {" "}
+              You can also call <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>.
+            </>
+          ) : (
+            " A tap-to-call number will appear here once confirmed."
+          )
+        }
+      </p>
+      <RequestForm urgent={true} intent="emergency" />
+    </div>
+  </section>
+</BaseLayout>

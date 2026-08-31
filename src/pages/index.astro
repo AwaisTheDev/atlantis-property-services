@@ -1,0 +1,219 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ArrowLink from "../components/ArrowLink.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout title={site.name} description={site.description} showMobileCta={false}>
+  <!-- 1. Homepage banner -->
+  <section class="banner banner--homepage">
+    <div class="banner__bg" aria-hidden="true">
+      <div class="banner__image">
+        <img src="/images/hero-property.jpg" alt="" width="1600" height="900" fetchpriority="high" />
+      </div>
+      <div class="banner__overlay"></div>
+    </div>
+    <div class="banner__content">
+      <div class="wrap">
+        <div class="banner__inner">
+          <div class="banner__text">
+            <h1>Melbourne property services for homes, apartments and commercial sites</h1>
+          </div>
+          <div class="banner__links">
+            <ArrowLink href="/request?property=residential" label="Residential" />
+            <ArrowLink href="/request?property=commercial" label="Commercial" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Text columns -->
+  <section class="section text-columns">
+    <div class="wrap">
+      <div class="text-columns__inner">
+        <div class="text-columns__col text-columns__col--left">
+          <h2>One point of contact across the work a property needs</h2>
+        </div>
+        <div class="text-columns__col text-columns__col--right">
+          <div class="text-columns__text">
+            <p>
+              Atlantis coordinates cleaning, gardens, maintenance, presentation and building support for
+              homes, apartments, strata and commercial sites. You talk to us. We arrange a suitable approved
+              partner and stay accountable for the experience.
+            </p>
+            <p>
+              <strong>With intelligently coordinated service, properties stay looked after</strong>
+            </p>
+          </div>
+          <div class="text-columns__links">
+            <ArrowLink href="/request" label="Tell us what you need" dark />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Image left + body -->
+  <section class="section textbox-image textbox-image--image-left">
+    <div class="wrap">
+      <div class="textbox-image__inner">
+        <div class="textbox-image__media">
+          <img
+            class="textbox-image__img"
+            src="/images/window-cleaning.jpg"
+            alt="Professional window cleaning on a modern property"
+            width="816"
+            height="1090"
+            loading="lazy"
+          />
+        </div>
+        <div class="textbox-image__body">
+          <div class="textbox-image__text">
+            <h2>
+              The properties we look after play a crucial role in how people live, work and feel at home.
+            </h2>
+            <p>
+              Excellence in property services begins with a clear request and a single accountable team —
+              not a marketplace of competing providers.
+            </p>
+            <p>
+              Atlantis reviews what you need, coordinates a suitable approved partner, and manages the quote
+              or booking so you have one place to come back to from first enquiry through to completion.
+            </p>
+            <p>
+              We are locally based and focused on Melbourne’s inner suburbs and surrounding service area,
+              with every postcode reviewed manually.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Inspired / image right -->
+  <section class="section textbox-image textbox-image--image-right">
+    <div class="wrap">
+      <div class="textbox-image__inner">
+        <div class="textbox-image__media">
+          <img
+            class="textbox-image__img"
+            src="/images/garden-care.jpg"
+            alt="Garden and lawn care at a contemporary Melbourne home"
+            width="816"
+            height="1090"
+            loading="lazy"
+          />
+        </div>
+        <div class="textbox-image__body">
+          <div class="textbox-image__text">
+            <h2>Inspired<br />by simplicity.</h2>
+            <p>
+              Since day one, Atlantis has been built around one idea: property work should feel simple for
+              the customer. One company. One conversation. Coordinated delivery.
+            </p>
+            <p>
+              You tell us what you need. We arrange a suitable approved partner and manage the quote or
+              booking. You deal with one company — we stay accountable for the experience.
+            </p>
+            <p>
+              What this brings to your experience is less time chasing providers, more peace of mind, and a
+              clear point of contact from first enquiry through to completion.
+            </p>
+          </div>
+          <div class="textbox-image__buttons">
+            <ArrowLink href="/services" label="See all services" dark />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Words from clients -->
+  <section class="section testimonial">
+    <div class="wrap">
+      <div class="testimonial__card" data-testimonial-banner>
+        <p class="testimonial__eyebrow">Words from clients</p>
+        {
+          site.testimonials.map((item, index) => (
+            <div class:list={["testimonial__slide", { active: index === 0 }]} data-slide={index}>
+              <div class="testimonial__row">
+                <div class="testimonial__quote">
+                  <p>“{item.quote}”</p>
+                </div>
+                <span class="testimonial__divider" aria-hidden="true" />
+                <div class="testimonial__author">
+                  <p class="testimonial__name">{item.name}</p>
+                  <p class="testimonial__role">{item.company}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+        {
+          site.testimonials.length > 1 && (
+            <div class="testimonial__nav" aria-label="Testimonial navigation">
+              {site.testimonials.map((_, index) => (
+                <button
+                  type="button"
+                  class:list={["testimonial__dot", { active: index === 0 }]}
+                  data-goto={index}
+                  aria-label={`Show testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Closing CTA -->
+  <section class="cta">
+    <div class="cta__bg" aria-hidden="true">
+      <div class="cta__image">
+        <img src="/images/cta-building.jpg" alt="" width="1600" height="900" loading="lazy" />
+      </div>
+      <div class="cta__overlay"></div>
+    </div>
+    <div class="cta__content">
+      <div class="wrap">
+        <div class="cta__inner">
+          <div class="cta__text">
+            <h2>Let’s get it done.</h2>
+            <p>
+              Call or send a request for quotes, bookings and urgent property work across Melbourne’s
+              inner suburbs.
+            </p>
+          </div>
+          <div class="cta__buttons">
+            <ArrowLink href="/contact" label="Contact us" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const banner = document.querySelector("[data-testimonial-banner]");
+  if (banner) {
+    const slides = banner.querySelectorAll("[data-slide]");
+    const dots = banner.querySelectorAll("[data-goto]");
+    let current = 0;
+
+    function show(index) {
+      current = index;
+      slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
+      dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+    }
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => show(Number(dot.dataset.goto)));
+    });
+
+    if (slides.length > 1) {
+      setInterval(() => show((current + 1) % slides.length), 7000);
+    }
+  }
+</script>

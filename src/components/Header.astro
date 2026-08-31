@@ -1,0 +1,70 @@
+---
+const path = Astro.url.pathname;
+const isHome = path === "/" || path === "";
+
+const links = [
+  { href: "/services", label: "Services" },
+  { href: "/faqs", label: "FAQs" },
+  { href: "/partners", label: "Partners" },
+  { href: "/contact", label: "Contact" },
+];
+---
+
+<header class:list={["site-header", { "site-header--transparent": isHome }]} id="site-header">
+  <div class="wrap header-inner">
+    <a class="logo-link" href="/" aria-label="Atlantis Property Services, home">
+      <img class="logo-light" src="/logo-on-light.svg" alt="" width="493" height="341" />
+      <img class="logo-dark" src="/logo-on-dark.svg" alt="" width="493" height="346" />
+    </a>
+    <nav class="nav" aria-label="Primary">
+      {
+        links.map((link) => (
+          <a href={link.href} aria-current={path === link.href ? "page" : undefined}>
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      id="menu-toggle"
+      aria-label="Open menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  <div class="mobile-panel" id="mobile-nav">
+    {
+      links.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))
+    }
+    <a href="/request">Tell us what you need</a>
+    <a href="/emergency">Urgent</a>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const panel = document.getElementById("mobile-nav");
+  const header = document.getElementById("site-header");
+
+  toggle?.addEventListener("click", () => {
+    const open = panel?.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle?.classList.toggle("is-open", !!open);
+  });
+
+  if (header?.classList.contains("site-header--transparent")) {
+    const onScroll = () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 40);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+</script>

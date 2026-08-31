@@ -1,0 +1,120 @@
+---
+import { services } from "../data/services";
+---
+
+<form id="partner-form" class="card form-stack" novalidate>
+  <h2>Apply to become a service partner</h2>
+  <p class="muted">
+    Applications are reviewed and approved. Approval does not guarantee a minimum volume of work.
+    Approved partners must accept separate Atlantis Service Partner Terms before onboarding is final.
+  </p>
+  <p class="error" id="partner-error" hidden></p>
+
+  <label>Contact name <input type="text" name="contactName" required autocomplete="name" /></label>
+  <label>Business name <input type="text" name="businessName" required /></label>
+  <label>
+    Business structure
+    <select name="structure" required>
+      <option value="">Select</option>
+      <option>Sole trader</option>
+      <option>Partnership</option>
+      <option>Company</option>
+      <option>Trust</option>
+      <option>Other</option>
+    </select>
+  </label>
+  <label>ABN <input type="text" name="abn" required inputmode="numeric" /></label>
+  <label>Mobile <input type="tel" name="mobile" required autocomplete="tel" /></label>
+  <label>Email <input type="email" name="email" required autocomplete="email" /></label>
+  <fieldset>
+    <legend>Services / trades offered</legend>
+    <div class="checkbox-grid">
+      {services.map((item) => (
+        <label>
+          <input type="checkbox" name="trades" value={item.id} />
+          {item.name}
+        </label>
+      ))}
+    </div>
+  </fieldset>
+  <label>General geographic service area <input type="text" name="area" required placeholder="e.g. inner north, 10 km of Brunswick" /></label>
+  <label>Years in business / operating experience <input type="text" name="experience" required /></label>
+  <label>
+    Availability
+    <select name="availability" required>
+      <option value="one-off">One-off work</option>
+      <option value="recurring">Recurring work</option>
+      <option value="both">One-off and recurring</option>
+    </select>
+  </label>
+  <label>
+    Urgent / emergency availability
+    <select name="urgent" required>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+  </label>
+  <label>Typical response time <input type="text" name="responseTime" required placeholder="e.g. same day, within 24 hours" /></label>
+  <label>Usual days and working hours <input type="text" name="hours" required placeholder="e.g. Mon–Fri 7am–4pm" /></label>
+  <label>
+    Relevant licences held?
+    <select name="licencesHeld" required>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+  </label>
+  <label>
+    Appropriate insurance held?
+    <select name="insuranceHeld" required>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+  </label>
+  <label>
+    Licences, certificates of currency, or insurance documents
+    <input type="file" name="documents" required multiple accept="image/*,.pdf" />
+  </label>
+  <fieldset>
+    <legend>Declarations</legend>
+    <div class="checkbox-grid">
+      <label>
+        <input type="checkbox" name="verify" required />
+        I agree Atlantis may verify my ABN, licences, and insurance.
+      </label>
+      <label>
+        <input type="checkbox" name="accurate" required />
+        I declare the information and documents are current and accurate.
+      </label>
+      <label>
+        <input type="checkbox" name="contact" required />
+        I consent to be contacted about this application and future service opportunities.
+      </label>
+    </div>
+  </fieldset>
+  <p class="muted">
+    Atlantis may request further information. Client references are not required at this stage.
+    Future job opportunities will be offered through a private Atlantis system — not a public marketplace.
+  </p>
+  <button class="btn btn-primary" type="submit">Submit application</button>
+</form>
+
+<script>
+  const form = document.getElementById("partner-form") as HTMLFormElement | null;
+  const err = document.getElementById("partner-error") as HTMLElement | null;
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const trades = form.querySelectorAll<HTMLInputElement>('[name="trades"]:checked');
+    if (!trades.length) {
+      if (err) {
+        err.hidden = false;
+        err.textContent = "Select at least one trade or service.";
+      }
+      return;
+    }
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    window.location.href = "/partners/thank-you";
+  });
+</script>

@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout title="Contact" description="Contact Atlantis Property Services for quotes, bookings, and urgent property work in Melbourne.">
+  <section class="page-hero">
+    <div class="wrap measure">
+      <p class="eyebrow">Contact</p>
+      <h1>Talk to Atlantis</h1>
+      <p>Email <a href={`mailto:${site.email}`}>{site.email}</a></p>
+      {
+        site.phone ? (
+          <p>
+            Phone <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
+          </p>
+        ) : (
+          <p class="notice">A dedicated business number will be shown here for tap-to-call once it is confirmed.</p>
+        )
+      }
+      <p class="muted">Service area: {site.serviceArea}. We review every postcode — we do not auto-reject out-of-area requests.</p>
+      <p>
+        <a class="text-cta" href="/request">Tell us what you need</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

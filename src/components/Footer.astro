@@ -1,0 +1,40 @@
+---
+import { site } from "../data/site";
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <img class="footer-logo" src="/logo-on-dark.svg" alt="Atlantis Property Services" width="493" height="346" />
+      <p class="muted">{site.tagline}</p>
+    </div>
+    <div>
+      <p class="eyebrow">Contact</p>
+      <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+      {
+        site.phone ? (
+          <p>
+            <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
+          </p>
+        ) : (
+          <p class="muted">{site.phoneLabel}</p>
+        )
+      }
+    </div>
+    <div>
+      <p class="eyebrow">Site</p>
+      <p>
+        <a href="/services">Services</a><br />
+        <a href="/faqs">FAQs</a><br />
+        <a href="/partners">Partners</a><br />
+        <a href="/contact">Contact</a><br />
+        <a href="/privacy">Privacy</a>
+      </p>
+    </div>
+  </div>
+  <div class="wrap legal-links">
+    <span class="muted">© {new Date().getFullYear()} {site.name}</span>
+    <a href="/terms">Website Terms</a>
+    <a href="/cookies">Cookie notice</a>
+  </div>
+</footer>

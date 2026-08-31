@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { faqs } from "../data/faqs";
+---
+
+<BaseLayout title="FAQs" description="How Atlantis requests, quotes, bookings, recurring work, and service area work.">
+  <section class="page-hero">
+    <div class="wrap measure">
+      <p class="eyebrow">Help</p>
+      <h1>Frequently asked questions</h1>
+      <div class="faq">
+        {
+          faqs.map((item) => (
+            <details>
+              <summary>{item.q}</summary>
+              <p class="muted">{item.a}</p>
+            </details>
+          ))
+        }
+      </div>
+      <p>
+        <a class="text-cta" href="/request">Tell us what you need</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

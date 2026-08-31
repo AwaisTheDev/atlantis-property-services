@@ -1,0 +1,59 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../data/site";
+
+type Props = {
+  title: string;
+  description?: string;
+  showMobileCta?: boolean;
+};
+
+const { title, description = site.description, showMobileCta = true } = Astro.props;
+const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/logo-on-dark.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <a class="sr-only" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    {
+      showMobileCta && (
+        <div class="mobile-cta-bar">
+          <a class="btn btn-primary" href="/request">Tell Us What You Need</a>
+          <a class="btn btn-ghost" href="/emergency">Urgent</a>
+        </div>
+      )
+    }
+  </body>
+</html>
+
+<style>
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+</style>

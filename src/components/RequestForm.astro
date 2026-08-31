@@ -1,0 +1,206 @@
+---
+import { services } from "../data/services";
+import { customerTypes, frequencies } from "../data/site";
+
+type Props = {
+  urgent?: boolean;
+  service?: string;
+  intent?: string;
+};
+
+const { urgent = false, service = "", intent = "request" } = Astro.props;
+const selected = service ? service.split(",").filter(Boolean) : [];
+---
+
+<form id="request-form" class="card" novalidate>
+  <input type="hidden" name="intent" value={intent} />
+  <div class="progress" aria-hidden="true">
+    <span class="active" data-bar="1"></span>
+    <span data-bar="2"></span>
+    <span data-bar="3"></span>
+  </div>
+  <p class="muted" id="step-label">Step 1 of 3 — What you need</p>
+  <p class="error" id="form-error" hidden></p>
+
+  <section class="step active" data-step="1">
+    <h2>What do you need?</h2>
+    <p class="muted">Select one or more services. Pricing is quote-only unless this is an emergency call-out.</p>
+    <fieldset>
+      <legend class="eyebrow">Services</legend>
+      <div class="checkbox-grid">
+        {
+          services.map((item) => (
+            <label>
+              <input type="checkbox" name="services" value={item.id} checked={selected.includes(item.id)} />
+              {item.name}
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+    <label>
+      One-off or recurring
+      <select name="cadence" required>
+        <option value="one-off">One-off</option>
+        <option value="recurring">Recurring</option>
+      </select>
+    </label>
+    <label id="frequency-field" hidden>
+      Recurring frequency
+      <select name="frequency">
+        {frequencies.map((f) => <option value={f}>{f}</option>)}
+      </select>
+    </label>
+    <label>
+      <input type="checkbox" name="urgent" value="yes" checked={urgent} />
+      This is urgent / emergency
+    </label>
+  </section>
+
+  <section class="step" data-step="2">
+    <h2>Job details</h2>
+    <label>
+      Describe what you need
+      <textarea name="description" required minlength="10" placeholder="What needs doing, access notes, anything we should know."></textarea>
+    </label>
+    <label>
+      Preferred date / time
+      <input type="text" name="preferredTime" placeholder="e.g. weekday mornings, or 12 Sep after 2pm" />
+    </label>
+    <label>
+      Photos or files (optional)
+      <input type="file" name="files" multiple accept="image/*,.pdf" />
+    </label>
+  </section>
+
+  <section class="step" data-step="3">
+    <h2>You and the property</h2>
+    <label>
+      Name
+      <input type="text" name="name" required autocomplete="name" />
+    </label>
+    <label>
+      Mobile
+      <input type="tel" name="mobile" required autocomplete="tel" />
+    </label>
+    <label>
+      Email
+      <input type="email" name="email" required autocomplete="email" />
+    </label>
+    <label>
+      Postcode
+      <input type="text" name="postcode" required inputmode="numeric" pattern="[0-9]{4}" maxlength="4" />
+    </label>
+    <label>
+      Property type
+      <select name="propertyType" required>
+        <option value="Residential">Residential</option>
+        <option value="Commercial">Commercial</option>
+      </select>
+    </label>
+    <label>
+      I am a
+      <select name="customerType" required>
+        {customerTypes.map((t) => <option value={t}>{t}</option>)}
+      </select>
+    </label>
+    <label>
+      Preferred contact method
+      <select name="contactMethod" required>
+        <option value="Phone">Phone</option>
+        <option value="SMS">SMS</option>
+        <option value="Email">Email</option>
+      </select>
+    </label>
+    <p class="muted">We review every postcode manually. Out-of-area requests are not auto-rejected.</p>
+  </section>
+
+  <div class="form-actions">
+    <button class="btn btn-ghost" type="button" id="back-btn" hidden>Back</button>
+    <button class="btn btn-primary" type="button" id="next-btn">Continue</button>
+    <button class="btn btn-primary" type="submit" id="submit-btn" hidden>Send request</button>
+  </div>
+</form>
+
+<script>
+  const form = document.getElementById("request-form") as HTMLFormElement | null;
+  if (form) {
+    let step = 1;
+    const steps = form.querySelectorAll<HTMLElement>(".step");
+    const bars = form.querySelectorAll<HTMLElement>("[data-bar]");
+    const back = document.getElementById("back-btn") as HTMLButtonElement;
+    const next = document.getElementById("next-btn") as HTMLButtonElement;
+    const submit = document.getElementById("submit-btn") as HTMLButtonElement;
+    const err = document.getElementById("form-error") as HTMLElement;
+    const label = document.getElementById("step-label") as HTMLElement;
+    const cadence = form.querySelector<HTMLSelectElement>('[name="cadence"]');
+    const freq = document.getElementById("frequency-field") as HTMLElement;
+
+    const labels = [
+      "Step 1 of 3 — What you need",
+      "Step 2 of 3 — Job details",
+      "Step 3 of 3 — You and the property",
+    ];
+
+    function showError(message: string) {
+      err.hidden = !message;
+      err.textContent = message;
+    }
+
+    function render() {
+      steps.forEach((el) => el.classList.toggle("active", Number(el.dataset.step) === step));
+      bars.forEach((el) => el.classList.toggle("active", Number(el.dataset.bar) <= step));
+      back.hidden = step === 1;
+      next.hidden = step === 3;
+      submit.hidden = step !== 3;
+      label.textContent = labels[step - 1];
+      showError("");
+    }
+
+    cadence?.addEventListener("change", () => {
+      const recurring = cadence.value === "recurring";
+      freq.hidden = !recurring;
+    });
+
+    function stepValid() {
+      const current = form.querySelector<HTMLElement>(`.step[data-step="${step}"]`);
+      if (!current) return false;
+      if (step === 1) {
+        const checked = form.querySelectorAll<HTMLInputElement>('[name="services"]:checked');
+        if (!checked.length) {
+          showError("Select at least one service.");
+          return false;
+        }
+      }
+      const fields = current.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(
+        "input, select, textarea",
+      );
+      for (const field of fields) {
+        if (field.closest("[hidden]")) continue;
+        if (!field.checkValidity()) {
+          field.reportValidity();
+          return false;
+        }
+      }
+      return true;
+    }
+
+    next.addEventListener("click", () => {
+      if (!stepValid()) return;
+      step += 1;
+      render();
+    });
+    back.addEventListener("click", () => {
+      step -= 1;
+      render();
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!stepValid()) return;
+      window.location.href = "/thank-you";
+    });
+
+    render();
+  }
+</script>

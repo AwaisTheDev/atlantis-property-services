@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://atlantisps.com.au/sitemap.xml

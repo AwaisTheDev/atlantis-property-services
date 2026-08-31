@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PartnerForm from "../components/PartnerForm.astro";
+---
+
+<BaseLayout
+  title="Become a Service Partner"
+  description="Apply to receive suitable work through Atlantis. Applications are reviewed. Approval does not guarantee job volume."
+  showMobileCta={false}
+>
+  <section class="page-hero">
+    <div class="wrap measure">
+      <p class="eyebrow">Partners</p>
+      <h1>Become a service partner</h1>
+      <p>
+        Join the approved Atlantis network and receive suitable work as it comes through.
+        This is an ongoing working relationship — not a public marketplace, and not a promise of job volumes.
+      </p>
+      <ul class="muted">
+        <li>Applications are subject to review and approval.</li>
+        <li>Atlantis may request extra information or documents.</li>
+        <li>Approved partners accept separate Service Partner Terms before onboarding is final.</li>
+        <li>Later, jobs, availability, and pricing will run through a private Atlantis system — never as competing public profiles.</li>
+      </ul>
+      <PartnerForm />
+    </div>
+  </section>
+</BaseLayout>
