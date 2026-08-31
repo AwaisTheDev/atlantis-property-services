@@ -3,12 +3,13 @@ type Props = {
   href: string;
   label: string;
   dark?: boolean;
+  class?: string;
 };
 
-const { href, label, dark = false } = Astro.props;
+const { href, label, dark = false, class: className } = Astro.props;
 ---
 
-<a class:list={["arrow-link", { "arrow-link--dark": dark }]} href={href}>
+<a class:list={["arrow-link", className, { "arrow-link--dark": dark }]} href={href}>
   <span class="arrow-link__label">{label}</span>
   <span class="arrow-link__icon" aria-hidden="true">
     <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -1,4 +1,6 @@
 ---
+import ArrowLink from "./ArrowLink.astro";
+
 const path = Astro.url.pathname;
 const isHome = path === "/" || path === "";
 
@@ -26,8 +28,7 @@ const links = [
       }
     </nav>
     <div class="header-actions">
-      <a class="btn btn-primary header-cta header-cta--desktop" href="/request">Tell us what you need</a>
-      <a class="btn btn-primary header-cta header-cta--mobile" href="/request">Request</a>
+      <ArrowLink href="/request" label="Tell us what you need" class="header-cta" />
       <button
         class="menu-toggle"
         type="button"
@@ -48,8 +49,8 @@ const links = [
         <a href={link.href}>{link.label}</a>
       ))
     }
-    <a class="btn btn-primary" href="/request">Tell us what you need</a>
-    <a class="btn btn-ghost" href="/emergency">Urgent</a>
+    <ArrowLink href="/request" label="Tell us what you need" />
+    <ArrowLink href="/emergency" label="Urgent" />
   </div>
 </header>
 
