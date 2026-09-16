@@ -17,6 +17,62 @@ export const serviceGroups = [
   "Building & facilities",
 ] as const;
 
+export type ServiceGroup = (typeof serviceGroups)[number];
+
+export type ServiceGroupMeta = {
+  name: ServiceGroup;
+  slug: string;
+  short: string;
+  lead: string;
+  image: string;
+};
+
+/** Parent category pages — slugs are explicit to avoid clashing with service ids */
+export const serviceGroupMeta: ServiceGroupMeta[] = [
+  {
+    name: "Cleaning & hygiene",
+    slug: "cleaning-hygiene",
+    short: "Homes, workplaces and vacate cleans — one Atlantis contact.",
+    lead: "From regular residential cleans to commercial schedules, end-of-lease and deep cleans, Atlantis coordinates cleaning and hygiene work across Melbourne’s inner suburbs. You send one request; we arrange a suitable approved partner and stay your point of contact — without a public provider marketplace.",
+    image: "/images/services/residential-cleaning.jpg",
+  },
+  {
+    name: "Property & exterior care",
+    slug: "property-exterior-care",
+    short: "Windows, gardens, exteriors, handyman and maintenance.",
+    lead: "Keep façades, gardens, glass and outdoor areas looking after — plus handyman jobs, pest control and ongoing property maintenance. Atlantis scopes the brief, manages the quote and coordinates delivery so owners and managers deal with one company.",
+    image: "/images/services/window-cleaning.jpg",
+  },
+  {
+    name: "Waste & removal",
+    slug: "waste-removal",
+    short: "Rubbish, furniture, clean-outs and hard waste.",
+    lead: "Junk, furniture, hard waste and property clean-outs arranged through Atlantis. Share the load, access notes and any building rules — we coordinate collection with an approved partner and keep the conversation in one place.",
+    image: "/images/services/hard-waste.jpg",
+  },
+  {
+    name: "Move-in / move-out",
+    slug: "move-in-move-out",
+    short: "Handover-ready cleans and related turnover support.",
+    lead: "Move-in and move-out work is time-sensitive. Atlantis coordinates vacate cleans and related presentation tasks under one request so tenants, landlords and managers are not chasing separate providers before handover.",
+    image: "/images/services/move-in-out.jpg",
+  },
+  {
+    name: "Property presentation",
+    slug: "presentation",
+    short: "Staging, styling, design and make-ready presentation.",
+    lead: "Present homes and apartments for lease, sale or inspection. Atlantis coordinates staging, styling, design support and property preparation — quote-led, with one accountable contact for the full presentation job.",
+    image: "/images/services/property-staging.jpg",
+  },
+  {
+    name: "Building & facilities",
+    slug: "building-facilities",
+    short: "Strata, facilities and ongoing building support.",
+    lead: "Strata, facilities and building support under one Atlantis relationship. From common property and apartment turnovers to preventative maintenance, we coordinate approved partners so committees and managers stay with a single customer-facing company.",
+    image: "/images/services/facility-management.jpg",
+  },
+];
+
 export const services: Service[] = [
   {
     id: "residential-cleaning",
@@ -309,9 +365,11 @@ export const services: Service[] = [
 ];
 
 export function servicesByGroup() {
-  return serviceGroups.map((group) => ({
-    group,
-    items: services.filter((s) => s.group === group),
+  return serviceGroupMeta.map((meta) => ({
+    group: meta.name,
+    slug: meta.slug,
+    meta,
+    items: services.filter((s) => s.group === meta.name),
   }));
 }
 
@@ -319,6 +377,23 @@ export function getServiceById(id: string) {
   return services.find((s) => s.id === id);
 }
 
+export function getServiceGroupBySlug(slug: string) {
+  return serviceGroupMeta.find((g) => g.slug === slug);
+}
+
+export function getServiceGroupByName(name: string) {
+  return serviceGroupMeta.find((g) => g.name === name);
+}
+
+export function servicesInGroup(group: ServiceGroup | string) {
+  return services.filter((s) => s.group === group);
+}
+
 export function relatedServices(service: Service, limit = 4) {
   return services.filter((s) => s.group === service.group && s.id !== service.id).slice(0, limit);
+}
+
+export function groupPath(group: ServiceGroup | string) {
+  const meta = getServiceGroupByName(group);
+  return meta ? `/services/${meta.slug}` : "/services";
 }

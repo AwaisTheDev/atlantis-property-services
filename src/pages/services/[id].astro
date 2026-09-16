@@ -3,118 +3,235 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageBanner from "../../components/PageBanner.astro";
 import PageCta from "../../components/PageCta.astro";
 import ArrowLink from "../../components/ArrowLink.astro";
-import { getServiceById, relatedServices, services } from "../../data/services";
+import {
+  getServiceById,
+  getServiceGroupBySlug,
+  relatedServices,
+  serviceGroupMeta,
+  services,
+  servicesInGroup,
+  groupPath,
+  type Service,
+  type ServiceGroupMeta,
+} from "../../data/services";
 import { getServicePageContent } from "../../data/serviceContent";
 import { site } from "../../data/site";
 
 export function getStaticPaths() {
-  return services.map((service) => ({
-    params: { id: service.id },
-  }));
+  return [
+    ...serviceGroupMeta.map((group) => ({
+      params: { id: group.slug },
+      props: { kind: "group" as const, group },
+    })),
+    ...services.map((service) => ({
+      params: { id: service.id },
+      props: { kind: "service" as const, service },
+    })),
+  ];
 }
 
-const { id } = Astro.params;
-const service = getServiceById(id!);
+type Props =
+  | { kind: "group"; group: ServiceGroupMeta }
+  | { kind: "service"; service: Service };
 
-if (!service) {
+const props = Astro.props as Props;
+const kind = props.kind;
+
+const group =
+  kind === "group" ? props.group : getServiceGroupBySlug(Astro.params.id!);
+const service = kind === "service" ? props.service : getServiceById(Astro.params.id!);
+
+if (kind === "group" && !group) {
+  return Astro.redirect("/services");
+}
+if (kind === "service" && !service) {
   return Astro.redirect("/services");
 }
 
-const content = getServicePageContent(service);
-const related = relatedServices(service, 5);
-const requestHref = `/contact?tab=request&service=${service.id}`;
+const groupItems = group ? servicesInGroup(group.name) : [];
+const content = service ? getServicePageContent(service) : null;
+const related = service ? relatedServices(service, 5) : [];
+const parentHref = service ? groupPath(service.group) : "/services";
+const requestHref = service
+  ? `/contact?tab=request&service=${service.id}`
+  : "/contact?tab=request";
 ---
 
-<BaseLayout title={service.name} description={`${service.short} Coordinated by Atlantis across ${site.serviceArea}.`}>
-  <PageBanner title={service.name} image={service.image} wide />
+{
+  kind === "group" && group ? (
+    <BaseLayout
+      title={group.name}
+      description={`${group.short} Coordinated by Atlantis across ${site.serviceArea}.`}
+    >
+      <PageBanner title={group.name} image={group.image} wide />
 
-  <!-- Overview -->
-  <section class="page-body">
-    <div class="wrap service-prose">
-      <p class="eyebrow">{service.group}</p>
-      <h2 class="service-detail__title">Melbourne {service.name.toLowerCase()} coordinated by Atlantis</h2>
-      {content.overview.map((paragraph) => <p class="page-intro__text">{paragraph}</p>)}
-
-      <dl class="service-meta">
-        <div>
-          <dt>Pricing</dt>
-          <dd>Quote only</dd>
-        </div>
-        <div>
-          <dt>Service area</dt>
-          <dd>{site.serviceArea}</dd>
-        </div>
-        <div>
-          <dt>You deal with</dt>
-          <dd>Atlantis — one point of contact</dd>
-        </div>
-        <div>
-          <dt>Delivery</dt>
-          <dd>Approved partner network</dd>
-        </div>
-      </dl>
-
-      <p style="margin-top: 2rem;">
-        <ArrowLink href={requestHref} label="Request / book a service" dark />
-      </p>
-    </div>
-  </section>
-
-  <!-- What to expect -->
-  <section class="section section-tint">
-    <div class="wrap service-prose">
-      <h2>What to expect</h2>
-      {content.expect.map((paragraph) => <p class="page-intro__text">{paragraph}</p>)}
-
-      <h3 class="service-prose__subhead">Typically included</h3>
-      <p class="muted">
-        Exact scope is confirmed in your quote. These are the usual building blocks for this service.
-      </p>
-      <ul class="service-checklist">
-        {content.includes.map((item) => <li>{item}</li>)}
-      </ul>
-
-      <p class="page-intro__text" style="margin-top: 2rem;">
-        The path is the same every time: you tell us what you need, Atlantis arranges a suitable approved
-        partner and manages the quote or booking, and you stay with one company until the work is done.
-      </p>
-      <p style="margin-top: 2rem;">
-        <ArrowLink href={requestHref} label="Start a request" dark />
-      </p>
-    </div>
-  </section>
-
-  <!-- Related -->
-  {
-    related.length > 0 && (
       <section class="page-body">
-        <div class="wrap">
-          <h2>Related services</h2>
-          <p class="page-intro__text" style="margin-bottom: 1.5rem;">
-            Other work in {service.group.toLowerCase()} that customers often combine in one request.
+        <div class="wrap service-prose">
+          <p class="eyebrow">
+            <a href="/services">Services</a>
           </p>
-          <ul class="service-related service-related--grid">
-            {related.map((item) => (
-              <li>
-                <a href={`/services/${item.id}`}>
-                  <span>{item.name}</span>
-                  <span class="muted">{item.short}</span>
-                </a>
-              </li>
+          <h2 class="service-detail__title">{group.name} in Melbourne</h2>
+          <p class="page-intro__text">{group.lead}</p>
+          <p class="page-intro__text" style="margin-top: 1.25rem;">
+            Pricing is quote-only. You deal with Atlantis — one point of contact — while approved
+            partners deliver the work behind the scenes across {site.serviceArea}.
+          </p>
+          <p style="margin-top: 2rem;">
+            <ArrowLink href={requestHref} label="Request / book a service" dark />
+          </p>
+        </div>
+      </section>
+
+      <section class="section section-tint">
+        <div class="wrap">
+          <h2>Services in this category</h2>
+          <p class="page-intro__text" style="margin-bottom: 1.5rem;">
+            Open a service for details, or start a request that covers one or more of these.
+          </p>
+          <div class="service-list">
+            {groupItems.map((item) => (
+              <a href={`/services/${item.id}`}>
+                <div>
+                  <h3>{item.name}</h3>
+                  <p>{item.short}</p>
+                </div>
+                <svg
+                  class="service-list__arrow"
+                  width="29"
+                  height="29"
+                  viewBox="0 0 29 29"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <circle cx="14.5005" cy="14.5005" r="14.5005" fill="#9B7336" />
+                  <path
+                    d="M12.5698 10.5493L17.4326 14.1965L13.1776 18.4515"
+                    stroke="#fff"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
             ))}
-          </ul>
+          </div>
           <p style="margin-top: 2rem;">
             <ArrowLink href="/services" label="View all services" dark />
           </p>
         </div>
       </section>
-    )
-  }
 
-  <PageCta
-    title={`Ready for ${service.name.toLowerCase()}?`}
-    body="Send a request and Atlantis will coordinate a suitable approved partner — one conversation, quote-led pricing."
-    href={requestHref}
-    label="Request / book a service"
-  />
-</BaseLayout>
+      <PageCta
+        title={`Need ${group.name.toLowerCase()}?`}
+        body="Send a request and Atlantis will coordinate a suitable approved partner — one conversation, quote-led pricing."
+        href={requestHref}
+        label="Request / book a service"
+      />
+    </BaseLayout>
+  ) : service && content ? (
+    <BaseLayout
+      title={service.name}
+      description={`${service.short} Coordinated by Atlantis across ${site.serviceArea}.`}
+    >
+      <PageBanner title={service.name} image={service.image} wide />
+
+      <section class="page-body">
+        <div class="wrap service-prose">
+          <p class="eyebrow">
+            <a href={parentHref}>{service.group}</a>
+          </p>
+          <h2 class="service-detail__title">
+            Melbourne {service.name.toLowerCase()} coordinated by Atlantis
+          </h2>
+          {content.overview.map((paragraph) => (
+            <p class="page-intro__text">{paragraph}</p>
+          ))}
+
+          <dl class="service-meta">
+            <div>
+              <dt>Pricing</dt>
+              <dd>Quote only</dd>
+            </div>
+            <div>
+              <dt>Service area</dt>
+              <dd>{site.serviceArea}</dd>
+            </div>
+            <div>
+              <dt>You deal with</dt>
+              <dd>Atlantis — one point of contact</dd>
+            </div>
+            <div>
+              <dt>Delivery</dt>
+              <dd>Approved partner network</dd>
+            </div>
+          </dl>
+
+          <p style="margin-top: 2rem;">
+            <ArrowLink href={requestHref} label="Request / book a service" dark />
+          </p>
+        </div>
+      </section>
+
+      <section class="section section-tint">
+        <div class="wrap service-prose">
+          <h2>What to expect</h2>
+          {content.expect.map((paragraph) => (
+            <p class="page-intro__text">{paragraph}</p>
+          ))}
+
+          <h3 class="service-prose__subhead">Typically included</h3>
+          <p class="muted">
+            Exact scope is confirmed in your quote. These are the usual building blocks for this
+            service.
+          </p>
+          <ul class="service-checklist">
+            {content.includes.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+
+          <p class="page-intro__text" style="margin-top: 2rem;">
+            The path is the same every time: you tell us what you need, Atlantis arranges a suitable
+            approved partner and manages the quote or booking, and you stay with one company until the
+            work is done.
+          </p>
+          <p style="margin-top: 2rem;">
+            <ArrowLink href={requestHref} label="Start a request" dark />
+          </p>
+        </div>
+      </section>
+
+      {related.length > 0 && (
+        <section class="page-body">
+          <div class="wrap">
+            <h2>Related services</h2>
+            <p class="page-intro__text" style="margin-bottom: 1.5rem;">
+              Other work in {service.group.toLowerCase()} that customers often combine in one request.
+            </p>
+            <ul class="service-related service-related--grid">
+              {related.map((item) => (
+                <li>
+                  <a href={`/services/${item.id}`}>
+                    <span>{item.name}</span>
+                    <span class="muted">{item.short}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p style="margin-top: 2rem;">
+              <ArrowLink href={parentHref} label={`All ${service.group.toLowerCase()}`} dark />
+            </p>
+          </div>
+        </section>
+      )}
+
+      <PageCta
+        title={`Ready for ${service.name.toLowerCase()}?`}
+        body="Send a request and Atlantis will coordinate a suitable approved partner — one conversation, quote-led pricing."
+        href={requestHref}
+        label="Request / book a service"
+      />
+    </BaseLayout>
+  ) : null
+}
