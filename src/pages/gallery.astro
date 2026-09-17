@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageBanner from "../components/PageBanner.astro";
 import PageCta from "../components/PageCta.astro";
+import SmartImage from "../components/SmartImage.astro";
 import { galleryItems, galleryServiceTypes } from "../data/gallery";
 ---
 
@@ -39,7 +40,7 @@ import { galleryItems, galleryServiceTypes } from "../data/gallery";
         {
           galleryItems.map((item) => (
             <figure class="gallery-item" data-service-type={item.serviceType}>
-              <img src={item.src} alt={item.alt} width="1200" height="630" loading="lazy" />
+              <SmartImage src={item.src} alt={item.alt} width={1200} height={630} loading="lazy" />
               <figcaption>
                 <span class="gallery-item__category">{item.serviceType}</span>
                 <span class="gallery-item__caption">{item.caption}</span>

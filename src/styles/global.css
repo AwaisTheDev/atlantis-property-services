@@ -733,9 +733,14 @@ b {
   inset: 0;
 }
 
+.banner__image picture,
 .banner__image img {
+  display: block;
   width: 100%;
   height: 100%;
+}
+
+.banner__image img {
   object-fit: cover;
 }
 
@@ -873,6 +878,11 @@ b {
   flex: 0 0 auto;
   width: 624px;
   max-width: 50%;
+}
+
+.textbox-image__media picture {
+  display: block;
+  width: 100%;
 }
 
 .textbox-image__img {
@@ -1086,9 +1096,14 @@ b {
   inset: 0;
 }
 
+.cta__image picture,
 .cta__image img {
+  display: block;
   width: 100%;
   height: 100%;
+}
+
+.cta__image img {
   object-fit: cover;
 }
 
@@ -1962,6 +1977,10 @@ fieldset .checkbox-grid {
 
 .gallery-item[hidden] {
   display: none;
+}
+
+.gallery-item picture {
+  display: block;
 }
 
 .gallery-item img {
