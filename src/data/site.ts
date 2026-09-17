@@ -1,37 +1,61 @@
 export const site = {
   name: "Atlantis Property Services",
   legalName: "Atlantis Property Services",
-  tagline: "One point of contact for your property.",
+  tagline: "Melbourne property services. One contact for the whole job.",
   description:
-    "A locally based Melbourne property services company. Tell us what you need — we arrange it, and we get it done.",
+    "Atlantis Property Services coordinates cleaning, gardening, window cleaning, rubbish removal, handyman work and more across Melbourne’s inner suburbs — including Brunswick East and surrounds within about 50 km of the CBD. Tell us what you need; we arrange it.",
   email: "info@atlantisps.com.au",
   phone: "",
-  serviceArea: "Melbourne’s inner suburbs, within about 50 km of the CBD",
+  serviceArea: "Melbourne’s inner suburbs (about 50 km of the CBD), with a focus around Brunswick East and surrounding postcodes",
   copyright:
-    "© {year} Atlantis Property Services. Coordinating property work across Melbourne’s inner suburbs. All rights reserved.",
+    "© {year} Atlantis Property Services. Property services coordination across Melbourne’s inner suburbs. All rights reserved.",
   howItWorks: [
-    { step: "1", title: "Tell us what you need", body: "Share the job in a few steps — services, timing, and a few photos if you have them." },
-    { step: "2", title: "We arrange it", body: "Atlantis coordinates a suitable approved partner and manages the quote or booking." },
-    { step: "3", title: "We get it done", body: "You deal with one company. We stay accountable for the experience." },
+    {
+      step: "1",
+      title: "Tell us what you need",
+      body: "Share the job, postcode, timing and a few photos if you have them — residential or commercial.",
+    },
+    {
+      step: "2",
+      title: "We arrange the quote",
+      body: "Atlantis reviews the brief, coordinates a suitable approved partner, and comes back with a quote.",
+    },
+    {
+      step: "3",
+      title: "We get it done",
+      body: "You stay with one company for updates and handover. Partners deliver the work behind the scenes.",
+    },
   ],
   why: [
-    { title: "One point of contact", body: "Gardening, cleaning, maintenance, and more — without juggling separate providers." },
-    { title: "Simple from the start", body: "A fast request flow. Quote-led pricing. No marketplace, no provider comparison screens." },
-    { title: "Local Melbourne focus", body: "Based locally and focused on Melbourne’s inner suburbs and surrounding service area." },
-    { title: "Coordinated delivery", body: "Insured and vetted partners work behind the scenes. Atlantis remains the name you deal with." },
+    {
+      title: "One point of contact",
+      body: "Cleaning, gardens, windows, rubbish, handyman and more — without juggling separate providers.",
+    },
+    {
+      title: "Built for Melbourne jobs",
+      body: "Inner-suburb access, strata rules and vacate timelines are part of how we scope every request.",
+    },
+    {
+      title: "Quote-led, no marketplace",
+      body: "You don’t compare public providers on this site. Atlantis coordinates the work and stays accountable.",
+    },
+    {
+      title: "Insured, vetted partners",
+      body: "Approved partners work behind the scenes. Atlantis remains the name on your quote and booking.",
+    },
   ],
   testimonials: [
     {
       quote:
-        "Atlantis made it simple. One request, clear updates, and the work was arranged without me chasing multiple providers.",
+        "I needed an end-of-lease clean and a couple of handyman fixes before handover. One request to Atlantis covered both — clear updates, no chasing tradies myself.",
       name: "Property owner",
-      company: "Melbourne inner north",
+      company: "Brunswick East",
     },
     {
       quote:
-        "We needed end-of-lease and a few maintenance jobs handled quickly. Atlantis coordinated everything and stayed the point of contact throughout.",
+        "We use Atlantis for vacate cleans and common-area work across a small portfolio. One contact, quote-led pricing, and jobs that actually land on the dates we need.",
       name: "Property manager",
-      company: "Residential portfolio",
+      company: "Inner north portfolio",
     },
   ],
   social: {

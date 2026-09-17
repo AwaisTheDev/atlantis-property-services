@@ -60,10 +60,10 @@ const requestHref = service
 {
   kind === "group" && group ? (
     <BaseLayout
-      title={group.name}
-      description={`${group.short} Coordinated by Atlantis across ${site.serviceArea}.`}
+      title={`${group.name} Melbourne`}
+      description={`${group.short} Coordinated by Atlantis Property Services across ${site.serviceArea}.`}
     >
-      <PageBanner title={group.name} image={group.image} wide />
+      <PageBanner title={`${group.name} in Melbourne`} image={group.image} wide />
 
       <section class="page-body">
         <div class="wrap service-prose">
@@ -131,10 +131,10 @@ const requestHref = service
     </BaseLayout>
   ) : service && content ? (
     <BaseLayout
-      title={service.name}
-      description={`${service.short} Coordinated by Atlantis across ${site.serviceArea}.`}
+      title={`${service.name} Melbourne`}
+      description={`${service.short} Request a quote from Atlantis Property Services across Melbourne’s inner suburbs.`}
     >
-      <PageBanner title={service.name} image={service.image} wide />
+      <PageBanner title={`${service.name} in Melbourne`} image={service.image} wide />
 
       <section class="page-body">
         <div class="wrap service-prose">

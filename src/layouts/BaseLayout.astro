@@ -12,10 +12,39 @@ type Props = {
 
 const { title, description = site.description, showMobileCta = true } = Astro.props;
 const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://atlantisps.com.au").href;
+
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: site.name,
+  description: site.description,
+  url: "https://atlantisps.com.au",
+  email: site.email,
+  areaServed: {
+    "@type": "AdministrativeArea",
+    name: "Melbourne inner suburbs, Victoria, Australia",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Brunswick East",
+    addressRegion: "VIC",
+    addressCountry: "AU",
+  },
+  serviceType: [
+    "Residential cleaning",
+    "End-of-lease cleaning",
+    "Window cleaning",
+    "Gardening",
+    "Rubbish removal",
+    "Handyman services",
+    "Property maintenance",
+  ],
+};
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-AU">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -23,9 +52,14 @@ const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    <meta name="geo.region" content="AU-VIC" />
+    <meta name="geo.placename" content="Melbourne" />
+    <link rel="canonical" href={canonical} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_AU" />
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessJsonLd)} />
   </head>
   <body>
     <a class="sr-only" href="#main">Skip to content</a>
