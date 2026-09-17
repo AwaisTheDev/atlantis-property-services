@@ -1,11 +1,14 @@
 export const site = {
   name: "Atlantis Property Services",
+  legalName: "Atlantis Property Services",
   tagline: "One point of contact for your property.",
   description:
     "A locally based Melbourne property services company. Tell us what you need — we arrange it, and we get it done.",
   email: "info@atlantisps.com.au",
   phone: "",
   serviceArea: "Melbourne’s inner suburbs, within about 50 km of the CBD",
+  copyright:
+    "© {year} Atlantis Property Services. Coordinating property work across Melbourne’s inner suburbs. All rights reserved.",
   howItWorks: [
     { step: "1", title: "Tell us what you need", body: "Share the job in a few steps — services, timing, and a few photos if you have them." },
     { step: "2", title: "We arrange it", body: "Atlantis coordinates a suitable approved partner and manages the quote or booking." },

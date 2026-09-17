@@ -70,7 +70,7 @@ const requestHref = service
           <p class="eyebrow">
             <a href="/services">Services</a>
           </p>
-          <h2 class="service-detail__title">{group.name} in Melbourne</h2>
+          <h2 class="service-detail__title">What’s included in this category</h2>
           <p class="page-intro__text">{group.lead}</p>
           <p class="page-intro__text" style="margin-top: 1.25rem;">
             Pricing is quote-only. You deal with Atlantis — one point of contact — while approved
@@ -104,7 +104,7 @@ const requestHref = service
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                 >
-                  <circle cx="14.5005" cy="14.5005" r="14.5005" fill="#9B7336" />
+                  <circle cx="14.5005" cy="14.5005" r="14.5005" fill="#c59c59" />
                   <path
                     d="M12.5698 10.5493L17.4326 14.1965L13.1776 18.4515"
                     stroke="#fff"
@@ -123,7 +123,7 @@ const requestHref = service
       </section>
 
       <PageCta
-        title={`Need ${group.name.toLowerCase()}?`}
+        title="Ready to request this work?"
         body="Send a request and Atlantis will coordinate a suitable approved partner — one conversation, quote-led pricing."
         href={requestHref}
         label="Request / book a service"
@@ -227,7 +227,7 @@ const requestHref = service
       )}
 
       <PageCta
-        title={`Ready for ${service.name.toLowerCase()}?`}
+        title="Ready to send a request?"
         body="Send a request and Atlantis will coordinate a suitable approved partner — one conversation, quote-led pricing."
         href={requestHref}
         label="Request / book a service"

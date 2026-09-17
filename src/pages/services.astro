@@ -9,14 +9,23 @@ import { servicesByGroup } from "../data/services";
   title="Services"
   description="Cleaning, gardens, maintenance, presentation, waste, and building support — coordinated by Atlantis across Melbourne’s inner suburbs."
 >
-  <PageBanner title="All services, one point of contact" image="/images/window-cleaning.jpg" wide />
+  <PageBanner title="What we can arrange for you" image="/images/window-cleaning.jpg" wide />
 
   <section class="page-intro">
     <div class="wrap">
       <p class="page-intro__text">
-        Quote-only pricing. Browse a category, open a service for details, or start a request.
-        You will not be asked to choose between public providers.
+        Pick a category below, open a service for details, or start a request.
+        Pricing is quote-only — and you won’t be asked to choose between public providers.
       </p>
+      <nav class="service-cats" aria-label="Service categories">
+        {
+          servicesByGroup().map(({ group, slug }) => (
+            <a class="service-cats__link" href={`/services/${slug}`}>
+              {group}
+            </a>
+          ))
+        }
+      </nav>
     </div>
   </section>
 
@@ -47,7 +56,7 @@ import { servicesByGroup } from "../data/services";
                     xmlns="http://www.w3.org/2000/svg"
                     aria-hidden="true"
                   >
-                    <circle cx="14.5005" cy="14.5005" r="14.5005" fill="#9B7336" />
+                    <circle cx="14.5005" cy="14.5005" r="14.5005" fill="#c59c59" />
                     <path
                       d="M12.5698 10.5493L17.4326 14.1965L13.1776 18.4515"
                       stroke="#fff"

@@ -1,10 +1,11 @@
 ---
 import ArrowLink from "./ArrowLink.astro";
+import { serviceGroupMeta } from "../data/services";
 
 const path = Astro.url.pathname;
+const servicesActive = path === "/services" || path.startsWith("/services/");
 
 const links = [
-  { href: "/services", label: "Services" },
   { href: "/gallery", label: "Gallery" },
   { href: "/faqs", label: "FAQs" },
   { href: "/partners", label: "Partners" },
@@ -18,6 +19,37 @@ const links = [
       <img class="logo-dark" src="/logo-on-dark.svg" alt="" width="493" height="346" />
     </a>
     <nav class="nav" aria-label="Primary">
+      <div class="nav-dropdown" data-dropdown>
+        <button
+          class="nav-dropdown__trigger"
+          type="button"
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-controls="services-dropdown"
+          data-dropdown-trigger
+          aria-current={servicesActive ? "page" : undefined}
+        >
+          Services
+          <svg class="nav-dropdown__chevron" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true">
+            <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+        <div class="nav-dropdown__menu" id="services-dropdown" role="menu" data-dropdown-menu>
+          <a class="nav-dropdown__item nav-dropdown__item--all" href="/services" role="menuitem">View all services</a>
+          {
+            serviceGroupMeta.map((group) => (
+              <a
+                class="nav-dropdown__item"
+                href={`/services/${group.slug}`}
+                role="menuitem"
+                aria-current={path === `/services/${group.slug}` ? "page" : undefined}
+              >
+                {group.name}
+              </a>
+            ))
+          }
+        </div>
+      </div>
       {
         links.map((link) => (
           <a href={link.href} aria-current={path === link.href || (link.href !== "/" && path.startsWith(link.href + "/")) ? "page" : undefined}>
@@ -43,6 +75,19 @@ const links = [
     </div>
   </div>
   <div class="mobile-panel" id="mobile-nav">
+    <p class="mobile-panel__label">Services</p>
+    <a href="/services" aria-current={path === "/services" ? "page" : undefined}>View all services</a>
+    {
+      serviceGroupMeta.map((group) => (
+        <a
+          class="mobile-panel__sub"
+          href={`/services/${group.slug}`}
+          aria-current={path === `/services/${group.slug}` ? "page" : undefined}
+        >
+          {group.name}
+        </a>
+      ))
+    }
     {
       links.map((link) => (
         <a href={link.href}>{link.label}</a>
@@ -70,4 +115,45 @@ const links = [
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
   }
+
+  document.querySelectorAll<HTMLElement>("[data-dropdown]").forEach((dropdown) => {
+    const trigger = dropdown.querySelector<HTMLElement>("[data-dropdown-trigger]");
+    const menu = dropdown.querySelector<HTMLElement>("[data-dropdown-menu]");
+    if (!trigger || !menu) return;
+
+    const setOpen = (open: boolean) => {
+      dropdown.classList.toggle("is-open", open);
+      trigger.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+
+    trigger.addEventListener("click", () => {
+      setOpen(!dropdown.classList.contains("is-open"));
+    });
+
+    trigger.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        trigger.focus();
+      }
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        setOpen(true);
+        menu.querySelector<HTMLElement>("a")?.focus();
+      }
+    });
+
+    menu.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        trigger.focus();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!dropdown.contains(event.target as Node)) setOpen(false);
+    });
+
+    dropdown.addEventListener("mouseenter", () => setOpen(true));
+    dropdown.addEventListener("mouseleave", () => setOpen(false));
+  });
 </script>

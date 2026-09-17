@@ -1,5 +1,8 @@
 ---
 import { site } from "../data/site";
+
+const year = new Date().getFullYear();
+const copyright = site.copyright.replace("{year}", String(year));
 ---
 
 <footer class="site-footer">
@@ -33,7 +36,7 @@ import { site } from "../data/site";
     </div>
   </div>
   <div class="wrap legal-links">
-    <span class="muted">© {new Date().getFullYear()} {site.name}</span>
+    <span class="muted">{copyright}</span>
     <a href="/terms">Website Terms</a>
     <a href="/partner-terms">Partner Terms</a>
     <a href="/cookies">Cookie notice</a>

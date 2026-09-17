@@ -6,20 +6,20 @@ import { galleryItems, galleryServiceTypes } from "../data/gallery";
 ---
 
 <BaseLayout
-  title="Gallery"
-  description="A look at the kinds of homes, apartments and commercial sites Atlantis coordinates property services for across Melbourne."
+  title="Work across Melbourne"
+  description="A look at the kinds of jobs Atlantis coordinates — cleans, gardens, waste, handovers and building support across Melbourne’s inner suburbs."
 >
-  <PageBanner title="Gallery" image="/images/garden-care.jpg" />
+  <PageBanner title="Work across Melbourne" image="/images/services/window-cleaning.jpg" />
 
   <section class="page-body">
     <div class="wrap">
       <p class="page-intro__text" style="margin-bottom: 2rem;">
-        Selected property contexts we work across — homes, gardens, interiors and commercial sites.
-        More project photography will be added as the portfolio grows.
+        These are the kinds of jobs we arrange every week — not a staged portfolio shoot.
+        Send a few photos with your request and we’ll scope the work from there.
       </p>
 
       <div class="gallery-filter" data-gallery-filter>
-        <p class="eyebrow">Filter by service type</p>
+        <p class="eyebrow">Filter by category</p>
         <div class="gallery-filter__list" role="group" aria-label="Filter gallery by service type">
           <button type="button" class="gallery-filter__btn is-active" data-filter="all" aria-pressed="true">
             All
@@ -42,6 +42,7 @@ import { galleryItems, galleryServiceTypes } from "../data/gallery";
               <figcaption>
                 <span class="gallery-item__category">{item.serviceType}</span>
                 <span class="gallery-item__caption">{item.caption}</span>
+                <span class="gallery-item__note">{item.note}</span>
               </figcaption>
             </figure>
           ))
@@ -49,12 +50,15 @@ import { galleryItems, galleryServiceTypes } from "../data/gallery";
       </div>
 
       <p class="gallery-empty muted" data-gallery-empty hidden>
-        No images for this service type yet.
+        No images for this category yet.
       </p>
     </div>
   </section>
 
-  <PageCta />
+  <PageCta
+    title="Got a similar job?"
+    body="Tell us what you need, add a few photos if you have them, and we’ll come back with next steps."
+  />
 </BaseLayout>
 
 <script>

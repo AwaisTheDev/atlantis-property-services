@@ -1,15 +1,15 @@
 :root {
-  --color-bg: #0e121b;
-  --color-bg-elevated: #151a25;
+  --color-bg: #0b111d;
+  --color-bg-elevated: #121826;
   --color-paper: #ffffff;
-  --color-paper-warm: #f4f1eb;
-  --color-ink: #252525;
-  --color-ink-soft: #1d1d1d;
-  --color-gold-deep: #9b7336;
-  --color-gold-light: #deb979;
-  --color-text: #252525;
-  --color-muted: rgba(0, 0, 0, 0.8);
-  --gradient-gold: linear-gradient(135deg, #9b7336 0%, #deb979 100%);
+  --color-paper-warm: #efe0c4;
+  --color-ink: #0b111d;
+  --color-ink-soft: #0b111d;
+  --color-gold-deep: #c59c59;
+  --color-gold-light: #efe0c4;
+  --color-text: #0b111d;
+  --color-muted: rgba(11, 17, 29, 0.72);
+  --gradient-gold: linear-gradient(135deg, #c59c59 0%, #efe0c4 100%);
   --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --radius: 0;
   --max: 1300px;
@@ -168,7 +168,7 @@ b {
 .card {
   background: transparent;
   border: 0;
-  border-bottom: 1px solid rgba(14, 18, 27, 0.12);
+  border-bottom: 1px solid rgba(11, 17, 29, 0.12);
   border-radius: 0;
   padding: 1.25rem 0;
 }
@@ -263,6 +263,141 @@ b {
   color: var(--color-gold-deep);
 }
 
+.nav-dropdown {
+  position: relative;
+  padding-bottom: 0.85rem;
+  margin-bottom: -0.85rem;
+}
+
+.nav-dropdown__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 500;
+  font-size: clamp(13px, 12.5px + 0.104167vw, 14px);
+  letter-spacing: normal;
+  text-transform: uppercase;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.nav-dropdown__trigger:hover,
+.nav-dropdown__trigger[aria-current="page"],
+.nav-dropdown.is-open .nav-dropdown__trigger {
+  color: var(--color-gold-deep);
+}
+
+.nav-dropdown__chevron {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.nav-dropdown.is-open .nav-dropdown__chevron,
+.nav-dropdown:hover .nav-dropdown__chevron {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown__menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  min-width: 240px;
+  padding: 0.55rem 0;
+  background: #fff;
+  color: var(--color-ink);
+  border: 1px solid rgba(26, 26, 26, 0.08);
+  box-shadow: 0 14px 36px rgba(11, 17, 29, 0.12);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    visibility 0.18s;
+  z-index: 220;
+}
+
+.nav-dropdown.is-open .nav-dropdown__menu,
+.nav-dropdown:hover .nav-dropdown__menu,
+.nav-dropdown:focus-within .nav-dropdown__menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown__item {
+  display: block;
+  padding: 0.7rem 1.15rem;
+  color: var(--color-ink) !important;
+  font-size: 0.78rem !important;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1.25 !important;
+}
+
+.nav-dropdown__item:hover,
+.nav-dropdown__item[aria-current="page"] {
+  color: var(--color-gold-deep) !important;
+  background: rgba(197, 156, 89, 0.08);
+}
+
+.nav-dropdown__item--all {
+  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+  margin-bottom: 0.2rem;
+  padding-bottom: 0.8rem;
+}
+
+.mobile-dropdown__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.mobile-dropdown__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.mobile-dropdown__toggle svg {
+  transition: transform 0.2s ease;
+}
+
+.mobile-dropdown.is-open .mobile-dropdown__toggle svg {
+  transform: rotate(180deg);
+}
+
+.mobile-dropdown__menu {
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.35rem 0 0.25rem 0.85rem;
+}
+
+.mobile-dropdown__menu a {
+  font-size: 0.82rem !important;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  font-weight: 450;
+  opacity: 0.88;
+}
+
 .header-actions {
   display: flex;
   align-items: center;
@@ -347,6 +482,24 @@ b {
   gap: 1rem;
 }
 
+.mobile-panel__label {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold-deep);
+}
+
+.mobile-panel__sub {
+  padding-left: 0.85rem;
+  font-size: 0.84rem !important;
+  text-transform: none !important;
+  letter-spacing: 0.02em !important;
+  font-weight: 450 !important;
+  opacity: 0.9;
+}
+
 .mobile-panel a:not(.arrow-link) {
   font-size: 0.9rem;
   letter-spacing: 0.04em;
@@ -359,7 +512,7 @@ b {
 }
 
 .site-header--transparent:not(.is-scrolled) .mobile-panel.open {
-  background: rgba(14, 18, 27, 0.92);
+  background: rgba(11, 17, 29, 0.92);
   color: #fff;
   margin: 0 calc((100% - 94%) / -2);
   padding: 1rem 3% 1.5rem;
@@ -933,7 +1086,7 @@ b {
 }
 
 .site-footer .muted {
-  color: rgba(222, 185, 121, 0.72);
+  color: rgba(239, 224, 196, 0.72);
 }
 
 .footer-grid {
@@ -960,6 +1113,13 @@ b {
   margin-top: 2.5rem;
   font-size: 0.8rem;
   letter-spacing: 0.06em;
+  align-items: baseline;
+}
+
+.legal-links .muted {
+  max-width: 36rem;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
 }
 
 .credit-line {
@@ -1022,7 +1182,7 @@ textarea {
   font: inherit;
   color: var(--color-ink);
   background: #fff;
-  border: 1px solid rgba(14, 18, 27, 0.2);
+  border: 1px solid rgba(11, 17, 29, 0.2);
   border-radius: 0;
   padding: 0.75rem 0.85rem;
   min-height: 48px;
@@ -1047,7 +1207,7 @@ textarea {
 }
 
 .section-dark .muted {
-  color: rgba(222, 185, 121, 0.72);
+  color: rgba(239, 224, 196, 0.72);
 }
 
 textarea {
@@ -1175,6 +1335,31 @@ fieldset .checkbox-grid {
   margin: 0;
 }
 
+.service-cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.75rem;
+}
+
+.service-cats__link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(11, 17, 29, 0.18);
+  color: var(--color-ink);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.service-cats__link:hover {
+  border-color: var(--color-gold-deep);
+  color: var(--color-gold-deep);
+}
+
 .page-hero {
   padding: clamp(5.5rem, 10vw, 7.5rem) 0 3.5rem;
   background: var(--color-paper);
@@ -1208,7 +1393,7 @@ fieldset .checkbox-grid {
 .page-tabs__list {
   display: flex;
   gap: 0;
-  border-bottom: 1px solid rgba(14, 18, 27, 0.12);
+  border-bottom: 1px solid rgba(11, 17, 29, 0.12);
   margin-bottom: 2.5rem;
 }
 
@@ -1280,14 +1465,14 @@ fieldset .checkbox-grid {
 
 .page-points li {
   padding: 1rem 0;
-  border-top: 1px solid rgba(14, 18, 27, 0.12);
+  border-top: 1px solid rgba(11, 17, 29, 0.12);
   font-size: clamp(15px, 14.5px + 0.104167vw, 16px);
   line-height: 1.45;
   opacity: 0.8;
 }
 
 .page-points li:last-child {
-  border-bottom: 1px solid rgba(14, 18, 27, 0.12);
+  border-bottom: 1px solid rgba(11, 17, 29, 0.12);
 }
 
 .contact-layout {
@@ -1361,11 +1546,11 @@ fieldset .checkbox-grid {
   display: grid;
   gap: 0.35rem;
   padding: 1.35rem 0;
-  border-top: 1px solid rgba(14, 18, 27, 0.12);
+  border-top: 1px solid rgba(11, 17, 29, 0.12);
 }
 
 .contact-row:last-child {
-  border-bottom: 1px solid rgba(14, 18, 27, 0.12);
+  border-bottom: 1px solid rgba(11, 17, 29, 0.12);
 }
 
 .contact-row__label {
@@ -1399,7 +1584,7 @@ fieldset .checkbox-grid {
 .service-group__head {
   margin-bottom: 0.25rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(14, 18, 27, 0.12);
+  border-bottom: 1px solid rgba(11, 17, 29, 0.12);
 }
 
 .service-group h2 {
@@ -1441,7 +1626,7 @@ fieldset .checkbox-grid {
   align-items: center;
   gap: 1.5rem;
   padding: 1.35rem 0;
-  border-bottom: 1px solid rgba(14, 18, 27, 0.12);
+  border-bottom: 1px solid rgba(11, 17, 29, 0.12);
   color: inherit;
   transition: color 0.2s;
 }
@@ -1488,12 +1673,12 @@ fieldset .checkbox-grid {
 
 /* FAQ */
 .faq details {
-  border-bottom: 1px solid rgba(14, 18, 27, 0.12);
+  border-bottom: 1px solid rgba(11, 17, 29, 0.12);
   padding: 0;
 }
 
 .faq details:first-child {
-  border-top: 1px solid rgba(14, 18, 27, 0.12);
+  border-top: 1px solid rgba(11, 17, 29, 0.12);
 }
 
 .faq summary {
@@ -1552,7 +1737,7 @@ fieldset .checkbox-grid {
   margin-top: 2.5rem;
   max-width: 640px;
   border: 0;
-  border-top: 1px solid rgba(14, 18, 27, 0.12);
+  border-top: 1px solid rgba(11, 17, 29, 0.12);
   padding-top: 2rem;
 }
 
@@ -1589,7 +1774,7 @@ fieldset .checkbox-grid {
 }
 
 #request-form .btn-ghost {
-  border-color: rgba(14, 18, 27, 0.25);
+  border-color: rgba(11, 17, 29, 0.25);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   font-size: 0.82rem;
@@ -1617,7 +1802,7 @@ fieldset .checkbox-grid {
   grid-template-columns: 2.5rem 1fr;
   gap: 1rem;
   padding: 1.25rem 0;
-  border-top: 1px solid rgba(14, 18, 27, 0.12);
+  border-top: 1px solid rgba(11, 17, 29, 0.12);
 }
 
 .process p {
@@ -1646,7 +1831,7 @@ fieldset .checkbox-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 1.25rem;
-  border-bottom: 1px solid rgba(14, 18, 27, 0.12);
+  border-bottom: 1px solid rgba(11, 17, 29, 0.12);
   padding-bottom: 0.15rem;
 }
 
@@ -1659,7 +1844,7 @@ fieldset .checkbox-grid {
   font: inherit;
   font-size: 0.92rem;
   font-weight: 400;
-  color: rgba(14, 18, 27, 0.55);
+  color: rgba(11, 17, 29, 0.55);
   cursor: pointer;
   border-bottom: 2px solid transparent;
   margin-bottom: -1px;
@@ -1727,8 +1912,19 @@ fieldset .checkbox-grid {
 }
 
 .gallery-item__caption {
-  font-size: 0.95rem;
-  font-weight: 300;
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  margin-top: 0.2rem;
+}
+
+.gallery-item__note {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: rgba(11, 17, 29, 0.65);
 }
 
 .service-prose {
@@ -1757,7 +1953,7 @@ fieldset .checkbox-grid {
   gap: 0;
   margin: 2.5rem 0 0;
   padding: 0;
-  border-top: 1px solid rgba(14, 18, 27, 0.12);
+  border-top: 1px solid rgba(11, 17, 29, 0.12);
 }
 
 @media (min-width: 640px) {
@@ -1768,7 +1964,7 @@ fieldset .checkbox-grid {
 
 .service-meta > div {
   padding: 1rem 0;
-  border-bottom: 1px solid rgba(14, 18, 27, 0.12);
+  border-bottom: 1px solid rgba(11, 17, 29, 0.12);
 }
 
 @media (min-width: 640px) {
@@ -1811,13 +2007,13 @@ fieldset .checkbox-grid {
 .service-checklist li {
   position: relative;
   padding: 0.7rem 0 0.7rem 1.5rem;
-  border-top: 1px solid rgba(14, 18, 27, 0.1);
+  border-top: 1px solid rgba(11, 17, 29, 0.1);
   font-size: 0.95rem;
   line-height: 1.45;
 }
 
 .service-checklist li:last-child {
-  border-bottom: 1px solid rgba(14, 18, 27, 0.1);
+  border-bottom: 1px solid rgba(11, 17, 29, 0.1);
 }
 
 .service-checklist li::before {
@@ -1837,11 +2033,11 @@ fieldset .checkbox-grid {
 }
 
 .service-related li {
-  border-top: 1px solid rgba(14, 18, 27, 0.12);
+  border-top: 1px solid rgba(11, 17, 29, 0.12);
 }
 
 .service-related li:last-child {
-  border-bottom: 1px solid rgba(14, 18, 27, 0.12);
+  border-bottom: 1px solid rgba(11, 17, 29, 0.12);
 }
 
 .service-related a {
