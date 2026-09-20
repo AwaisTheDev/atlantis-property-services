@@ -37,9 +37,17 @@ import { galleryItems, galleryServiceTypes } from "../data/gallery";
 
       <div class="gallery-grid" data-gallery-grid>
         {
-          galleryItems.map((item) => (
+          galleryItems.map((item, index) => (
             <figure class="gallery-item" data-service-type={item.serviceType}>
-              <img src={item.src} alt={item.alt} width="1200" height="630" loading="lazy" />
+              <img
+                src={item.src}
+                alt={item.alt}
+                width="1600"
+                height="900"
+                loading={index < 4 ? "eager" : "lazy"}
+                decoding="async"
+                fetchpriority={index === 0 ? "high" : undefined}
+              />
               <figcaption>
                 <span class="gallery-item__category">{item.serviceType}</span>
                 <span class="gallery-item__caption">{item.caption}</span>

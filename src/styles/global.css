@@ -2043,8 +2043,11 @@ fieldset .checkbox-grid {
 
 .gallery-item img {
   width: 100%;
-  aspect-ratio: 40 / 21; /* ~30% shorter than 4/3 */
+  height: auto;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+  background: rgba(11, 17, 29, 0.06);
+  display: block;
 }
 
 .gallery-item figcaption {
