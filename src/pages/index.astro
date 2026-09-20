@@ -11,7 +11,7 @@ import { site } from "../data/site";
       <div class="banner__image">
         <img
           src="/images/hero-property.jpg"
-          alt="Melbourne inner-suburban property at dusk"
+          alt="Melbourne suburban property at dusk"
           width="1600"
           height="900"
           fetchpriority="high"
@@ -23,72 +23,41 @@ import { site } from "../data/site";
       <div class="wrap">
         <div class="banner__inner">
           <div class="banner__text">
-            <h1>Property services in Melbourne — cleaning, gardens, maintenance & more</h1>
+            <h1>Melbourne property services for homes, apartments and commercial sites</h1>
           </div>
           <div class="banner__links">
-            <ArrowLink href="/contact?tab=request" label="Tell us what you need" />
-            <ArrowLink href="/contact?tab=request" label="Book a service" />
-            <ArrowLink href="/emergency" label="Emergency / Urgent" />
+            <ArrowLink href="/contact?tab=request&property=residential" label="Residential" />
+            <ArrowLink href="/contact?tab=request&property=commercial" label="Commercial" />
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 2. Text columns -->
+  <!-- 2. One point of contact -->
   <section class="section text-columns">
     <div class="wrap">
       <div class="text-columns__inner">
         <div class="text-columns__col text-columns__col--left">
-          <h2>One request for the jobs your Melbourne property actually needs</h2>
+          <h2>One point of contact across the work a property needs</h2>
         </div>
         <div class="text-columns__col text-columns__col--right">
           <div class="text-columns__text">
             <p>
-              Atlantis Property Services is a locally based coordinator for homes, apartments, strata and
-              commercial sites across Melbourne’s inner suburbs — including Brunswick East and surrounds
-              within about 50 km of the CBD.
+              Atlantis is a locally based property services company focused on Melbourne’s inner suburbs.
+              You deal with one team for cleaning, gardens, windows, rubbish removal, handyman work and more —
+              we arrange suitable approved partners and stay accountable for the experience.
             </p>
             <p>
-              Need a regular clean, end-of-lease handover, window clean, garden tidy, hard waste, handyman
-              fix or building support? Send one request. We arrange a suitable approved partner and stay
-              your point of contact — not a public marketplace of providers.
-            </p>
-            <p>
-              <strong>You talk to Atlantis. We arrange the work and stay accountable.</strong>
+              Tell us what you need. We arrange it. We get it done. Quote-led, with no public marketplace of
+              competing providers.
             </p>
           </div>
           <div class="text-columns__links">
-            <ArrowLink href="/contact?tab=request" label="Tell us what you need" dark />
+            <ArrowLink href="/services" label="Full list of services" dark />
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- How it works -->
-  <section class="section section-tint">
-    <div class="wrap">
-      <p class="eyebrow">How Atlantis works</p>
-      <h2>Three steps from request to done</h2>
-      <ol class="home-steps">
-        {
-          site.howItWorks.map((item) => (
-            <li class="home-steps__item">
-              <span class="home-steps__num" aria-hidden="true">
-                {item.step}
-              </span>
-              <div>
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-              </div>
-            </li>
-          ))
-        }
-      </ol>
-      <p style="margin-top: 2rem;">
-        <ArrowLink href="/faqs" label="Read FAQs" dark />
-      </p>
     </div>
   </section>
 
@@ -108,19 +77,18 @@ import { site } from "../data/site";
         </div>
         <div class="textbox-image__body">
           <div class="textbox-image__text">
-            <h2>Built for inner-suburb homes, apartments and commercial sites</h2>
+            <h2>The properties we look after play a crucial role in how people live, work and feel at home.</h2>
             <p>
-              Melbourne properties often juggle access, parking, strata rules and tight handover dates.
-              That’s the context we scope into every quote — not a one-size generic job form.
+              Homes, apartments, strata and commercial sites each come with their own access rules, timelines
+              and expectations. We scope every request with that context in mind.
             </p>
             <p>
-              Typical requests include residential and commercial cleaning, end-of-lease cleans, window
-              cleaning, pressure washing, gardening, rubbish and hard waste, painting, fence repairs,
-              handyman work, pest control, staging and strata support.
+              From a single window clean to coordinated vacate work, you stay with one company for updates
+              and handover — partners deliver the work behind the scenes.
             </p>
             <p>
-              Browse the <a href="/services">full services list</a>, or start a request with your postcode
-              and a few photos so we can quote accurately.
+              If something is time-sensitive, flag it on your request and we’ll review priority against
+              suburb, access and availability.
             </p>
           </div>
         </div>
@@ -128,7 +96,7 @@ import { site } from "../data/site";
     </div>
   </section>
 
-  <!-- 4. Why Atlantis -->
+  <!-- 4. Inspired by simplicity -->
   <section class="section textbox-image textbox-image--image-right">
     <div class="wrap">
       <div class="textbox-image__inner">
@@ -144,17 +112,18 @@ import { site } from "../data/site";
         </div>
         <div class="textbox-image__body">
           <div class="textbox-image__text">
-            <h2>Why owners and managers use Atlantis</h2>
-            <ul class="home-why">
-              {
-                site.why.map((item) => (
-                  <li>
-                    <strong>{item.title}</strong>
-                    <span>{item.body}</span>
-                  </li>
-                ))
-              }
-            </ul>
+            <h2>Inspired by simplicity.</h2>
+            <p>
+              One request covers the jobs your property actually needs — without juggling separate providers
+              or comparing public listings.
+            </p>
+            <p>
+              Pricing is quote-only. Share the brief, postcode and a few photos if you have them, and we come
+              back with clear next steps.
+            </p>
+            <p>
+              Approved, insured partners fulfil the work. Atlantis remains the name on your quote and booking.
+            </p>
           </div>
           <div class="textbox-image__buttons">
             <ArrowLink href="/services" label="See all services" dark />
@@ -168,7 +137,7 @@ import { site } from "../data/site";
   <section class="section testimonial">
     <div class="wrap">
       <div class="testimonial__card" data-testimonial-banner>
-        <p class="testimonial__eyebrow">From Melbourne customers</p>
+        <p class="testimonial__eyebrow">Words from clients</p>
         {
           site.testimonials.map((item, index) => (
             <div class:list={["testimonial__slide", { active: index === 0 }]} data-slide={index}>
@@ -215,15 +184,14 @@ import { site } from "../data/site";
       <div class="wrap">
         <div class="cta__inner">
           <div class="cta__text">
-            <h2>Need property work in Melbourne’s inner suburbs?</h2>
+            <h2>Let’s get it done.</h2>
             <p>
-              Send a request with your postcode and what needs doing — we’ll come back with next steps
-              and a quote.
+              Get in touch for a quote, booking or a chat about property work across Melbourne’s inner
+              suburbs.
             </p>
           </div>
           <div class="cta__buttons">
-            <ArrowLink href="/contact?tab=request" label="Tell us what you need" />
-            <ArrowLink href="/emergency" label="Emergency / Urgent" />
+            <ArrowLink href="/contact?tab=request" label="Contact us" />
           </div>
         </div>
       </div>

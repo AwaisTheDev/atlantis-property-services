@@ -47,15 +47,15 @@ export const site = {
   testimonials: [
     {
       quote:
-        "I needed an end-of-lease clean and a couple of handyman fixes before handover. One request to Atlantis covered both — clear updates, no chasing tradies myself.",
-      name: "Property owner",
-      company: "Brunswick East",
+        "We needed end of lease and a few maintenance jobs handled quickly. Atlantis coordinated everything and stayed the point of contact throughout.",
+      name: "Property manager",
+      company: "Residential portfolio",
     },
     {
       quote:
-        "We use Atlantis for vacate cleans and common-area work across a small portfolio. One contact, quote-led pricing, and jobs that actually land on the dates we need.",
-      name: "Property manager",
-      company: "Inner north portfolio",
+        "I needed an end-of-lease clean and a couple of handyman fixes before handover. One request to Atlantis covered both — clear updates, no chasing tradies myself.",
+      name: "Property owner",
+      company: "Brunswick East",
     },
   ],
   social: {
