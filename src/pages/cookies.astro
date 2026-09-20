@@ -1,16 +1,57 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageBanner from "../components/PageBanner.astro";
+import { site } from "../data/site";
+
+const updated = "16 September 2026";
 ---
 
-<BaseLayout title="Cookie notice" description="Cookie and privacy notice for Atlantis Property Services.">
+<BaseLayout
+  title="Cookie notice"
+  description="How Atlantis Property Services uses cookies and similar technologies."
+>
   <PageBanner title="Cookie notice" image="/images/interior-clean.jpg" />
 
   <section class="page-body">
     <div class="wrap page-body--narrow legal-body">
       <p class="notice">
-        Legal copy to be supplied. Google Analytics will be added at launch; this notice should then
-        describe any cookies used.
+        Draft for launch. Last updated {updated}. See also our <a href="/privacy">Privacy Policy</a>.
+      </p>
+
+      <h2>Essential cookies</h2>
+      <p>
+        We use cookies and similar storage needed for the site to function (for example security and
+        basic session behaviour on our host). These are not used for advertising.
+      </p>
+
+      <h2>Analytics</h2>
+      <p>
+        When Google Analytics is enabled on this site, Google may set cookies or use similar identifiers
+        to help us understand how visitors use pages (for example which services are viewed). Analytics
+        is configured with a measurement ID supplied via environment settings and only loads when that
+        ID is present.
+      </p>
+      <p>
+        You can control cookies through your browser settings. Blocking some cookies may affect site
+        features.
+      </p>
+
+      <h2>Third parties</h2>
+      <p>
+        Form submissions are delivered by email through our form provider. Hosting is on Vercel. Those
+        providers may process technical data under their own policies.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions: <a href={`mailto:${site.email}`}>{site.email}</a>
+        {site.phone ? (
+          <>
+            {" "}
+            or <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
+          </>
+        ) : null}
+        .
       </p>
     </div>
   </section>

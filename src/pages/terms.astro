@@ -1,20 +1,82 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageBanner from "../components/PageBanner.astro";
+import { site } from "../data/site";
+
+const updated = "16 September 2026";
 ---
 
-<BaseLayout title="Website Terms" description="Website terms for Atlantis Property Services.">
+<BaseLayout
+  title="Website Terms"
+  description="Website terms of use for Atlantis Property Services."
+>
   <PageBanner title="Website Terms" image="/images/interior-clean.jpg" />
 
   <section class="page-body">
     <div class="wrap page-body--narrow legal-body">
       <p class="notice">
-        Legal copy to be supplied and approved. This page is a structure placeholder, not binding
-        terms.
+        Draft for launch. Please have this reviewed and approved before treating it as final legal advice.
+        Last updated {updated}. Separate Atlantis Service Partner Terms apply to approved providers.
       </p>
+
+      <h2>Agreement</h2>
       <p>
-        Separate Atlantis Service Partner Terms apply to approved providers and are not the same as
-        these website terms.
+        By using <a href="https://atlantisps.com.au">atlantisps.com.au</a> you agree to these Website
+        Terms and our <a href="/privacy">Privacy Policy</a>. If you do not agree, do not use the site.
+      </p>
+
+      <h2>Who we are</h2>
+      <p>
+        {site.name} coordinates property services for residential and commercial customers in Melbourne’s
+        inner suburbs. Contact: <a href={`mailto:${site.email}`}>{site.email}</a>
+        {site.phone ? (
+          <>
+            {" "}
+            · <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
+          </>
+        ) : null}
+        .
+      </p>
+
+      <h2>Quotes and bookings</h2>
+      <ul class="page-points">
+        <li>Submitting a form is a request for a quote or booking review — not an automatic booking.</li>
+        <li>Pricing is quote-only unless an emergency call-out fee is agreed separately in writing.</li>
+        <li>We review postcodes manually and may decline work outside our service capacity.</li>
+        <li>Atlantis remains your customer-facing contact; approved partners may deliver the work.</li>
+      </ul>
+
+      <h2>Website content</h2>
+      <p>
+        Content is provided for general information. Service lists, examples and imagery may change.
+        We aim for accuracy but do not warrant that the site is complete or uninterrupted.
+      </p>
+
+      <h2>Acceptable use</h2>
+      <p>
+        Do not misuse the site (for example submitting false details, uploading malware, scraping at
+        scale, or attempting to disrupt services). We may block access that harms the site or other users.
+      </p>
+
+      <h2>Intellectual property</h2>
+      <p>
+        Logos, copy and site design are owned by Atlantis or its licensors. You may not copy or reuse
+        them for commercial purposes without written permission.
+      </p>
+
+      <h2>Liability</h2>
+      <p>
+        To the extent permitted by Australian Consumer Law, Atlantis is not liable for indirect or
+        consequential loss arising from use of this website. Nothing in these terms excludes rights you
+        cannot lawfully waive.
+      </p>
+
+      <h2>Governing law</h2>
+      <p>These terms are governed by the laws of Victoria, Australia.</p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions about these terms: <a href={`mailto:${site.email}`}>{site.email}</a>.
       </p>
     </div>
   </section>

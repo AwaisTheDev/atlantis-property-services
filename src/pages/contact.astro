@@ -8,14 +8,15 @@ import { site } from "../data/site";
 const params = Astro.url.searchParams;
 const service = params.get("service") ?? "";
 const property = params.get("property") ?? "";
+const urgentParam = params.get("urgent");
+const urgent = urgentParam === "1" || urgentParam === "true" || urgentParam === "yes";
 ---
 
 <BaseLayout
   title="Request a Property Service Melbourne"
   description="Request or book cleaning, gardens, windows, rubbish removal, handyman work and more with Atlantis Property Services across Melbourne’s inner suburbs. Quote-only."
-  showMobileCta={false}
 >
-  <PageBanner title="Tell us what you need" image="/images/cta-building.jpg" wide />
+  <PageBanner title={urgent ? "Urgent request" : "Tell us what you need"} image="/images/cta-building.jpg" wide />
 
   <section class="page-body">
     <div class="wrap">
@@ -88,10 +89,13 @@ const property = params.get("property") ?? "";
               data-panel="request"
             >
               <p class="page-intro__text" style="margin-bottom: 0;">
-                Request a quote or book a service — tell us what you need, timing, and a few photos if
-                you have them.
+                {
+                  urgent
+                    ? "You’ve opened the urgent pathway. Describe the issue, timing and access — we’ll prioritise review where we can."
+                    : "Request a quote or book a service — tell us what you need, timing, and a few photos if you have them."
+                }
               </p>
-              <RequestForm service={service} property={property} />
+              <RequestForm service={service} property={property} urgent={urgent} />
             </div>
 
             <div

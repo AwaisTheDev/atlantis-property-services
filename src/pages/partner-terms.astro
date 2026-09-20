@@ -2,6 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageBanner from "../components/PageBanner.astro";
 import ArrowLink from "../components/ArrowLink.astro";
+import { site } from "../data/site";
+
+const updated = "16 September 2026";
 ---
 
 <BaseLayout
@@ -13,30 +16,55 @@ import ArrowLink from "../components/ArrowLink.astro";
   <section class="page-body">
     <div class="wrap page-body--narrow legal-body">
       <p class="notice">
-        Full legal copy to be supplied and approved. This page outlines the structure of the separate
-        Atlantis Service Partner Terms that apply to approved providers — not the public Website Terms.
+        Draft framework for launch. Full Partner Terms must be accepted before onboarding is final.
+        Last updated {updated}. These terms are separate from the public <a href="/terms">Website Terms</a>.
       </p>
+
+      <h2>Purpose</h2>
       <p>
-        Approved partners must accept the Atlantis Service Partner Terms before onboarding is final.
-        Those terms govern the working relationship between Atlantis and its approved partner network,
-        including how work may be offered, verification of ABN, licences and insurance, and expectations
-        around delivery quality.
+        Approved partners deliver property work coordinated by {site.name}. Customers deal with Atlantis.
+        Partners are not listed on the public site as a directory or marketplace of competing providers.
       </p>
-      <h2>What partners should expect</h2>
+
+      <h2>Application and approval</h2>
       <ul class="page-points">
-        <li>Applications are reviewed. Approval does not guarantee a minimum volume of work.</li>
-        <li>Atlantis may request extra information or documents at any time.</li>
-        <li>
-          Future job opportunities and pricing may run through a private Atlantis system — not a public
-          marketplace of competing profiles.
-        </li>
-        <li>Partners are not presented to customers as a directory of providers to compare.</li>
+        <li>Applications are reviewed. Approval is not guaranteed.</li>
+        <li>Approval does not guarantee a minimum volume or frequency of work.</li>
+        <li>Atlantis may request further information, licences or insurance documents at any time.</li>
+        <li>Client references are not required at application but may be requested later.</li>
       </ul>
+
+      <h2>Verification</h2>
       <p>
-        Until the final Partner Terms document is published here, applicants can continue through the
-        partner application form. Acceptance of the full terms will be required before onboarding is
-        complete.
+        By applying, you agree Atlantis may verify your ABN, licences and insurance, and you declare that
+        information and documents supplied are current and accurate. You consent to contact about the
+        application and future suitable opportunities.
       </p>
+
+      <h2>Work allocation</h2>
+      <p>
+        Suitable jobs may later be offered through a private Atlantis system for availability and pricing.
+        That workflow is internal to Atlantis and its partners — not a public customer marketplace.
+      </p>
+
+      <h2>Standards</h2>
+      <ul class="page-points">
+        <li>Hold appropriate insurance and any licences required for the work offered.</li>
+        <li>Deliver work to a professional standard and communicate promptly on access or delays.</li>
+        <li>Do not solicit Atlantis customers away from Atlantis using information gained through jobs.</li>
+      </ul>
+
+      <h2>Ending the relationship</h2>
+      <p>
+        Either party may end the partner relationship subject to completing agreed in-progress jobs and
+        any notice period set out in the final signed Partner Terms.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Partner enquiries: <a href={`mailto:${site.email}`}>{site.email}</a>.
+      </p>
+
       <p style="margin-top: 2.5rem;">
         <ArrowLink href="/partners" label="Become a service partner" dark />
       </p>

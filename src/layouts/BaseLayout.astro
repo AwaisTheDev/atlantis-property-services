@@ -13,6 +13,8 @@ type Props = {
 const { title, description = site.description, showMobileCta = true } = Astro.props;
 const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://atlantisps.com.au").href;
+const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID as string | undefined;
+const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION as string | undefined;
 
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
@@ -21,6 +23,7 @@ const localBusinessJsonLd = {
   description: site.description,
   url: "https://atlantisps.com.au",
   email: site.email,
+  ...(site.phone ? { telephone: site.phone } : {}),
   areaServed: {
     "@type": "AdministrativeArea",
     name: "Melbourne inner suburbs, Victoria, Australia",
@@ -59,7 +62,25 @@ const localBusinessJsonLd = {
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_AU" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content="https://atlantisps.com.au/images/hero-property.jpg" />
+    {gscVerification ? <meta name="google-site-verification" content={gscVerification} /> : null}
     <script type="application/ld+json" set:html={JSON.stringify(localBusinessJsonLd)} />
+    {
+      gaId ? (
+        <>
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
+          <script is:inline define:vars={{ gaId }}>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", gaId);
+          </script>
+        </>
+      ) : null
+    }
   </head>
   <body>
     <a class="sr-only" href="#main">Skip to content</a>
@@ -71,7 +92,12 @@ const localBusinessJsonLd = {
     {
       showMobileCta && (
         <div class="mobile-cta-bar">
-          <a class="btn btn-primary" href="/contact?tab=request">Request / book a service</a>
+          {site.phone ? (
+            <a class="btn btn-ghost mobile-cta-bar__call" href={`tel:${site.phone.replace(/\s/g, "")}`}>
+              Call
+            </a>
+          ) : null}
+          <a class="btn btn-primary" href="/contact?tab=request">Request / book</a>
         </div>
       )
     }

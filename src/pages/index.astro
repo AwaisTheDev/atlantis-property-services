@@ -4,7 +4,7 @@ import ArrowLink from "../components/ArrowLink.astro";
 import { site } from "../data/site";
 ---
 
-<BaseLayout title={site.name} description={site.description} showMobileCta={false}>
+<BaseLayout title={site.name} description={site.description}>
   <!-- 1. Homepage banner -->
   <section class="banner banner--homepage">
     <div class="banner__bg" aria-hidden="true">
@@ -26,8 +26,9 @@ import { site } from "../data/site";
             <h1>Property services in Melbourne — cleaning, gardens, maintenance & more</h1>
           </div>
           <div class="banner__links">
-            <ArrowLink href="/contact?tab=request&property=residential" label="Residential" />
-            <ArrowLink href="/contact?tab=request&property=commercial" label="Commercial" />
+            <ArrowLink href="/contact?tab=request" label="Tell us what you need" />
+            <ArrowLink href="/contact?tab=request" label="Book a service" />
+            <ArrowLink href="/emergency" label="Emergency / Urgent" />
           </div>
         </div>
       </div>
@@ -221,7 +222,8 @@ import { site } from "../data/site";
             </p>
           </div>
           <div class="cta__buttons">
-            <ArrowLink href="/contact?tab=request" label="Request / book a service" />
+            <ArrowLink href="/contact?tab=request" label="Tell us what you need" />
+            <ArrowLink href="/emergency" label="Emergency / Urgent" />
           </div>
         </div>
       </div>

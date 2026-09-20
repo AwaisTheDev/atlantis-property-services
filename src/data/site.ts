@@ -5,7 +5,7 @@ export const site = {
   description:
     "Atlantis Property Services coordinates cleaning, gardening, window cleaning, rubbish removal, handyman work and more across Melbourne’s inner suburbs — including Brunswick East and surrounds within about 50 km of the CBD. Tell us what you need; we arrange it.",
   email: "info@atlantisps.com.au",
-  phone: "",
+  phone: "03 7023 9460",
   serviceArea: "Melbourne’s inner suburbs (about 50 km of the CBD), with a focus around Brunswick East and surrounding postcodes",
   copyright:
     "© {year} Atlantis Property Services. Property services coordination across Melbourne’s inner suburbs. All rights reserved.",
@@ -17,7 +17,7 @@ export const site = {
     },
     {
       step: "2",
-      title: "We arrange the quote",
+      title: "We arrange it",
       body: "Atlantis reviews the brief, coordinates a suitable approved partner, and comes back with a quote.",
     },
     {
@@ -59,6 +59,7 @@ export const site = {
     },
   ],
   social: {
+    // Add live profile URLs when accounts are ready — footer links appear automatically.
     linkedin: "",
     facebook: "",
     instagram: "",

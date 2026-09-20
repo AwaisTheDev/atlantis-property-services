@@ -1,6 +1,7 @@
 ---
 import ArrowLink from "./ArrowLink.astro";
 import { serviceGroupMeta } from "../data/services";
+import { site } from "../data/site";
 
 const path = Astro.url.pathname;
 const servicesActive = path === "/services" || path.startsWith("/services/");
@@ -8,7 +9,7 @@ const servicesActive = path === "/services" || path.startsWith("/services/");
 const links = [
   { href: "/gallery", label: "Gallery" },
   { href: "/faqs", label: "FAQs" },
-  { href: "/partners", label: "Partners" },
+  { href: "/partners", label: "Become a Service Partner" },
 ];
 ---
 
@@ -59,6 +60,13 @@ const links = [
       }
     </nav>
     <div class="header-actions">
+      {
+        site.phone ? (
+          <a class="header-phone" href={`tel:${site.phone.replace(/\s/g, "")}`}>
+            {site.phone}
+          </a>
+        ) : null
+      }
       <ArrowLink href="/contact?tab=request" label="Request / book a service" class="header-cta" />
       <button
         class="menu-toggle"
@@ -92,6 +100,12 @@ const links = [
       links.map((link) => (
         <a href={link.href}>{link.label}</a>
       ))
+    }
+    <a href="/emergency">Emergency / Urgent</a>
+    {
+      site.phone ? (
+        <a href={`tel:${site.phone.replace(/\s/g, "")}`}>Call {site.phone}</a>
+      ) : null
     }
     <ArrowLink href="/contact?tab=request" label="Request / book a service" />
   </div>

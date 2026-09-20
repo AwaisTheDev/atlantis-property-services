@@ -2,6 +2,7 @@
 ---
 
 <form id="contact-form" class="form-stack contact-form" novalidate>
+  <input type="hidden" name="formType" value="General contact" />
   <p class="muted">
     Send a general enquiry. For a quote or booking, use the Request / book a service tab.
   </p>
@@ -28,10 +29,13 @@
 </form>
 
 <script>
+  import { submitSiteForm } from "../lib/formSubmit";
+
   const form = document.getElementById("contact-form") as HTMLFormElement | null;
   const err = document.getElementById("contact-error") as HTMLElement | null;
+  const button = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
 
-  form?.addEventListener("submit", (event) => {
+  form?.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!form.checkValidity()) {
       form.reportValidity();
@@ -40,6 +44,20 @@
     if (err) {
       err.hidden = true;
       err.textContent = "";
+    }
+    if (button) button.disabled = true;
+    const email = form.querySelector<HTMLInputElement>('[name="email"]')?.value;
+    const result = await submitSiteForm(form, {
+      subject: "Atlantis website contact",
+      replyTo: email,
+    });
+    if (!result.ok) {
+      if (button) button.disabled = false;
+      if (err) {
+        err.hidden = false;
+        err.textContent = result.message || "Could not send. Please try again.";
+      }
+      return;
     }
     window.location.href = "/thank-you";
   });

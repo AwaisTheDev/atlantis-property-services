@@ -2,22 +2,97 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageBanner from "../components/PageBanner.astro";
 import { site } from "../data/site";
+
+const updated = "16 September 2026";
 ---
 
-<BaseLayout title="Privacy Policy" description="Privacy information for Atlantis Property Services.">
+<BaseLayout
+  title="Privacy Policy"
+  description="How Atlantis Property Services collects and uses personal information from website requests and partner applications."
+>
   <PageBanner title="Privacy Policy" image="/images/interior-clean.jpg" />
 
   <section class="page-body">
     <div class="wrap page-body--narrow legal-body">
       <p class="notice">
-        Legal copy to be supplied and approved. This page is a structure placeholder, not a binding
-        policy.
+        Draft for launch. Please have this reviewed and approved before treating it as final legal advice.
+        Last updated {updated}.
       </p>
+
       <p>
-        {site.name} will use this page to explain how customer requests and partner applications
-        (including contact details, postcodes, job descriptions, and uploaded files) are collected and
-        stored.
+        This Privacy Policy explains how {site.name} (“Atlantis”, “we”, “us”) collects, uses and stores
+        personal information when you use <a href="https://atlantisps.com.au">atlantisps.com.au</a>,
+        submit a customer request, send a general enquiry, or apply to become a service partner.
       </p>
+
+      <h2>Who we are</h2>
+      <p>
+        {site.name} coordinates residential and commercial property services across Melbourne’s inner
+        suburbs. Contact: <a href={`mailto:${site.email}`}>{site.email}</a>
+        {site.phone ? (
+          <>
+            {" "}
+            · <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
+          </>
+        ) : null}
+        .
+      </p>
+
+      <h2>What we collect</h2>
+      <ul class="page-points">
+        <li>
+          Customer requests: name, mobile, email, postcode, property type, customer type, services
+          requested, timing, job description, preferred contact method, urgency flag, and optional
+          photos or files.
+        </li>
+        <li>General enquiries: name, email, mobile and message content.</li>
+        <li>
+          Partner applications: contact and business details, ABN, trade categories, service area,
+          experience, availability, licences/insurance answers, and uploaded documents.
+        </li>
+        <li>
+          Technical data: basic server and analytics data (for example pages viewed and approximate
+          location) when Google Analytics is enabled.
+        </li>
+      </ul>
+
+      <h2>How we use information</h2>
+      <ul class="page-points">
+        <li>To review and respond to quotes, bookings and urgent requests.</li>
+        <li>To coordinate approved partners who may fulfil work on our behalf.</li>
+        <li>To assess partner applications and verify ABN, licences and insurance where needed.</li>
+        <li>To improve the website and understand demand (aggregated analytics).</li>
+        <li>To meet legal or regulatory obligations.</li>
+      </ul>
+
+      <h2>Sharing</h2>
+      <p>
+        We do not sell personal information. We may share relevant job details with an approved partner
+        solely to quote or deliver the requested work. We may use service providers (hosting, email
+        delivery, analytics) who process data on our instructions. Partners are not presented to you as
+        a public marketplace of competing providers.
+      </p>
+
+      <h2>Storage and security</h2>
+      <p>
+        We take reasonable steps to protect information we hold. Form submissions are emailed to our
+        operations inbox and may be stored in our systems for follow-up. Keep copies of any documents
+        you upload; we may request updated certificates later.
+      </p>
+
+      <h2>Your choices</h2>
+      <p>
+        You can ask to access or correct personal information we hold, or request that we stop using it
+        for marketing (we do not run a newsletter at launch). Contact us at{" "}
+        <a href={`mailto:${site.email}`}>{site.email}</a>. You may also complain to the Office of the
+        Australian Information Commissioner if you are not satisfied with our response.
+      </p>
+
+      <h2>Children</h2>
+      <p>This website is intended for adults arranging property services, not for children.</p>
+
+      <h2>Changes</h2>
+      <p>We may update this policy as the business or our tools change. The date above will be revised when we do.</p>
     </div>
   </section>
 </BaseLayout>

@@ -1,18 +1,43 @@
 ---
-// Legacy /emergency — redirect into the contact quote tab
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageBanner from "../components/PageBanner.astro";
+import ArrowLink from "../components/ArrowLink.astro";
+import { site } from "../data/site";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Redirecting…</title>
-    <meta http-equiv="refresh" content="0;url=/contact?tab=request" />
-    <script is:inline>
-      window.location.replace("/contact?tab=request");
-    </script>
-  </head>
-  <body>
-    <p><a href="/contact?tab=request">Continue to get a quote</a></p>
-  </body>
-</html>
+<BaseLayout
+  title="Emergency & Urgent Property Services Melbourne"
+  description="Need urgent property help in Melbourne’s inner suburbs? Flag an emergency request with Atlantis Property Services — we’ll review priority and come back with the fastest realistic next step."
+>
+  <PageBanner title="Emergency / Urgent service" image="/images/cta-building.jpg" wide />
+
+  <section class="page-body">
+    <div class="wrap page-body--narrow">
+      <p class="page-intro__text">
+        For time-sensitive jobs — leaks after hours access issues, vacate deadlines, unsafe access, or
+        other urgent property work — start a request and flag it as urgent. Atlantis reviews priority
+        against access, postcode and partner availability.
+      </p>
+      <p class="page-intro__text">
+        Pricing stays quote-led. Where an emergency call-out applies, we’ll confirm that separately
+        before work starts.
+      </p>
+
+      <div class="emergency-actions">
+        <ArrowLink href="/contact?tab=request&urgent=1" label="Start an urgent request" dark />
+        {
+          site.phone ? (
+            <a class="btn btn-ghost" href={`tel:${site.phone.replace(/\s/g, "")}`}>
+              Call {site.phone}
+            </a>
+          ) : null
+        }
+      </div>
+
+      <p class="muted" style="margin-top: 2rem;">
+        Not urgent? Use the standard
+        <a href="/contact?tab=request">request / book a service</a> form instead.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

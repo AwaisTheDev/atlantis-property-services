@@ -606,6 +606,10 @@ b {
     display: inline-flex;
   }
 
+  .header-phone {
+    display: inline;
+  }
+
   .menu-toggle,
   .mobile-panel {
     display: none !important;
@@ -1208,6 +1212,24 @@ b {
   text-underline-offset: 0.15em;
 }
 
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.footer-social a {
+  color: var(--color-gold-light);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.footer-social-note {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}
+
 /* ——— Mobile CTA bar (inner pages) ——— */
 .mobile-cta-bar {
   position: fixed;
@@ -1223,6 +1245,11 @@ b {
 .mobile-cta-bar .btn {
   flex: 1;
   width: 100%;
+  border-radius: 0;
+}
+
+.mobile-cta-bar__call {
+  border-right: 1px solid rgba(239, 224, 196, 0.2);
 }
 
 @media (min-width: 980px) {
@@ -1353,6 +1380,56 @@ textarea:focus {
   width: 18px;
   flex-shrink: 0;
   margin-top: 0.15rem;
+}
+
+.urgent-flag {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  padding: 0.9rem 1rem;
+  background: rgba(11, 17, 29, 0.04);
+  border: 1px solid rgba(11, 17, 29, 0.12);
+}
+
+.urgent-flag input {
+  margin-top: 0.35rem;
+  width: 18px;
+  min-height: 18px;
+  flex-shrink: 0;
+}
+
+.urgent-flag > span {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.urgent-flag .muted {
+  font-size: 0.9rem;
+}
+
+.emergency-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.header-phone {
+  display: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.site-header--transparent:not(.is-scrolled) .header-phone {
+  color: #fff;
+}
+
+.site-header--transparent.is-scrolled .header-phone,
+.site-header:not(.site-header--transparent) .header-phone {
+  color: var(--color-ink);
 }
 
 fieldset .checkbox-grid {

@@ -5,9 +5,10 @@ import { customerTypes, frequencies } from "../data/site";
 type Props = {
   service?: string;
   property?: string;
+  urgent?: boolean;
 };
 
-const { service = "", property = "" } = Astro.props;
+const { service = "", property = "", urgent = false } = Astro.props;
 const selected = service ? service.split(",").filter(Boolean) : [];
 const propertyType =
   property.toLowerCase() === "commercial"
@@ -19,6 +20,7 @@ const propertyType =
 
 <form id="request-form" novalidate>
   <input type="hidden" name="intent" value="request" />
+  <input type="hidden" name="formType" value="Customer request" />
   <div class="progress" aria-hidden="true">
     <span class="active" data-bar="1"></span>
     <span data-bar="2"></span>
@@ -29,7 +31,7 @@ const propertyType =
 
   <section class="step active" data-step="1">
     <h2>What do you need?</h2>
-    <p class="muted">Select one or more services. Pricing is quote-only.</p>
+    <p class="muted">Select one or more services. Pricing is quote-only unless an emergency call-out is agreed.</p>
     <fieldset>
       <legend class="eyebrow">Services</legend>
       <div class="checkbox-grid">
@@ -55,6 +57,13 @@ const propertyType =
       <select name="frequency">
         {frequencies.map((f) => <option value={f}>{f}</option>)}
       </select>
+    </label>
+    <label class="urgent-flag">
+      <input type="checkbox" name="urgent" value="yes" checked={urgent} />
+      <span>
+        <strong>Urgent / emergency</strong>
+        <span class="muted">Flag if you need priority review (same-day or next available call-out where possible).</span>
+      </span>
     </label>
   </section>
 
@@ -124,6 +133,8 @@ const propertyType =
 </form>
 
 <script>
+  import { submitSiteForm } from "../lib/formSubmit";
+
   const form = document.getElementById("request-form") as HTMLFormElement | null;
   if (form) {
     let step = 1;
@@ -196,13 +207,26 @@ const propertyType =
       render();
     });
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (!stepValid()) return;
+      submit.disabled = true;
+      const urgent = form.querySelector<HTMLInputElement>('[name="urgent"]')?.checked;
+      const email = form.querySelector<HTMLInputElement>('[name="email"]')?.value;
+      const result = await submitSiteForm(form, {
+        subject: urgent
+          ? "URGENT — Atlantis customer request"
+          : "Atlantis customer request",
+        replyTo: email,
+      });
+      if (!result.ok) {
+        submit.disabled = false;
+        showError(result.message || "Could not send. Please try again.");
+        return;
+      }
       window.location.href = "/thank-you";
     });
 
-    // Hydrate from URL on static hosting (service, property)
     const params = new URLSearchParams(window.location.search);
     const servicesParam = params.get("service");
     if (servicesParam) {
@@ -217,6 +241,11 @@ const propertyType =
       if (select) {
         select.value = propertyParam === "commercial" ? "Commercial" : "Residential";
       }
+    }
+    const urgentParam = params.get("urgent");
+    if (urgentParam === "1" || urgentParam === "true" || urgentParam === "yes") {
+      const box = form.querySelector<HTMLInputElement>('[name="urgent"]');
+      if (box) box.checked = true;
     }
 
     render();

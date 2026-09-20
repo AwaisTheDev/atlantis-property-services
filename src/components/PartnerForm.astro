@@ -3,6 +3,7 @@ import { services } from "../data/services";
 ---
 
 <form id="partner-form" class="form-stack" novalidate>
+  <input type="hidden" name="formType" value="Partner application" />
   <h2>Apply to become a service partner</h2>
   <p class="muted">
     Applications are reviewed and approved. Approval does not guarantee a minimum volume of work.
@@ -99,9 +100,13 @@ import { services } from "../data/services";
 </form>
 
 <script>
+  import { submitSiteForm } from "../lib/formSubmit";
+
   const form = document.getElementById("partner-form") as HTMLFormElement | null;
   const err = document.getElementById("partner-error") as HTMLElement | null;
-  form?.addEventListener("submit", (event) => {
+  const button = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+  form?.addEventListener("submit", async (event) => {
     event.preventDefault();
     const trades = form.querySelectorAll<HTMLInputElement>('[name="trades"]:checked');
     if (!trades.length) {
@@ -113,6 +118,24 @@ import { services } from "../data/services";
     }
     if (!form.checkValidity()) {
       form.reportValidity();
+      return;
+    }
+    if (err) {
+      err.hidden = true;
+      err.textContent = "";
+    }
+    if (button) button.disabled = true;
+    const email = form.querySelector<HTMLInputElement>('[name="email"]')?.value;
+    const result = await submitSiteForm(form, {
+      subject: "Atlantis partner application",
+      replyTo: email,
+    });
+    if (!result.ok) {
+      if (button) button.disabled = false;
+      if (err) {
+        err.hidden = false;
+        err.textContent = result.message || "Could not send. Please try again.";
+      }
       return;
     }
     window.location.href = "/partners/thank-you";

@@ -29,6 +29,6 @@ export const faqs = [
   },
   {
     q: "Can I request urgent or emergency property help?",
-    a: "Yes — flag urgency on your request and tell us the deadline or issue. We’ll review priority against access, suburb and partner availability and come back with the fastest realistic next step.",
+    a: "Yes. Use Emergency / Urgent or flag urgency on the request form and tell us the deadline or issue. We’ll review priority against access, suburb and partner availability and come back with the fastest realistic next step. Call 03 7023 9460 if you need to speak with us directly.",
   },
 ];

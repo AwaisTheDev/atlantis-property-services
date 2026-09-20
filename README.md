@@ -11,36 +11,23 @@ npm run dev
 
 Open [http://localhost:4321](http://localhost:4321).
 
-## GitHub + Vercel (first-time setup)
+## Integrations
 
-Git is initialized on `main`. To create the remote repo and deploy:
+Set in `.env` locally or in the Vercel project settings (see `.env.example`):
 
-```bash
-# 1. Authenticate (one-time)
-gh auth login
-npx vercel login
+| Variable | Purpose |
+| --- | --- |
+| `PUBLIC_GA_MEASUREMENT_ID` | Google Analytics 4 (`G-…`) |
+| `PUBLIC_GSC_VERIFICATION` | Google Search Console HTML tag content |
 
-# 2. Create GitHub repo and push
-gh repo create atlantis-property-services --private --source=. --remote=origin --push \
-  --description "Atlantis Property Services — Melbourne property services site"
+Forms email `info@atlantisps.com.au` via FormSubmit. Confirm the first delivery in that inbox when going live.
 
-# 3. Deploy to Vercel (creates a new project)
-npx vercel link    # follow prompts — link to your Vercel account/team
-npx vercel --prod  # production deploy
+Social profile URLs: set `linkedin` / `facebook` / `instagram` in `src/data/site.ts` when accounts exist.
 
-# 4. Optional: auto-deploy on every push to main
-npx vercel git connect
-```
+Sitemap is generated at build to `/sitemap-index.xml` (linked from `robots.txt`).
 
-After `vercel git connect`, every push to `main` triggers a production deploy on Vercel.
+## GitHub + Vercel
 
-## Placeholders until launch ops
+Push to `main` (or connect the repo in Vercel) for production deploys.
 
-- Phone number (`src/data/site.ts`)
-- Legal copy on `/privacy`, `/terms`, `/cookies`
-- Form email notifications (forms currently confirm in-browser only)
-- Social profile URLs
-- Gallery photos and testimonials
-- Google Analytics / Search Console
-
-See `PRD.md` for full requirements.
+See `PRD.md` for full product requirements.
