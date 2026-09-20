@@ -7,10 +7,9 @@ import { site } from "../data/site";
 type Props = {
   title: string;
   description?: string;
-  showMobileCta?: boolean;
 };
 
-const { title, description = site.description, showMobileCta = true } = Astro.props;
+const { title, description = site.description } = Astro.props;
 const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://atlantisps.com.au").href;
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID as string | undefined;
@@ -89,18 +88,6 @@ const localBusinessJsonLd = {
       <slot />
     </main>
     <Footer />
-    {
-      showMobileCta && (
-        <div class="mobile-cta-bar">
-          {site.phone ? (
-            <a class="btn btn-ghost mobile-cta-bar__call" href={`tel:${site.phone.replace(/\s/g, "")}`}>
-              Call
-            </a>
-          ) : null}
-          <a class="btn btn-primary" href="/contact?tab=request">Request / book</a>
-        </div>
-      )
-    }
   </body>
 </html>
 

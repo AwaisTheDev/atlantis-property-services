@@ -1230,40 +1230,6 @@ b {
   font-size: 0.85rem;
 }
 
-/* ——— Mobile CTA bar (inner pages) ——— */
-.mobile-cta-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  gap: 0;
-  background: var(--color-bg);
-  z-index: 30;
-}
-
-.mobile-cta-bar .btn {
-  flex: 1;
-  width: 100%;
-  border-radius: 0;
-}
-
-.mobile-cta-bar__call {
-  border-right: 1px solid rgba(239, 224, 196, 0.2);
-}
-
-@media (min-width: 980px) {
-  .mobile-cta-bar {
-    display: none;
-  }
-}
-
-@media (max-width: 979px) {
-  body:has(.mobile-cta-bar) {
-    padding-bottom: 56px;
-  }
-}
-
 /* ——— Forms & inner pages ——— */
 .form-stack {
   display: grid;
