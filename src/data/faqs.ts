@@ -1,34 +1,34 @@
 export const faqs = [
   {
-    q: "What property services does Atlantis coordinate in Melbourne?",
-    a: "Atlantis coordinates residential and commercial property services across Melbourne’s inner suburbs — including cleaning, end-of-lease cleans, window cleaning, gardening, pressure washing, painting, fence repairs, rubbish and hard waste removal, handyman work, pest control, staging and building support. You deal with Atlantis; approved partners deliver the work.",
+    q: "What does Atlantis actually do?",
+    a: "We look after property work across Melbourne: residential and commercial cleaning, end-of-lease cleans, windows, gardens, pressure washing, painting, fences, rubbish and hard waste, handyman jobs, pest control, staging and building support. You deal with Atlantis. The people on site are approved partners we book for the job.",
   },
   {
-    q: "Which Melbourne suburbs do you cover?",
-    a: "We’re focused on Melbourne’s inner suburbs within about 50 km of the CBD, with strong coverage around Brunswick East and surrounding postcodes. Enter your postcode with your request — we review every enquiry manually and don’t auto-reject out-of-area jobs.",
+    q: "Which suburbs do you cover?",
+    a: "Our day-to-day work is in Melbourne’s inner suburbs, within about 50 km of the CBD, with a lot of it around Brunswick East and nearby postcodes. Put your postcode on the request. We read every one. We don’t turn a job away automatically because it sits a little outside that area.",
   },
   {
-    q: "How do quotes and bookings work?",
-    a: "Use Request / book a service on the Contact page. Share the job, postcode, timing and photos if you can. Atlantis reviews the brief, coordinates a suitable approved partner, and returns a quote. Pricing is quote-only unless an emergency call-out is agreed separately.",
+    q: "How do I get a quote?",
+    a: "Use Request / book a service. Tell us the work, the postcode, when you’d like it done, and add photos if you have them. We’ll come back with a price before anything is booked. An emergency call-out, if one is needed, is agreed separately.",
   },
   {
-    q: "Is Atlantis a marketplace of cleaners and tradies?",
-    a: "No. This is not a public provider directory. You request work from Atlantis. We arrange a suitable approved partner and remain your single point of contact for the quote, booking and follow-up.",
+    q: "Are you a directory of cleaners and tradies?",
+    a: "No. There is no list of providers to browse. You ask Atlantis for the work. We book someone we approve, and we stay on the job with you through the quote and the follow-up.",
   },
   {
-    q: "Can I book recurring cleaning or garden care?",
-    a: "Yes. Choose recurring on the form and select weekly, fortnightly or monthly. Recurring work is coordinated the same way as one-off jobs — one Atlantis conversation for the schedule.",
+    q: "Can cleaning or garden care be on a regular schedule?",
+    a: "Yes. Choose recurring on the form and pick weekly, fortnightly or monthly. A regular visit is arranged the same way as a one-off: you speak with us about the schedule.",
   },
   {
-    q: "How is a booking confirmed?",
-    a: "Once you accept the quote and timing, Atlantis confirms the booking with you. Updates and questions stay with us — you aren’t handed off to a list of competing providers.",
+    q: "When is a booking confirmed?",
+    a: "Once you accept the quote and the timing, we confirm it with you. If something changes, you call or email us. You won’t be passed to a list of other companies.",
   },
   {
-    q: "Are partners insured and vetted?",
-    a: "Work is fulfilled through an approved, insured and vetted partner network. Partners are not listed for public comparison on this site. Atlantis remains the customer-facing company.",
+    q: "Are the people on site insured?",
+    a: "Yes. Work is carried out by partners we have approved, with insurance and any licences the job requires. They are not listed here for you to compare. Atlantis is the company you are dealing with.",
   },
   {
-    q: "Can I request urgent or emergency property help?",
-    a: "Yes. Use Emergency / Urgent or flag urgency on the request form and tell us the deadline or issue. We’ll review priority against access, suburb and partner availability and come back with the fastest realistic next step. Call 03 7023 9460 if you need to speak with us directly.",
+    q: "What if the job is urgent?",
+    a: "Use Emergency / Urgent, or tick urgent on the form, and tell us the deadline. We’ll say what we can do given access, the suburb and who is available. If you’d rather speak to someone, call 03 7023 9460.",
   },
 ];

@@ -18,88 +18,88 @@ type GroupCopy = {
 const groupCopy: Record<string, GroupCopy> = {
   "Cleaning & hygiene": {
     includes: [
-      "Scope review from your description and any photos you share",
-      "Quote coordinated through Atlantis — no public provider comparison",
-      "Suitable approved partner arranged for the work",
-      "One point of contact from enquiry through to completion",
+      "Rooms and frequency agreed in the quote",
+      "A price before the first visit",
+      "Weekly, fortnightly or monthly visits where that suits",
+      "Follow-up with Atlantis if something is missed",
     ],
     expect: [
-      "This work is typically requested by home owners and tenants, landlords and property managers, and teams looking after offices or commercial premises. Exact rooms, cadence and access are confirmed in your quote — nothing is locked in until you are happy with the scope.",
-      "Share access notes, parking and preferred timing when you request. Recurring schedules can be weekly, fortnightly or monthly where that suits the property. Pricing is quote-only unless otherwise agreed, and every postcode is reviewed manually so out-of-area requests are never auto-rejected.",
+      "Owners, tenants, landlords and people looking after offices all use this. Nothing is booked until you have seen the price and what it covers.",
+      "Mention parking, keys and the time of day that works. If the postcode sits a little outside our usual area, we still read the request.",
     ],
   },
   "Property & exterior care": {
     includes: [
-      "Clear brief capture for areas, surfaces and access",
-      "Quote managed by Atlantis before any work is booked",
-      "Approved partner coordinated for delivery",
-      "Updates through one accountable company",
+      "Surfaces and access noted before we price",
+      "A quote before any booking",
+      "One-off work or a regular visit",
+      "Updates from Atlantis, not from a different company each time",
     ],
     expect: [
-      "Exterior and outdoor care is commonly requested for residential gardens and façades, strata and common property, and commercial hard surfaces. Photos help us scope outdoor work quickly; weather and access can affect timing, so tell us any constraints up front.",
-      "One-off resets and recurring care can both sit in a single Atlantis request. You deal with Atlantis — partners stay behind the scenes — with quote-led pricing across Melbourne’s inner suburbs and surrounding service area.",
+      "Gardens, glass, façades and shared outdoor areas. A photo saves a lot of back and forth. Weather and access can move the day, so tell us if a date is fixed.",
+      "A one-off tidy and a regular visit can both start from the same request, across Melbourne’s inner suburbs.",
     ],
   },
   "Waste & removal": {
     includes: [
-      "Load and access assessment from your notes or photos",
-      "Quote for removal coordinated by Atlantis",
-      "Suitable partner arranged for collection",
-      "Single customer contact throughout",
+      "The load priced from your notes or photos",
+      "Stairs, lifts and parking taken into the quote",
+      "Collection booked once you accept",
+      "One company to call if the day changes",
     ],
     expect: [
-      "Removal jobs are often booked for decluttering and clean-outs, furniture and hard waste, or vacant property clearances. List items where you can, and note stairs, lifts, parking and any building rules so the quote reflects the real job.",
-      "Disposal method depends on the load and local requirements. Atlantis stays your one contact from the first message through collection — you are not left comparing public provider listings to get rubbish cleared.",
+      "People book this for a clear-out, furniture, hard waste, or a place that has been left full. List what you can. Building rules matter as much as the volume.",
+      "How it is disposed of depends on the load. We’ll say what we’re collecting before the day.",
     ],
   },
   "Move-in / move-out": {
     includes: [
-      "Coordinated brief across cleaning and related tasks",
-      "Quote and timing managed by Atlantis",
-      "Approved partners arranged under one request",
-      "Handover-friendly communication for vacate or make-ready dates",
+      "Cleaning and related tasks on one request",
+      "Timing set around the handover date",
+      "A quote based on condition and deadline",
+      "Updates kept with Atlantis until the keys move",
     ],
     expect: [
-      "Move-in and move-out work is built for tenants preparing to vacate, landlords and investors between leases, and managers running multiple turnovers. Share keys or access details and the target handover date early so timing stays realistic.",
-      "Bond or make-ready checklists can be attached to your request, and multiple related services can sit in one Atlantis conversation. Pricing is quote-only and scoped to the property, condition and deadline you provide.",
+      "Tenants leaving, owners between leases, and managers with several turnovers. Send access details and the date early. A tight Friday is easier to plan if we know on Monday.",
+      "A bond checklist can be attached. Rubbish or a small repair can sit on the same request if they have to be done before handover.",
     ],
   },
   "Property presentation": {
     includes: [
-      "Briefing on presentation goals, audience and timing",
-      "Quote-led coordination through Atlantis",
-      "Suitable partners arranged for staging, styling or preparation",
-      "One relationship for the full presentation job",
+      "The audience and the date agreed up front",
+      "A quote for the presentation work",
+      "Staging, styling or preparation as the property needs",
+      "One company across the job",
     ],
     expect: [
-      "Presentation work is usually requested for properties headed to lease or sale, investors refreshing a vacant asset, or managers preparing for photography and inspections. Tell us the audience and deadline so the brief stays sharp.",
-      "Furniture and styling scopes vary — photos help a great deal. Presentation jobs are quote-only and scoped to your brief; Atlantis remains the company you deal with while approved partners deliver the work.",
+      "Usually a place going to lease or sale, or a manager getting it ready for photographs. Tell us who will see it, and when.",
+      "Photos of the rooms help. Furniture and styling vary a lot, so the quote follows your brief rather than a package.",
     ],
   },
   "Building & facilities": {
     includes: [
-      "Site needs captured in a single request",
-      "Quote and partner coordination by Atlantis",
-      "Support for one-off or ongoing building care",
-      "Accountable customer-facing relationship for managers and committees",
+      "The building and the issue described in one request",
+      "A quote before work is booked",
+      "A single visit, or ongoing care",
+      "A named contact at Atlantis for managers and committees",
     ],
     expect: [
-      "Building and facilities requests commonly come from strata and owners corporations, building managers and facilities teams, and commercial sites that need coordinated support without juggling separate providers.",
-      "Describe the building type, access and urgency in your request. Partners stay behind the scenes; Atlantis remains your contact. Recurring facilities work can be planned after the first quote if an ongoing arrangement makes sense.",
+      "Strata, building managers and facilities teams. Also commercial sites that would rather call one company than keep a list of trades.",
+      "Say what the building is, how we get in, and how urgent it is. A regular arrangement can follow the first quote if that is what you want.",
     ],
   },
 };
 
 const fallbackCopy: GroupCopy = {
   includes: [
-    "Request reviewed by Atlantis",
-    "Quote coordinated for your brief",
-    "Suitable approved partner arranged",
-    "One point of contact throughout",
+    "Your request read by Atlantis",
+    "A quote before anyone is booked",
+    "The work carried out by an approved partner",
+    "Follow-up with us, not with a directory of providers",
   ],
   expect: [
-    "Atlantis coordinates this service for residential customers, property managers and commercial sites across Melbourne’s inner suburbs and surrounding area. You deal with one company — not a public provider marketplace.",
-    "Pricing is quote-only. We review every postcode manually. Share as much detail as you can in your request so the quote and timing reflect the real job.",
+    "This is for homes, managers and commercial sites across Melbourne’s inner suburbs. You deal with Atlantis.",
+    "We price the job from what you send. The more specific you are about access and timing, the closer the quote will be to the day itself.",
   ],
 };
 
@@ -112,108 +112,108 @@ type Override = {
 const overrides: Partial<Record<string, Override>> = {
   "residential-cleaning": {
     overview: [
-      "From weekly resets to a one-off spring clean, residential cleaning through Atlantis is built around your rooms, access and routine — without you needing to compare providers online.",
-      "Tell us which areas matter most, how often you want the work done, and any access or parking notes. Atlantis reviews the brief, coordinates a suitable approved partner, and stays your single point of contact from quote through to completion.",
+      "Some households want a set day each fortnight. Others call when the place has got away from them. Both are fine.",
+      "Say which rooms matter, how often you’d like someone in, and where to park. We’ll price it from that.",
     ],
     includes: [
-      "Kitchen, bathrooms and living areas as scoped in your brief",
-      "Optional focus rooms or add-ons noted when you request",
-      "Regular or one-off cadence to suit the household",
-      "Quote and partner coordination handled by Atlantis",
+      "Kitchen, bathrooms and living areas, as agreed",
+      "Extra rooms noted on the request",
+      "A regular visit or a single clean",
+      "Changes handled with Atlantis",
     ],
   },
   "commercial-cleaning": {
     overview: [
-      "Commercial cleaning arranged so your workplace stays presentable without managing multiple cleaners yourself. Share hours, zones and after-hours needs — Atlantis coordinates the rest.",
-      "Whether you look after an office, retail space or small commercial premises, one request gives you a clear quote path and a single company to follow up with. Partners deliver the work; Atlantis remains accountable to you.",
+      "An office, a shop, a small tenancy. Tell us which zones, and whether the clean has to happen after the team has left.",
+      "You don’t manage a roster of cleaners. If the schedule needs to change, you tell us.",
     ],
     includes: [
-      "Office, retail or premises zones as scoped",
-      "Schedule options including after-hours where needed",
-      "Quote managed through Atlantis",
-      "Single point of contact for your team",
+      "The zones you nominate",
+      "After-hours visits where the site needs them",
+      "A quote before the first clean",
+      "One number for your team",
     ],
   },
   "end-of-lease": {
     overview: [
-      "End-of-lease cleaning is time-sensitive. Send the checklist, photos and vacate date — Atlantis arranges a suitable partner and keeps the handover conversation in one place.",
-      "Tenants, landlords and property managers all use the same simple request path. You are not left hunting for a last-minute provider or comparing public listings when the bond or re-let deadline is close.",
+      "Vacate cleans are usually about a date, not a preference. Send the checklist, photos and the day the keys have to be back.",
+      "Tenants, landlords and managers use the same form. If the bond inspection is close, say so in the first line.",
     ],
     includes: [
-      "Vacate-focused clean scoped to your brief and checklist",
-      "Support for tenant, landlord or manager requests",
-      "Photo review where provided",
-      "Quote and booking coordination by Atlantis",
+      "A clean built around your checklist",
+      "Requests from tenants, owners or managers",
+      "Photos reviewed when you send them",
+      "The booking confirmed with Atlantis",
     ],
     expect: [
-      "Attach the bond or agency checklist if you have one, and include access timing and key handover details so the job can be planned around vacate day. Pricing is quote-only based on property size and condition.",
-      "Related tasks — such as rubbish removal or a quick maintenance fix — can sit in the same Atlantis conversation if you need more than the clean alone before handover.",
+      "Attach the agency checklist if you have one, and say when someone can get in. The price follows the size of the place and the condition it’s in.",
+      "Rubbish or a small repair can go on the same request if they also have to be done before handover.",
     ],
   },
   "deep-cleaning": {
     overview: [
-      "Deep cleaning goes beyond a standard visit — ideal after renovations, long vacancies or when kitchens and bathrooms need a thorough reset.",
-      "Describe the condition and share photos if you can. Atlantis scopes the work, coordinates an approved partner, and keeps pricing quote-led so you know what is included before anyone arrives on site.",
+      "This is for a kitchen or bathroom that a normal visit will not shift, or a place that has been empty for a while.",
+      "Describe the condition, and send photos if you can. The quote says what is included before anyone arrives.",
     ],
   },
   "window-cleaning": {
     overview: [
-      "Clear glass makes a property feel looked after. Request interior, exterior or both — Atlantis coordinates a suitable partner for homes and commercial sites across Melbourne’s inner suburbs.",
-      "Note storeys, balconies and any restricted access in your request. Weather can affect exterior timing; commercial sites can also ask for recurring glass care under one Atlantis relationship.",
+      "Inside, outside, or both. Homes and commercial glass across Melbourne’s inner suburbs.",
+      "Storeys, balconies and restricted access change the job. Weather can move an exterior clean. A regular visit is possible if the glass needs it.",
     ],
   },
   "pressure-washing": {
     overview: [
-      "Pressure washing brings driveways, paths and façades back to life. Describe the surfaces and we’ll arrange a quote through Atlantis.",
-      "Photos of stained or weathered areas help us scope the job accurately. You deal with Atlantis for the quote, timing and follow-up — an approved partner delivers the wash.",
+      "Driveways, paths and façades that have gone grey or green. Tell us the surfaces.",
+      "A photo of the worst of it is useful. We quote the wash, book it, and you deal with us if the day needs to move.",
     ],
   },
   "gardening-landscaping": {
     overview: [
-      "Gardens and lawns presented properly — one-off tidies or recurring care. Atlantis coordinates outdoor work so owners and managers stay with a single accountable contact.",
-      "Share the areas that matter most and whether you need a one-off reset or an ongoing schedule. Atlantis arranges a suitable partner and keeps the conversation in one place.",
+      "A garden that needs a proper tidy, or one that should simply stay looked after.",
+      "Say whether this is once or ongoing, and which beds or lawns matter. Access for a trailer is worth mentioning.",
     ],
     includes: [
-      "Lawn, garden and outdoor presentation as scoped",
-      "One-off or recurring options",
-      "Quote managed by Atlantis",
-      "Approved partner arranged for delivery",
+      "Lawn, beds and hedges, as agreed",
+      "A one-off tidy or a regular visit",
+      "A quote before the first day",
+      "Changes arranged with Atlantis",
     ],
   },
   "handyman": {
     overview: [
-      "Odd jobs and small repairs add up. List what needs doing in one request — Atlantis coordinates a suitable partner instead of you chasing separate trades.",
-      "Photos help when the job is hard to describe in words. You get a quote-led path and one company to update, while the work is delivered by an approved partner behind the scenes.",
+      "The jobs that are too small to brief a specialist for, and too many to ignore. Put them on one list.",
+      "Photos help when the fault is easier to show than describe. We’ll price the list and book it as one visit where we can.",
     ],
   },
   "rubbish-removal": {
     overview: [
-      "Junk and general rubbish cleared without the hassle of finding a separate removalist. Tell us the load — Atlantis arranges collection through an approved partner.",
-      "A rough list of items, plus notes on stairs, lifts and parking, keeps the quote realistic. Atlantis stays your contact from the first message through to collection day.",
+      "Tell us the load. We’ll price the collection rather than leaving you to ring around.",
+      "A rough list, plus stairs, lifts and parking, is what keeps the quote honest.",
     ],
   },
   "property-maintenance": {
     overview: [
-      "Keep homes and commercial sites maintained without juggling providers. Request a one-off fix or an ongoing plan — Atlantis stays the company you deal with.",
-      "Describe the tasks and urgency in your request. We coordinate a suitable approved partner, manage the quote, and keep updates in one conversation.",
+      "A single repair, or a visit that comes around so small things don’t wait until they fail.",
+      "Say what needs doing and how urgent it is. You stay with Atlantis for the quote and anything that follows.",
     ],
   },
   "builders-clean": {
     overview: [
-      "Post-build and renovation cleans need timing around trades. Share the site stage and access — Atlantis coordinates a suitable clean so handover stays on track.",
-      "Quote-led pricing reflects site condition and access windows. You deal with Atlantis; an approved partner delivers the clean when the site is ready.",
+      "These cleans have to fit around the last of the trades. Tell us the stage of the site and when it will actually be clear.",
+      "The price reflects dust, debris and the access window. We book the clean for when the site is ready, not for a date that only looks good on paper.",
     ],
   },
   "strata-common": {
     overview: [
-      "Strata and common property work under one Atlantis request — so committees and managers are not comparing public provider listings to get the job done.",
-      "Describe the common areas, building type and any access rules. Atlantis coordinates a suitable partner and reports back to your nominated contact.",
+      "Common property for a committee or a manager: cleaning, care, and the jobs that keep coming back.",
+      "Describe the areas, the building, and any access rules. We’ll quote it and report to the person you name.",
     ],
     includes: [
-      "Common property scope captured clearly",
-      "Quote and partner arrangement by Atlantis",
-      "Support for cleaning, care and related building tasks",
-      "Accountable reporting back to your contact",
+      "Common areas described before we price",
+      "A quote from Atlantis",
+      "Cleaning, care and related building tasks",
+      "Updates back to your contact",
     ],
   },
 };
@@ -221,7 +221,7 @@ const overrides: Partial<Record<string, Override>> = {
 function defaultOverview(service: Service): string[] {
   return [
     service.body,
-    `Atlantis coordinates ${service.name.toLowerCase()} across ${site.serviceArea}. You request the work once, receive a quote-led path, and deal with one company — approved partners deliver behind the scenes, and there is no marketplace-style provider comparison on this site.`,
+    `${service.name} is arranged by Atlantis across ${site.serviceArea}. Send the details once. We’ll quote it, and you’ll hear from us about the booking.`,
   ];
 }
 

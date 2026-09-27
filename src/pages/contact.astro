@@ -13,19 +13,19 @@ const urgent = urgentParam === "1" || urgentParam === "true" || urgentParam === 
 ---
 
 <BaseLayout
-  title="Request a Property Service Melbourne"
-  description="Request or book cleaning, gardens, windows, rubbish removal, handyman work and more with Atlantis Property Services across Melbourne’s inner suburbs. Quote-only."
+  title="Request a Quote"
+  description="Request a quote or booking with Atlantis Property Services for cleaning, gardens, windows, waste and maintenance across Melbourne’s inner suburbs."
 >
-  <PageBanner title={urgent ? "Urgent request" : "Tell us what you need"} image="/images/cta-building.jpg" wide />
+  <PageBanner title={urgent ? "An urgent request" : "Tell us what you need"} image="/images/cta-building.jpg" wide />
 
   <section class="page-body">
     <div class="wrap">
       <div class="contact-layout">
         <aside class="contact-layout__aside">
-          <h2 class="contact-layout__heading">Request a quote or booking</h2>
+          <h2 class="contact-layout__heading">A quote, or a booking</h2>
           <p class="page-intro__text">
-            Share the job, your postcode and timing. Atlantis reviews every enquiry for Melbourne’s
-            inner suburbs — including Brunswick East and surrounds within about 50 km of the CBD.
+            The property, the work, and when you’d like it done. We read every request for Melbourne’s
+            inner suburbs, including Brunswick East and the surrounding postcodes.
           </p>
           <div class="contact-rows">
             <div class="contact-row">
@@ -50,7 +50,7 @@ const urgent = urgentParam === "1" || urgentParam === "true" || urgentParam === 
             </div>
           </div>
           <p class="muted contact-details__note">
-            We review every postcode manually. Out-of-area requests are not auto-rejected.
+            Add your postcode. We look at every request, including those a little outside our usual area.
           </p>
         </aside>
 
@@ -91,8 +91,8 @@ const urgent = urgentParam === "1" || urgentParam === "true" || urgentParam === 
               <p class="page-intro__text" style="margin-bottom: 0;">
                 {
                   urgent
-                    ? "You’ve opened the urgent pathway. Describe the issue, timing and access — we’ll prioritise review where we can."
-                    : "Request a quote or book a service — tell us what you need, timing, and a few photos if you have them."
+                    ? "This is marked urgent. Tell us what’s wrong, when it needs attention, and how we get in."
+                    : "A few details and photos, if you have them, are enough for us to price the work."
                 }
               </p>
               <RequestForm service={service} property={property} urgent={urgent} />

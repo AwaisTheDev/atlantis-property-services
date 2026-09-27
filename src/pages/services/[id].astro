@@ -70,11 +70,11 @@ const requestHref = service
           <p class="eyebrow">
             <a href="/services">Services</a>
           </p>
-          <h2 class="service-detail__title">What’s included in this category</h2>
+          <h2 class="service-detail__title">About this work</h2>
           <p class="page-intro__text">{group.lead}</p>
           <p class="page-intro__text" style="margin-top: 1.25rem;">
-            Pricing is quote-only. You deal with Atlantis — one point of contact — while approved
-            partners deliver the work behind the scenes across {site.serviceArea}.
+            We quote before anyone is booked. You deal with Atlantis. The work itself is carried out
+            by partners we approve, across {site.serviceArea}.
           </p>
           <p style="margin-top: 2rem;">
             <ArrowLink href={requestHref} label="Request / book a service" dark />
@@ -86,7 +86,7 @@ const requestHref = service
         <div class="wrap">
           <h2>Services in this category</h2>
           <p class="page-intro__text" style="margin-bottom: 1.5rem;">
-            Open a service for details, or start a request that covers one or more of these.
+            Open a service, or send one request that covers several.
           </p>
           <div class="service-list">
             {groupItems.map((item) => (
@@ -123,8 +123,8 @@ const requestHref = service
       </section>
 
       <PageCta
-        title="Ready to request this work?"
-        body="Send a request and Atlantis will coordinate a suitable approved partner — one conversation, quote-led pricing."
+        title="Request this work"
+        body="Tell us the property and when you need it. We’ll come back with a quote."
         href={requestHref}
         label="Request / book a service"
       />
@@ -141,9 +141,7 @@ const requestHref = service
           <p class="eyebrow">
             <a href={parentHref}>{service.group}</a>
           </p>
-          <h2 class="service-detail__title">
-            Melbourne {service.name.toLowerCase()} coordinated by Atlantis
-          </h2>
+          <h2 class="service-detail__title">What to send us</h2>
           {content.overview.map((paragraph) => (
             <p class="page-intro__text">{paragraph}</p>
           ))}
@@ -159,7 +157,7 @@ const requestHref = service
             </div>
             <div>
               <dt>You deal with</dt>
-              <dd>Atlantis — one point of contact</dd>
+              <dd>Atlantis Property Services</dd>
             </div>
             <div>
               <dt>Delivery</dt>
@@ -175,15 +173,14 @@ const requestHref = service
 
       <section class="section section-tint">
         <div class="wrap service-prose">
-          <h2>What to expect</h2>
+          <h2>Before you book</h2>
           {content.expect.map((paragraph) => (
             <p class="page-intro__text">{paragraph}</p>
           ))}
 
-          <h3 class="service-prose__subhead">Typically included</h3>
+          <h3 class="service-prose__subhead">Usually covered</h3>
           <p class="muted">
-            Exact scope is confirmed in your quote. These are the usual building blocks for this
-            service.
+            The quote confirms exactly what is included. These are the usual pieces.
           </p>
           <ul class="service-checklist">
             {content.includes.map((item) => (
@@ -192,9 +189,7 @@ const requestHref = service
           </ul>
 
           <p class="page-intro__text" style="margin-top: 2rem;">
-            The path is the same every time: you tell us what you need, Atlantis arranges a suitable
-            approved partner and manages the quote or booking, and you stay with one company until the
-            work is done.
+            You tell us the job. We price it and book the people. You stay with Atlantis until it is finished.
           </p>
           <p style="margin-top: 2rem;">
             <ArrowLink href={requestHref} label="Start a request" dark />
@@ -207,7 +202,7 @@ const requestHref = service
           <div class="wrap">
             <h2>Related services</h2>
             <p class="page-intro__text" style="margin-bottom: 1.5rem;">
-              Other work in {service.group.toLowerCase()} that customers often combine in one request.
+              Other {service.group.toLowerCase()} work that often goes on the same request.
             </p>
             <ul class="service-related service-related--grid">
               {related.map((item) => (
@@ -227,8 +222,8 @@ const requestHref = service
       )}
 
       <PageCta
-        title="Ready to send a request?"
-        body="Send a request and Atlantis will coordinate a suitable approved partner — one conversation, quote-led pricing."
+        title="Send the details"
+        body="Tell us the property and the work. We’ll come back with a quote before anything is booked."
         href={requestHref}
         label="Request / book a service"
       />
