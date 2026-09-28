@@ -1,34 +1,34 @@
 export const faqs = [
   {
-    q: "What does Atlantis actually do?",
-    a: "We look after property work across Melbourne: residential and commercial cleaning, end-of-lease cleans, windows, gardens, pressure washing, painting, fences, rubbish and hard waste, handyman jobs, pest control, staging and building support. You deal with Atlantis. The people on site are approved partners we book for the job.",
+    q: "What do you actually do?",
+    a: "Cleaning, bond cleans, windows, gardens, pressure washing, painting, fences, rubbish and hard waste, handyman bits, pest control, staging, and work in apartment buildings. Homes and commercial. You deal with us — we book people we already work with to do the job.",
   },
   {
-    q: "Which suburbs do you cover?",
-    a: "Our day-to-day work is in Melbourne’s inner suburbs, within about 50 km of the CBD, with a lot of it around Brunswick East and nearby postcodes. Put your postcode on the request. We read every one. We don’t turn a job away automatically because it sits a little outside that area.",
+    q: "Do you come to my suburb?",
+    a: "Most of our work is inner Melbourne, out to about 50 km from the CBD, and a lot of it is around Brunswick East. Put your postcode on the form anyway. If you’re a bit outside that, we’ll still have a look. We don’t bounce it automatically.",
   },
   {
-    q: "How do I get a quote?",
-    a: "Use Request / book a service. Tell us the work, the postcode, when you’d like it done, and add photos if you have them. We’ll come back with a price before anything is booked. An emergency call-out, if one is needed, is agreed separately.",
+    q: "How do I get a price?",
+    a: "Use Request / book a service. What’s the job, where is it, and when do you need it. Photos if you’ve got them. We’ll send a price before anyone’s booked. If it’s a call-out and there’s an extra charge, we’ll say so first.",
   },
   {
-    q: "Are you a directory of cleaners and tradies?",
-    a: "No. There is no list of providers to browse. You ask Atlantis for the work. We book someone we approve, and we stay on the job with you through the quote and the follow-up.",
+    q: "Can I pick my own cleaner or tradie off this site?",
+    a: "No. There’s no list to scroll through. You ask us, we send someone we use, and if you’ve got a question afterwards you come back to us.",
   },
   {
-    q: "Can cleaning or garden care be on a regular schedule?",
-    a: "Yes. Choose recurring on the form and pick weekly, fortnightly or monthly. A regular visit is arranged the same way as a one-off: you speak with us about the schedule.",
+    q: "Can it be a regular clean or a regular garden visit?",
+    a: "Yes. Tick recurring and choose weekly, fortnightly or monthly. Same as a one-off — you sort the days with us, not with a different person each time.",
   },
   {
-    q: "When is a booking confirmed?",
-    a: "Once you accept the quote and the timing, we confirm it with you. If something changes, you call or email us. You won’t be passed to a list of other companies.",
+    q: "When is it actually booked?",
+    a: "When you’ve said yes to the price and the time. We’ll confirm it. If the day has to move, call or email us.",
   },
   {
-    q: "Are the people on site insured?",
-    a: "Yes. Work is carried out by partners we have approved, with insurance and any licences the job requires. They are not listed here for you to compare. Atlantis is the company you are dealing with.",
+    q: "Are they insured?",
+    a: "Yes. The people on site have the insurance, and the licences, the job needs. They’re not listed here for you to compare. If something’s wrong, it’s our problem to sort.",
   },
   {
-    q: "What if the job is urgent?",
-    a: "Use Emergency / Urgent, or tick urgent on the form, and tell us the deadline. We’ll say what we can do given access, the suburb and who is available. If you’d rather speak to someone, call 03 7023 9460.",
+    q: "What if I need someone today?",
+    a: "Go to Emergency / Urgent, or tick urgent on the form, and tell us the deadline. We’ll say what we can actually do. If you’d rather talk, call 03 7023 9460.",
   },
 ];

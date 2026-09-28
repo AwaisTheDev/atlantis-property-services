@@ -61,7 +61,7 @@ const requestHref = service
   kind === "group" && group ? (
     <BaseLayout
       title={`${group.name} Melbourne`}
-      description={`${group.short} Coordinated by Atlantis Property Services across ${site.serviceArea}.`}
+      description={`${group.short} Atlantis Property Services, across Melbourne’s inner suburbs.`}
     >
       <PageBanner title={`${group.name} in Melbourne`} image={group.image} wide />
 
@@ -72,10 +72,6 @@ const requestHref = service
           </p>
           <h2 class="service-detail__title">About this work</h2>
           <p class="page-intro__text">{group.lead}</p>
-          <p class="page-intro__text" style="margin-top: 1.25rem;">
-            We quote before anyone is booked. You deal with Atlantis. The work itself is carried out
-            by partners we approve, across {site.serviceArea}.
-          </p>
           <p style="margin-top: 2rem;">
             <ArrowLink href={requestHref} label="Request / book a service" dark />
           </p>
@@ -124,7 +120,7 @@ const requestHref = service
 
       <PageCta
         title="Request this work"
-        body="Tell us the property and when you need it. We’ll come back with a quote."
+        body="Send the address and what’s going on. A photo helps if you’ve got one."
         href={requestHref}
         label="Request / book a service"
       />
@@ -132,7 +128,7 @@ const requestHref = service
   ) : service && content ? (
     <BaseLayout
       title={`${service.name} Melbourne`}
-      description={`${service.short} Request a quote from Atlantis Property Services across Melbourne’s inner suburbs.`}
+      description={`${service.short} Atlantis Property Services, Melbourne’s inner suburbs.`}
     >
       <PageBanner title={`${service.name} in Melbourne`} image={service.image} wide />
 
@@ -160,8 +156,8 @@ const requestHref = service
               <dd>Atlantis Property Services</dd>
             </div>
             <div>
-              <dt>Delivery</dt>
-              <dd>Approved partner network</dd>
+              <dt>Who does the work</dt>
+              <dd>People we already use</dd>
             </div>
           </dl>
 
@@ -180,7 +176,7 @@ const requestHref = service
 
           <h3 class="service-prose__subhead">Usually covered</h3>
           <p class="muted">
-            The quote confirms exactly what is included. These are the usual pieces.
+            Roughly what’s in it. The price we send is the real list.
           </p>
           <ul class="service-checklist">
             {content.includes.map((item) => (
@@ -188,9 +184,6 @@ const requestHref = service
             ))}
           </ul>
 
-          <p class="page-intro__text" style="margin-top: 2rem;">
-            You tell us the job. We price it and book the people. You stay with Atlantis until it is finished.
-          </p>
           <p style="margin-top: 2rem;">
             <ArrowLink href={requestHref} label="Start a request" dark />
           </p>
@@ -223,7 +216,7 @@ const requestHref = service
 
       <PageCta
         title="Send the details"
-        body="Tell us the property and the work. We’ll come back with a quote before anything is booked."
+        body="A few lines on the place is enough to start."
         href={requestHref}
         label="Request / book a service"
       />

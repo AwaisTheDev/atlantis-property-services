@@ -22,10 +22,10 @@ const urgent = urgentParam === "1" || urgentParam === "true" || urgentParam === 
     <div class="wrap">
       <div class="contact-layout">
         <aside class="contact-layout__aside">
-          <h2 class="contact-layout__heading">A quote, or a booking</h2>
+          <h2 class="contact-layout__heading">Get a price, or book it</h2>
           <p class="page-intro__text">
-            The property, the work, and when you’d like it done. We read every request for Melbourne’s
-            inner suburbs, including Brunswick East and the surrounding postcodes.
+            Where’s the place, what’s the job, and when do you need it. We read everything that comes
+            in, including Brunswick East and the suburbs around it.
           </p>
           <div class="contact-rows">
             <div class="contact-row">
@@ -50,7 +50,7 @@ const urgent = urgentParam === "1" || urgentParam === "true" || urgentParam === 
             </div>
           </div>
           <p class="muted contact-details__note">
-            Add your postcode. We look at every request, including those a little outside our usual area.
+            Put the postcode in. If you’re a bit outside where we usually work, we’ll still read it.
           </p>
         </aside>
 
@@ -91,8 +91,8 @@ const urgent = urgentParam === "1" || urgentParam === "true" || urgentParam === 
               <p class="page-intro__text" style="margin-bottom: 0;">
                 {
                   urgent
-                    ? "This is marked urgent. Tell us what’s wrong, when it needs attention, and how we get in."
-                    : "A few details and photos, if you have them, are enough for us to price the work."
+                    ? "You’ve marked this urgent. What’s gone wrong, when does it have to be done, and how do we get in?"
+                    : "A few lines is fine. Photos help if you’ve got them."
                 }
               </p>
               <RequestForm service={service} property={property} urgent={urgent} />

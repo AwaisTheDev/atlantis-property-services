@@ -1,9 +1,9 @@
 export const site = {
   name: "Atlantis Property Services",
   legalName: "Atlantis Property Services",
-  tagline: "Property services for Melbourne homes and buildings.",
+  tagline: "Cleaning, gardens and the rest of the jobs a Melbourne property needs.",
   description:
-    "Atlantis Property Services looks after cleaning, gardens, windows, waste and maintenance across Melbourne’s inner suburbs, including Brunswick East. Request a quote.",
+    "Atlantis Property Services handles cleaning, gardens, windows, rubbish and repairs for homes and buildings around Brunswick East and Melbourne’s inner suburbs.",
   email: "info@atlantisps.com.au",
   phone: "03 7023 9460",
   serviceArea: "Melbourne’s inner suburbs (about 50 km of the CBD), with a focus around Brunswick East and surrounding postcodes",
@@ -13,17 +13,17 @@ export const site = {
     {
       step: "1",
       title: "Tell us what you need",
-      body: "A short note on the property, the work, and when it needs to happen is enough to start.",
+      body: "What’s the place, what needs doing, and is there a date? That’s enough to start.",
     },
     {
       step: "2",
       title: "We arrange it",
-      body: "We look at the job, price it, and book the right people. You hear back from us.",
+      body: "We’ll have a look, send a price, and book it if you’re happy.",
     },
     {
       step: "3",
       title: "We get it done",
-      body: "The work is carried out to the quote you accepted. Questions stay with Atlantis.",
+      body: "It gets done as quoted. If you’ve got a question, you call us.",
     },
   ],
   why: [
@@ -47,13 +47,13 @@ export const site = {
   testimonials: [
     {
       quote:
-        "We had an end-of-lease clean and two small repairs due the same week. Atlantis took both and kept us posted. We didn’t have to chase anyone.",
+        "End of lease was the Friday and we still had a bathroom that needed a proper clean and a door that wouldn’t latch. They just took both. I didn’t have to line up three different people.",
       name: "Property manager",
       company: "Residential portfolio",
     },
     {
       quote:
-        "The place needed a proper clean and a couple of handyman jobs before handover. One call covered it. The updates were clear, which is all I wanted.",
+        "Used them on a unit in Brunswick East before the new tenant moved in. The clean was good, and they actually replied when I asked about the time. That doesn’t always happen.",
       name: "Property owner",
       company: "Brunswick East",
     },
