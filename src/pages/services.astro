@@ -7,16 +7,16 @@ import { servicesByGroup } from "../data/services";
 
 <BaseLayout
   title="Property Services in Melbourne"
-  description="Cleaning, end-of-lease, windows, gardens, waste, handyman work and building care from Atlantis Property Services, across Melbourne’s inner suburbs."
+  description="Cleaning, end-of-lease, windows, gardens, waste removal, handyman work and building care from Atlantis Property Services, across Melbourne’s inner suburbs."
 >
   <PageBanner title="Property services across Melbourne" image="/images/window-cleaning.jpg" wide />
 
   <section class="page-intro">
     <div class="wrap">
       <p class="page-intro__text">
-        Homes, units and commercial places around Brunswick East and the inner suburbs, out to about
-        50 km from the city. Have a look through, or send the job with your postcode if you already
-        know what you need.
+        The work is grouped below, from cleaning through to the care of a whole building. Open a category
+        to see how those jobs are organised, or go to a single service when you already know which one
+        the property needs.
       </p>
       <nav class="service-cats" aria-label="Service categories">
         {
@@ -75,5 +75,8 @@ import { servicesByGroup } from "../data/services";
     </div>
   </section>
 
-  <PageCta />
+  <PageCta
+    title="The job may sit in more than one group"
+    body="Tick every service the visit should cover. We will price them together when they share an address and a date."
+  />
 </BaseLayout>

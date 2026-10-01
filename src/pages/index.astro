@@ -4,7 +4,7 @@ import ArrowLink from "../components/ArrowLink.astro";
 import { site } from "../data/site";
 ---
 
-<BaseLayout title={site.name} description={site.description}>
+<BaseLayout title="Melbourne Property Services" description={site.description}>
   <!-- 1. Homepage banner -->
   <section class="banner banner--homepage">
     <div class="banner__bg" aria-hidden="true">
@@ -23,7 +23,7 @@ import { site } from "../data/site";
       <div class="wrap">
         <div class="banner__inner">
           <div class="banner__text">
-            <h1>Melbourne property services for homes, apartments and commercial sites</h1>
+            <h1>Melbourne property services for homes, apartments and commercial buildings</h1>
           </div>
           <div class="banner__links">
             <ArrowLink href="/contact?tab=request&property=residential" label="Residential" />
@@ -39,21 +39,24 @@ import { site } from "../data/site";
     <div class="wrap">
       <div class="text-columns__inner">
         <div class="text-columns__col text-columns__col--left">
-          <h2>One point of contact across the work a property needs</h2>
+          <h2>One company for the jobs a property collects at once</h2>
         </div>
         <div class="text-columns__col text-columns__col--right">
           <div class="text-columns__text">
             <p>
-              Most places need more than a single trade. A bond clean with a door that won’t close. Windows
-              before an open. A garden that’s got away, and hard rubbish still sitting in the garage.
+              Most homes and buildings need more than a single trade. A vacate might still need a proper
+              bathroom clean and a door that will not latch. An open inspection might need the windows
+              finished and the garden cut before the photographer arrives. Hard rubbish can still be in
+              the garage when the rest of the work has already been booked.
             </p>
             <p>
-              We’re around Brunswick East and work through Melbourne’s inner suburbs. Ring us, or send the
-              form through. We’ll look at the job and come back with a price. You won’t be handed around.
+              Atlantis Property Services handles that mix from Brunswick East, for properties within about
+              50 kilometres of the Melbourne CBD. You speak to us about the job, the quote comes from us,
+              and you call us if something needs attention afterwards.
             </p>
           </div>
           <div class="text-columns__links">
-            <ArrowLink href="/services" label="Full list of services" dark />
+            <ArrowLink href="/services" label="View all services" dark />
           </div>
         </div>
       </div>
@@ -76,16 +79,15 @@ import { site } from "../data/site";
         </div>
         <div class="textbox-image__body">
           <div class="textbox-image__text">
-            <h2>The properties we look after play a crucial role in how people live, work and feel at home.</h2>
+            <h2>Access and timing belong in the quote</h2>
             <p>
-              A single-front terrace, a third-floor unit and a shop on Sydney Road are not the same job.
-              Lift access, where a van can stop, a body corporate rule about the balcony — that stuff
-              changes the price, so we ask about it.
+              A single-front terrace, a third-floor apartment and a shopfront on Sydney Road are priced
+              differently, because the way we get in is part of the work. Tell us about lift bookings,
+              where a van can stop, and any owners corporation rule that limits balcony access.
             </p>
             <p>
-              People often put a few things on the one request. Windows with the vacate. A garden cut
-              before the photographer comes. If the date can’t move, say that first. We’ll tell you
-              honestly if we can make it.
+              When several tasks have to land on the same morning, put them in the one request. We will
+              tell you whether that morning is realistic before we schedule anyone.
             </p>
           </div>
         </div>
@@ -93,7 +95,7 @@ import { site } from "../data/site";
     </div>
   </section>
 
-  <!-- 4. Inspired by simplicity -->
+  <!-- 4. Quote before booking -->
   <section class="section textbox-image textbox-image--image-right">
     <div class="wrap">
       <div class="textbox-image__inner">
@@ -109,15 +111,16 @@ import { site } from "../data/site";
         </div>
         <div class="textbox-image__body">
           <div class="textbox-image__text">
-            <h2>Inspired by simplicity.</h2>
+            <h2>You approve the price before we attend</h2>
             <p>
-              A few lines on the place and what’s needed is enough to start. Photos help when it’s rubbish,
-              a garden, or something that’s fiddly to describe. We’ll send a price. Nothing’s booked until
-              you say so.
+              Describe the property and the work in plain sentences. Add photographs when the job is a
+              garden, a load of rubbish, or a fault that is awkward to explain. We reply with a price and
+              a scope, and the work starts only after you accept that quote.
             </p>
             <p>
-              If it’s urgent and there’s a call-out charge, we’ll mention it before anyone turns up. The
-              people on site are insured. If it isn’t right afterwards, you call us.
+              Urgent work is quoted the same way. If a call-out fee applies, it is written into the quote
+              before anyone travels. The people who attend are insured, and the booking stays with
+              Atlantis.
             </p>
           </div>
           <div class="textbox-image__buttons">
@@ -179,13 +182,13 @@ import { site } from "../data/site";
       <div class="wrap">
         <div class="cta__inner">
           <div class="cta__text">
-            <h2>Let’s get it done.</h2>
+            <h2>Start with the property</h2>
             <p>
-              Tell us about the place. We’ll have a look and send a price.
+              If you already know the address and the tasks, send them through and we will price the visit.
             </p>
           </div>
           <div class="cta__buttons">
-            <ArrowLink href="/contact?tab=request" label="Contact us" />
+            <ArrowLink href="/contact?tab=request" label="Request a quote" />
           </div>
         </div>
       </div>

@@ -1,501 +1,794 @@
 import type { Service } from "./services";
 
 export type ServicePageContent = {
-  /** Longer intro paragraphs for the overview section */
+  meta: string;
+  overviewHeading: string;
   overview: string[];
-  /** Longer paragraphs covering scope, who it’s for, and practical notes */
+  expectHeading: string;
   expect: string[];
-  /** Short checklist shown inside the expect section */
+  includesHeading: string;
+  scopeNote: string;
   includes: string[];
+  relatedIntro: string;
+  ctaTitle: string;
+  ctaBody: string;
 };
 
-type GroupCopy = {
-  includes: string[];
-  expect: string[];
-};
-
-const groupCopy: Record<string, GroupCopy> = {
-  "Cleaning & hygiene": {
-    includes: [
-      "The rooms you actually want done",
-      "Weekly, fortnightly, or just the once",
-      "A bond clean off the agency checklist, when that’s the job",
-      "Ring us if something’s been missed",
-    ],
-    expect: [
-      "Owners, tenants, landlords, and whoever’s stuck looking after the office. A regular clean and a vacate are different jobs — say which one you’ve got.",
-      "Parking, keys, and what time of day someone can actually get in. If the postcode’s a bit outside where we usually go, send it anyway.",
-    ],
-  },
-  "Property & exterior care": {
-    includes: [
-      "Glass, gardens, paint, fences, the small repairs",
-      "A photo if it’s outside and hard to describe",
-      "Once, or a visit that comes around",
-      "Weather can shove an outdoor day — we’ll say if it has",
-    ],
-    expect: [
-      "Gardens, glass, the front of the building, the shared bits out the back. A photo saves a long email.",
-      "If the date can’t move, say so. Otherwise rain, or a body corporate rule about the balcony, will move an outdoor job for you.",
-    ],
-  },
-  "Waste & removal": {
-    includes: [
-      "What’s being taken, agreed before the day",
-      "Stairs, a lift, and where a ute can stop",
-      "A rough list is enough to start",
-      "Houses, units and shop clean-outs",
-    ],
-    expect: [
-      "Clear-outs, furniture, hard rubbish, or a place someone’s walked out of. List what you can. Stairs and building rules matter as much as how much stuff there is.",
-      "We’ll say what’s being taken before the ute turns up. Not on the footpath, arguing about a mattress that wasn’t on the list.",
-    ],
-  },
-  "Move-in / move-out": {
-    includes: [
-      "The clean, and whatever else has to happen before the keys",
-      "Timed to the handover, not “sometime that week”",
-      "The agency checklist, if they gave you one",
-      "Rubbish or a small repair on the same visit, when it has to be",
-    ],
-    expect: [
-      "Tenants leaving, owners between leases, managers with a few places turning over at once. A tight Friday is much easier if we know on the Monday.",
-      "Stick the bond checklist on if you’ve got one. The garden, a door, a load of rubbish — if it has to be done before the keys, put it on the same note.",
-    ],
-  },
-  "Property presentation": {
-    includes: [
-      "Who’s walking through, and which morning",
-      "Staging, styling, or just the rooms people will stand in",
-      "Furniture in before the photos, not the week after",
-      "The tidy-up around it, if you want that too",
-    ],
-    expect: [
-      "Usually a place going to lease or sale, or a manager getting it ready for the photographer. Empty rooms and furnished rooms are different jobs.",
-      "We don’t sell a set package. A one-bedroom in Brunswick and a family house in the east don’t get the same furniture, or the same price.",
-    ],
-  },
-  "Building & facilities": {
-    includes: [
-      "Foyers, corridors, the jobs that keep coming back",
-      "A one-off, or a round through the year",
-      "Access rules, and who actually wants the update",
-      "A few units turning over in the same week",
-    ],
-    expect: [
-      "Strata, building managers, and anyone who’s sick of a different number for the foyer, the garden and the vacant unit on level two.",
-      "What sort of building, how we get in, and how urgent. If you want it on a regular round after the first job, say that — don’t wait for us to suggest it.",
-    ],
-  },
-};
-
-const fallbackCopy: GroupCopy = {
-  includes: [
-    "What you described, not a generic package",
-    "Access and timing, because they change the day",
-    "Homes, units and commercial sites",
-    "A call back to us if it isn’t right",
-  ],
-  expect: [
-    "Homes, managers and commercial sites through Melbourne’s inner suburbs.",
-    "The more specific you are about access and the date, the less we have to guess.",
-  ],
-};
-
-type Override = {
-  overview?: string[];
-  expect?: string[];
-  includes?: string[];
-};
-
-const overrides: Partial<Record<string, Override>> = {
+const pages: Record<string, ServicePageContent> = {
   "residential-cleaning": {
+    meta: "Regular and one-off home cleaning for houses and apartments, arranged by Atlantis Property Services in Melbourne.",
+    overviewHeading: "A clean that fits the household",
     overview: [
-      "Some households want a set morning each fortnight. Others ring when the place has got away from them. Both are fine.",
-      "Kitchen, bathrooms, floors, and whichever other rooms you care about. Pets, a fob for the car park, a key under the mat — mention it. That’s what makes the first visit messy or not.",
+      "Some households want the same morning each fortnight, with the kitchen, bathrooms and floors done the same way every time. Others call when visitors are coming, or when the place has slipped past what a quick tidy can fix.",
+      "Tell us about pets, a car-park fob, and where the keys live. Those details decide whether the first visit starts on time.",
     ],
+    expectHeading: "What we need before the first visit",
+    expect: [
+      "Say which rooms are in, and which rooms you would rather we left alone. A study full of papers and a child’s bedroom are often excluded on purpose.",
+      "If someone will be home, tell us the window of time that works. If the house will be empty, tell us how we lock up.",
+    ],
+    includesHeading: "A typical home visit covers",
+    scopeNote: "Your quote names the rooms and the frequency. Anything outside that list is agreed before we add it.",
     includes: [
-      "Fortnightly, or when you ring because it’s got away",
-      "Kitchen, bathrooms, floors, and the rooms you add",
-      "Keys, parking, pets, if any of that’s awkward",
-      "The same arrangement if you want it to keep going",
+      "We clean the kitchen, including benches, the cooktop and the outside of the appliances.",
+      "We clean bathrooms, toilets and the floors you have included.",
+      "We dust, vacuum and mop the living areas on the agreed list.",
+      "We follow the same routine on later visits when you want the arrangement to continue.",
     ],
+    relatedIntro: "If the house also needs the oven pulled apart, or the windows done on the same morning, those are separate services you can add to the request.",
+    ctaTitle: "Arrange a home clean",
+    ctaBody: "Tell us whether you want a returning morning or a single visit, and how we collect the keys.",
   },
   "commercial-cleaning": {
+    meta: "After-hours and scheduled cleaning for Melbourne offices, shops and small commercial tenancies.",
+    overviewHeading: "Cleaning around the way the premises run",
     overview: [
-      "An office after the staff have gone. A shop on a morning it’s shut. A small tenancy that just needs the floors and the kitchen, not a hospital-grade clean.",
-      "If next week has to move, say so. We’d rather know than turn up to a locked door and an alarm.",
+      "An office is usually cleaned after the last person leaves. A shop is often cleaned on the morning it is closed, before the floor is stocked again.",
+      "We need the alarm code, the loading-dock rules, and any area that staff would rather we did not touch, such as a server cupboard or a locked storeroom.",
     ],
-    includes: [
-      "After hours, or whenever the place is actually empty",
-      "The zones you care about, not a generic whole office",
-      "Weekly, or a one-off before an event or a fit-out",
-      "Alarm codes and loading docks, if they’re fussy",
-    ],
-  },
-  "end-of-lease": {
-    overview: [
-      "Vacate cleans are a date. The keys, the inspection, sometimes both on the same Friday.",
-      "Ovens, skirts, the bathroom the last clean skipped. If the agency sent a checklist, that’s what we work off — not a guess at what “bond clean” means to them.",
-    ],
-    includes: [
-      "Off the agency checklist, when you’ve got one",
-      "Ovens, bathrooms, skirts, inside cupboards",
-      "The day the keys have to be back",
-      "Photos if it’s worse than a normal vacate",
-    ],
+    expectHeading: "Before we set a commercial schedule",
     expect: [
-      "Tenant, landlord or manager — same form. Say when someone can get in, and whether the power and water are still on.",
-      "Rubbish or a small repair can go on the same job if they also have to be done before handover. A separate booking for a door latch is how Fridays fall apart.",
+      "Tell us the nights or mornings the premises are actually empty. A clean booked against a late meeting will be turned away at the door.",
+      "If a public holiday or a fit-out will close the site, say so when you enquire so the schedule can move before we travel.",
     ],
-  },
-  "deep-cleaning": {
-    overview: [
-      "A kitchen a normal visit won’t shift. A bathroom that’s gone past a wipe. A place that’s been empty and smells like it.",
-      "Photos matter here more than a room count. Two bathrooms in the same postcode can be completely different jobs.",
-    ],
-  },
-  "window-cleaning": {
-    overview: [
-      "Inside, outside, or both. A terrace on the ground, or glass three floors up with a balcony you’re not sure we’re allowed on.",
-      "Body corporate rules and the weather are the two things that move this. A regular visit makes sense if the front windows face a main road and go grey every month.",
-    ],
-    expect: [
-      "Count the storeys, and say whether we can stand on the balcony. If the building has a rule about it, that rule is the job.",
-    ],
+    includesHeading: "What a commercial clean usually includes",
+    scopeNote: "The quote lists the zones, not a generic whole-building package. Add or remove areas before you accept it.",
     includes: [
-      "Inside, outside, or both",
-      "Homes and shopfronts",
-      "Balcony access, if we’re allowed",
-      "A regular visit if the glass faces a main road",
+      "We clean the kitchen, the bathrooms and the floors in the zones you name.",
+      "We empty bins and wipe the touch points that a working day leaves behind.",
+      "We can visit weekly, or once before an event or a handover of the tenancy.",
+      "We work to the alarm and lock-up instructions you provide.",
     ],
-  },
-  "pressure-washing": {
-    overview: [
-      "Driveways that have gone green, paths, the side of the building nobody’s touched since last winter.",
-      "A photo of the worst of it is more useful than a measurement. And say if the water has to stay off the neighbour’s side, or out of a basement vent.",
-    ],
-    expect: [
-      "A photo of the staining, and where the water is allowed to go. Runoff into a basement or across a neighbour’s path is the bit that gets expensive.",
-    ],
-    includes: [
-      "Driveways, paths, the façade",
-      "The green and the grey, not a repaint",
-      "Water kept off the neighbour, if that matters",
-      "A dry day — rain makes a mess of the result",
-    ],
-  },
-  "gardening-landscaping": {
-    overview: [
-      "A garden that’s got away, or one that should simply stay looked after so you’re not embarrassed at an open.",
-      "Beds, lawn, the hedge on the lane. Say whether a trailer can get down the drive. Some of the inner-north terraces can’t take one, and that changes how the green waste leaves.",
-    ],
-    includes: [
-      "Lawn, edges, and the beds you want touched",
-      "A cut before an open, or a regular visit",
-      "Green waste taken, if that’s part of it",
-      "Where a trailer can actually get in",
-    ],
-    expect: [
-      "Say what you want left, not just what you want cut. Some people want it neat. Some want the agapanthus gone. Those are different afternoons.",
-    ],
-  },
-  "handyman": {
-    overview: [
-      "The list that isn’t worth three call-outs. A hinge, a silicone edge, a tap washer, the hall light that’s been out since March.",
-      "Photos help when it’s easier to show than describe. If they’ll fit in the same morning, they go on the one visit.",
-    ],
-    expect: [
-      "Put the whole list in the one note. If something needs a plumber or an electrician rather than a handyman, we’ll say so instead of pretending.",
-    ],
-    includes: [
-      "The small jobs on one list",
-      "Hinges, washers, silicone, lights",
-      "Photos where it’s easier to show",
-      "One morning, if they’ll fit",
-    ],
-  },
-  "rubbish-removal": {
-    overview: [
-      "What’s actually there — not “a bit of junk”. A garage, a room, the stuff left after a tenant. A rough list and a couple of photos.",
-      "Stairs, a lift that fits a sofa or doesn’t, and where a ute can stop without blocking the tram. That’s the price. Not a guess from the footpath.",
-    ],
-  },
-  "property-maintenance": {
-    overview: [
-      "A leaking tap this week. Or a round every couple of months so the small stuff doesn’t sit until a tenant complains.",
-      "How we get in matters as much as what’s broken. A lockbox, a resident who’s home after five, a manager who wants a photo when it’s done.",
-    ],
-    expect: [
-      "One thing this week is fine. So is a round every couple of months. Say which, because the price isn’t the same.",
-    ],
-    includes: [
-      "The thing that’s actually broken",
-      "Or a round so it doesn’t get that far",
-      "How we get in",
-      "A photo back to you, if you want one",
-    ],
-  },
-  "builders-clean": {
-    overview: [
-      "Plaster dust, paint speck, the offcuts the tradies left in the bath. This has to wait until they’re actually out.",
-      "A clean booked while the tiler is still on site just gets ruined. The real day the place is clear matters more than the date on the program.",
-    ],
-    expect: [
-      "Dust in the tracks, paint on the glass, grit in the bath. If the sparkie’s still coming back tomorrow, wait.",
-    ],
-    includes: [
-      "After the tradies are out",
-      "Dust, paint speck, offcuts",
-      "Floors, glass, wet areas",
-      "The handover day, if there’s one",
-    ],
-  },
-  "strata-common": {
-    overview: [
-      "Common property: the foyer, the garden the committee argues about, the paths, the bin room.",
-      "Access rules, whether residents are particular about after-hours, and which one person wants the update. A group email to the whole committee is how these jobs stall.",
-    ],
-    includes: [
-      "Foyer, garden, paths, the bin area",
-      "Whatever the committee has actually asked for",
-      "Access and after-hours rules",
-      "An update to one person, not the whole committee",
-    ],
+    relatedIntro: "Shopfront glass and a pressure wash of the rear lane are quoted on their own pages if the premises need them as well as the internal clean.",
+    ctaTitle: "Set up a premises clean",
+    ctaBody: "Send the trading hours, the zones you want cleaned, and whether the first visit is a trial or the start of a schedule.",
   },
   "apartment-common-area": {
+    meta: "Scheduled cleaning of apartment lobbies, lifts, mail rooms and bin rooms for Melbourne buildings.",
+    overviewHeading: "Common areas on a set day",
+    overview: [
+      "Lobbies, lifts, mail rooms and bin rooms collect a different kind of dirt from a private apartment. They need a visit that residents can rely on, rather than a clean that happens when someone remembers to book it.",
+      "Weekly suits most buildings. A small block can hold its standard on a fortnightly visit, and we will say so if that is what the foyer looks like.",
+    ],
+    expectHeading: "Access for a common-area clean",
     expect: [
-      "Lobbies and bin rooms pick up a different kind of dirt to a home. Weekly is the usual, unless the building is small enough that fortnightly still looks alright.",
+      "Tell us whether the clean should happen while the foyer is quiet, and who holds the keys to the bin room and the plant areas we are allowed to enter.",
+      "Name the person who should hear from us if a lift is out of service or a resident has left something that we should not move.",
     ],
+    includesHeading: "Rooms we typically clean",
+    scopeNote: "The quote lists the shared rooms. Private apartments are not included unless you book a separate turnover.",
     includes: [
-      "Foyer and lifts",
-      "Bin rooms and the mail area",
-      "A set day",
-      "After hours, if residents want the foyer quiet",
+      "We clean the foyer floor, glass and entry mats.",
+      "We clean lift interiors, including the tracks where grit collects.",
+      "We clean the mail area and the bin room on the agreed round.",
+      "We keep to the same day so the building does not depend on a different roster each week.",
     ],
+    relatedIntro: "Gardens, gates and the outdoor paths of the same complex are maintained under common area maintenance, which you can add if the brief goes past the internal rooms.",
+    ctaTitle: "Book the building’s clean",
+    ctaBody: "Tell us how many levels the common areas cover, and which day the foyer should be finished by.",
+  },
+  "end-of-lease": {
+    meta: "End-of-lease and bond cleaning in Melbourne, timed to the inspection and the return of the keys.",
+    overviewHeading: "A vacate clean set by the key date",
+    overview: [
+      "An end-of-lease clean is organised around the inspection and the hour the keys have to be back with the agent. Ovens, skirting boards, the inside of cupboards and the bathroom a regular clean has skipped are the usual gaps.",
+      "If the agency has issued a checklist, send it with the request. We work to that list rather than to a general idea of a bond clean.",
+    ],
+    expectHeading: "Details that change a vacate",
+    expect: [
+      "Say whether the power and water are still connected, and who can let us in if you have already moved out.",
+      "Rubbish that still has to leave, or a door that will not latch, can be added when those tasks also have to be finished before handover.",
+    ],
+    includesHeading: "What we clean on a vacate",
+    scopeNote: "Where an agency checklist is attached, that document is the scope. The quote follows it line by line.",
+    includes: [
+      "We clean ovens, cooktops and the inside of cupboards.",
+      "We clean bathrooms, including screens, skirts and fittings.",
+      "We clean skirting boards, tracks and the floors throughout.",
+      "We time the finish to the day the keys must be returned.",
+    ],
+    relatedIntro: "A garden cut or a load of leftover furniture often shares the same Friday. Those jobs are listed separately so the vacate quote stays clear.",
+    ctaTitle: "Send the vacate date",
+    ctaBody: "Include the key-return time and the agency checklist if you have one.",
+  },
+  "deep-cleaning": {
+    meta: "Deep cleaning for Melbourne kitchens, bathrooms and vacant properties that need more than a standard visit.",
+    overviewHeading: "When a standard clean will not do",
+    overview: [
+      "Deep cleaning is for a kitchen with a year of build-up, a bathroom that needs more than a surface wipe, or a property that has been empty long enough to need a full reset.",
+      "Two bathrooms in the same postcode can be entirely different jobs. Photographs of the worst rooms tell us more than a bedroom count.",
+    ],
+    expectHeading: "How we scope a deep clean",
+    expect: [
+      "Point us at the rooms that have gone past a regular visit, and tell us if anyone is living in the property while the work happens.",
+      "If the clean is the first step before painting or a new lease, say so. The order of those trades changes the day we should attend.",
+    ],
+    includesHeading: "A deep clean concentrates on",
+    scopeNote: "We quote the rooms you show us. A whole-house deep clean is priced only when you ask for every room.",
+    includes: [
+      "We detail kitchens, including the splashback, the rangehood and the cupboard fronts.",
+      "We detail bathrooms, including grout, screens and fittings that a wipe has left behind.",
+      "We treat vacant rooms that need more than a vacuum and a mop.",
+      "We agree the room list before anyone arrives, so the visit has a finish line.",
+    ],
+    relatedIntro: "If the property is being handed back to an agent, an end-of-lease clean may be the better fit. Use this page when the issue is condition, not a bond checklist.",
+    ctaTitle: "Show us the rooms",
+    ctaBody: "Send photographs of the kitchen and bathrooms, and say whether the property is occupied or empty.",
+  },
+  "builders-clean": {
+    meta: "Builders cleans in Melbourne for dust, paint specks and debris after a renovation is finished.",
+    overviewHeading: "After the trades have left",
+    overview: [
+      "A builders clean removes plaster dust, paint specks and the offcuts left in baths and on floors. It should wait until the tiler, the painter and the electrician have actually finished.",
+      "A clean booked while another trade is still on site has to be done again. The day the rooms are clear matters more than the date printed on the building program.",
+    ],
+    expectHeading: "When to book the final clean",
+    expect: [
+      "Tell us the last trade still due back. If a sparkie is returning tomorrow, we will wait until that visit is done.",
+      "If there is a handover to the owner or the agent, send that morning so the clean finishes before people walk the site in clean shoes.",
+    ],
+    includesHeading: "The final clean takes in",
+    scopeNote: "Construction waste that needs a separate skip is quoted as rubbish removal, not as part of the builders clean.",
+    includes: [
+      "We remove fine dust from floors, tracks and wet areas.",
+      "We clean paint specks from glass and fittings where they can be lifted safely.",
+      "We clear offcuts and packaging the trades have left behind.",
+      "We leave the property ready for the handover you have named.",
+    ],
+    relatedIntro: "Window cleaning and a pressure wash of the drive are often the next step once the internal dust is gone. Book them if the outside was part of the renovation too.",
+    ctaTitle: "Book the post-renovation clean",
+    ctaBody: "Tell us the day the last trade leaves, and whether there is a client handover after that.",
+  },
+  "window-cleaning": {
+    meta: "Internal and external window cleaning for Melbourne homes, apartments and shopfronts.",
+    overviewHeading: "Glass, inside and out",
+    overview: [
+      "We clean glass at street level and several floors up, inside, outside, or both. A terrace with sash windows and a balcony three floors up are planned differently.",
+      "Owners corporation rules decide whether we can stand on a balcony. Rain delays an external clean, so a date that cannot move should be said at the start.",
+    ],
+    expectHeading: "What changes the method",
+    expect: [
+      "Count the storeys and say whether the building allows balcony access. If it does not, the quote has to use another method or stop at the floors we can reach.",
+      "Glass that faces a main road marks quickly. A returning visit makes sense there, and we can set that once we have seen the frontage.",
+    ],
+    includesHeading: "A window clean can include",
+    scopeNote: "The quote states inside, outside, or both, and the floors we can safely reach.",
+    includes: [
+      "We clean internal glass when you want the rooms done as well as the façade.",
+      "We clean external glass where access and weather allow it.",
+      "We include shopfronts and residential windows on the same enquiry when they are the one property.",
+      "We can return on a schedule for glass that faces a busy road.",
+    ],
+    relatedIntro: "A pressure wash of the frame surrounds, or a clean of the courtyard below, is quoted separately if you want the whole frontage done on the same day.",
+    ctaTitle: "Tell us about the glass",
+    ctaBody: "Say how many floors, whether the clean is inside or outside, and if a balcony is available.",
+  },
+  "pressure-washing": {
+    meta: "Pressure washing for Melbourne driveways, paths and building façades, quoted from photographs of the staining.",
+    overviewHeading: "Hard surfaces that have gone green or grey",
+    overview: [
+      "Driveways, paths and the side of a building that has not been washed since last winter are the usual jobs. A photograph of the worst staining is more useful than a measurement in metres.",
+      "Tell us where the water is allowed to go. Runoff into a basement vent, or across a neighbour’s path, changes the way the surface is washed.",
+    ],
+    expectHeading: "Before we wash",
+    expect: [
+      "Note the water supply on site, and any building rule about runoff. Those two facts decide whether the job can proceed as a straightforward wash.",
+      "We book a dry day so the result can be seen. If your deadline is fixed, say so and we will tell you whether the forecast allows it.",
+    ],
+    includesHeading: "Surfaces we wash",
+    scopeNote: "Pressure washing lifts organic growth and surface grime. It is not a repaint, and the quote will say so if the mark is in the material itself.",
+    includes: [
+      "We wash driveways, paths and other hard standings you point out.",
+      "We wash façades where the surface and the runoff allow it.",
+      "We keep water off neighbouring property when you tell us that matters.",
+      "We schedule the work for a dry day so the finish can be checked.",
+    ],
+    relatedIntro: "If the courtyard also needs cobwebs and bins dealt with by hand, exterior cleaning is the closer match and can be combined with the wash.",
+    ctaTitle: "Send a photo of the staining",
+    ctaBody: "Include where the water should run, especially if there is a basement or a shared path.",
   },
   "exterior-cleaning": {
+    meta: "Exterior cleaning of Melbourne façades, courtyards and bin areas before inspections or as a seasonal reset.",
+    overviewHeading: "The street front and the courtyard",
+    overview: [
+      "The face of the building that people see from the footpath, and the courtyard nobody has looked at since winter, are often in very different condition. We price them from photographs of each.",
+      "Algae, cobwebs and the bin area are the usual brief. If the work has to be finished before an open inspection, name that morning.",
+    ],
+    expectHeading: "What to include with the enquiry",
     expect: [
-      "The street front and the courtyard are often two different states of neglect. A photo of each, or we’ll price the tidy one and turn up to the other.",
+      "Send a photograph of the street front and a separate one of the courtyard or the rear lane. One tidy photo will not stand in for the neglected side.",
+      "Say where wash water is allowed to run, particularly on a shared driveway or above another tenancy.",
     ],
+    includesHeading: "An exterior clean usually takes in",
+    scopeNote: "High glass and a full pressure wash are separate services. We will say so if your photographs show that the job is really one of those.",
     includes: [
-      "The façade and the courtyard",
-      "Cobwebs, algae, the bins",
-      "Before an open, if there’s a morning",
-      "Where the water is allowed to run",
+      "We clean the façade that faces the street.",
+      "We clean courtyards, including corners that a garden tidy does not reach.",
+      "We clear cobwebs and the immediate area around the bins.",
+      "We can finish before a named inspection morning.",
     ],
+    relatedIntro: "Window cleaning and gardening sit beside this work when the whole frontage has to be ready for photographs.",
+    ctaTitle: "Show us both sides of the building",
+    ctaBody: "Send the street view and the courtyard, and tell us if an inspection morning is already booked.",
+  },
+  "gardening-landscaping": {
+    meta: "Lawn, garden bed and hedge care in Melbourne, as a one-off tidy or a regular visit.",
+    overviewHeading: "A garden brought back, or kept in order",
+    overview: [
+      "Some gardens need one thorough cut before an inspection. Others need a visit every few weeks so the lawn and the hedge on the laneway do not get away again.",
+      "Say whether a trailer can use the drive. Many inner-north terraces cannot take one, and that changes how the green waste leaves the property.",
+    ],
+    expectHeading: "Tell us what should stay",
+    expect: [
+      "A neat tidy and the removal of overgrown planting are different afternoons. Say what you want kept, as well as what you want cut.",
+      "If green waste has to leave the site, include that in the request so it is on the quote rather than decided on the day.",
+    ],
+    includesHeading: "A garden visit can cover",
+    scopeNote: "We quote the beds and lawn areas you describe. New landscaping, such as rebuilding a garden, is scoped only when you ask for it.",
+    includes: [
+      "We mow the lawn and tidy the edges you want maintained.",
+      "We weed and cut back the beds you include.",
+      "We trim hedges, including those on a laneway, where we can reach them safely.",
+      "We remove green waste when that is part of the agreed visit.",
+    ],
+    relatedIntro: "A pressure wash of the path, or a fence repair found while we are in the yard, can be added once you have seen the garden quote.",
+    ctaTitle: "Describe the garden",
+    ctaBody: "Say whether you need one cut before an inspection or a visit that returns, and whether a trailer can get in.",
   },
   painting: {
+    meta: "Interior and exterior painting in Melbourne for lease refreshes, weatherboards and front fences.",
+    overviewHeading: "Paint for a lease or for the outside",
+    overview: [
+      "A couple of rooms before a new lease, and the weatherboards plus the front fence, are both painting jobs. They are planned differently once we know who is living there and when the paint has to be dry.",
+      "Wet paint on the morning of an open inspection is the failure this work has to avoid, so the dry-by date belongs in the first message.",
+    ],
+    expectHeading: "What the painter needs to know",
     expect: [
-      "Say if anyone’s living there while it’s happening, and when it has to be dry. Wet paint the morning of an open is the way this goes wrong.",
+      "Say whether anyone will be in the property while the work is underway, and whether the rooms will be emptied or the furniture shifted by us.",
+      "If you have already chosen the colour, send it. If you have not, say so and we will treat colour selection as part of the brief.",
     ],
+    includesHeading: "A painting quote is built from",
+    scopeNote: "Preparation such as filling and sanding is listed on the quote when the surface needs it. We do not assume a bare coat of paint.",
     includes: [
-      "Rooms, or the outside",
-      "The colour, if you’ve already chosen it",
-      "When it has to be dry",
-      "Furniture shifted, or the rooms emptied",
+      "We paint the interior rooms you name, or the exterior surfaces you name.",
+      "We work to a colour you have chosen, or we confirm one with you first.",
+      "We schedule the work so the finish is dry by the date you give us.",
+      "We move furniture or work around emptied rooms, according to what you arrange.",
     ],
+    relatedIntro: "Property preparation is the better page when paint is only one item on a list that also includes a clean and the garden before a listing.",
+    ctaTitle: "Tell us what has to be dry",
+    ctaBody: "Name the rooms or the exterior, the colour if you have it, and the morning the paint must be finished.",
   },
   "fence-repairs": {
+    meta: "Timber fence repairs in Melbourne, quoted from photographs of damaged panels, posts and palings.",
+    overviewHeading: "Panels, posts and palings",
+    overview: [
+      "A blown panel, a leaning post, or palings that need replacing can usually be quoted from a clear photograph. We need to know which side of the boundary we are dealing with.",
+      "A shared fence involves the neighbour. If they have already agreed to the repair, tell us. If they have not, that conversation needs to happen before we attend.",
+    ],
+    expectHeading: "What the photograph should show",
     expect: [
-      "A shared fence means a neighbour. If they’re already across it, say so. If they aren’t, that’s a conversation we can’t have for you.",
+      "Photograph the damaged section and enough of the run for us to see how the posts sit. A close crop of one paling is rarely enough.",
+      "Say whether the fence is timber, unless you want another material. We assume timber when you do not specify.",
     ],
+    includesHeading: "Fence repairs we quote",
+    scopeNote: "A full replacement of a boundary is a different scope from a repair. The quote will say which one your photographs support.",
     includes: [
-      "Panels, posts, palings",
-      "A photo of the damaged bit",
-      "Whose side of the boundary",
-      "Timber, unless you’ve said otherwise",
+      "We repair or replace damaged panels.",
+      "We straighten or replace posts that are no longer holding the fence.",
+      "We replace palings on the section you show us.",
+      "We work on the side of the boundary you confirm we may access.",
     ],
+    relatedIntro: "If the gate is the real problem, and the rest of the fence is sound, handyman services may be the smaller visit you actually need.",
+    ctaTitle: "Send the fence photos",
+    ctaBody: "Include whose side of the boundary we are on, and whether the neighbour has already agreed.",
+  },
+  handyman: {
+    meta: "Handyman visits in Melbourne for hinges, washers, silicone, lights and other small repairs on one list.",
+    overviewHeading: "One list, one morning",
+    overview: [
+      "Handyman work is the list that does not justify a separate call-out for each item. A hinge, a failed silicone joint, a tap washer and a hallway light can share a morning when they fit together.",
+      "Photographs help when the fault is easier to show than to describe. Put the whole list in the one note.",
+    ],
+    expectHeading: "When a handyman is the right trade",
+    expect: [
+      "If an item needs a licensed plumber or electrician, we will say so before the visit is booked rather than treat it as a handyman task.",
+      "Tell us how we get in, and whether the items have to be finished before a tenant or an inspection arrives.",
+    ],
+    includesHeading: "Jobs that suit this visit",
+    scopeNote: "The quote is the list you send. We do not add extra tasks on the day without agreeing them first.",
+    includes: [
+      "We work through the smaller repairs on a single written list.",
+      "We deal with hinges, washers, silicone and light fittings that do not need another licence.",
+      "We use your photographs to identify the fault before we attend.",
+      "We keep the work to one morning when the tasks fit.",
+    ],
+    relatedIntro: "Painting a whole room, or rebuilding a fence, belongs on those service pages. Add them only if the handyman list has grown into that work.",
+    ctaTitle: "Send the repair list",
+    ctaBody: "Write every item in one note, and add a photograph where the fault is hard to describe.",
   },
   "pest-control": {
+    meta: "Pest control in Melbourne for ants, cockroaches, wasps and other pests, scoped from what you have seen.",
+    overviewHeading: "Treatment based on the pest you can see",
+    overview: [
+      "Ants in the kitchen, cockroaches behind the fridge, and wasps under the eaves are different visits. What you have seen, and which rooms are affected, matters more than a product name.",
+      "We confirm what the treatment covers before anyone attends, including any time you and your pets need to be out of the rooms.",
+    ],
+    expectHeading: "What to tell us first",
     expect: [
-      "Ants in the kitchen and wasps under the eave are not the same visit. What you’re seeing matters more than a product name.",
+      "Name the pest if you know it, or describe what you have found and where. A photo of the insect or the nest is useful when you have one.",
+      "Tell us about children and pets in the home, and whether someone can be there to let us in and to hear the aftercare instructions.",
     ],
+    includesHeading: "A pest visit is organised around",
+    scopeNote: "The quote names the pest and the areas. A different pest found on the day is discussed before any extra treatment goes ahead.",
     includes: [
-      "The pest, if you know it",
-      "Which rooms, or the outside",
-      "Pets and kids in the house",
-      "Someone there to let us in",
+      "We treat the pest you have identified, or the one the signs point to.",
+      "We treat the rooms or the exterior area you describe.",
+      "We plan around pets and children so the household knows when rooms can be used again.",
+      "We attend when someone is available to provide access.",
     ],
+    relatedIntro: "A deep clean of the kitchen is a separate job. Book it if the infestation is only part of what the room needs.",
+    ctaTitle: "Describe what you have found",
+    ctaBody: "Tell us the pest if you know it, the rooms involved, and who will be home with pets or children.",
   },
   "common-area-maintenance": {
+    meta: "Maintenance of shared gardens, paths and gates for Melbourne apartment complexes and managers.",
+    overviewHeading: "The shared outdoor areas",
+    overview: [
+      "Common area maintenance is the shared garden, the paths, and the gate that sticks. It suits a manager who wants one contractor for those smaller outdoor items.",
+      "This is upkeep of the grounds residents share. It is not a full building contract, and it is not a clean of the internal foyer.",
+    ],
+    expectHeading: "Who the visit is for",
     expect: [
-      "The shared garden and the small things residents complain about. Not a full building contract.",
+      "The usual contact is the building manager. Tell us how instructions reach us, and whether residents should be told before we work in the garden.",
+      "A single repair and a round through the growing season are priced differently. Say which one you want.",
     ],
+    includesHeading: "Outdoor items we look after",
+    scopeNote: "Internal lobbies are cleaned under apartment and common area cleaning. Keep that separate if the foyer is part of the brief.",
     includes: [
-      "Shared garden and paths",
-      "Gates, lights, the small repairs",
-      "A manager as the contact",
-      "Once, or through the season",
+      "We maintain the shared garden on the visits you set.",
+      "We look after paths and the small faults along them.",
+      "We repair gates, lights and similar items when they are on the list.",
+      "We report to the manager you nominate, once or through the season.",
     ],
+    relatedIntro: "Strata and common property services cover a wider committee brief. Use that page if the work includes the foyer and formal reporting, not only the grounds.",
+    ctaTitle: "Tell us about the shared grounds",
+    ctaBody: "Describe the garden, the paths and any gate or light that already needs attention.",
+  },
+  "property-maintenance": {
+    meta: "Property maintenance in Melbourne, from a single repair to a returning visit that catches small faults early.",
+    overviewHeading: "One repair, or a round that prevents the next one",
+    overview: [
+      "Property maintenance might be a leaking tap this week. It might also be a visit every couple of months so smaller items are dealt with before a tenant has to report them.",
+      "Access matters as much as the fault. A lockbox, a resident who is home after 5 pm, or a manager who wants a photograph when the work is finished all change the arrangement.",
+    ],
+    expectHeading: "Say which arrangement you want",
+    expect: [
+      "A single repair and a returning round are not the same price. Tell us which you need in the first message.",
+      "List the item that is already broken, and say whether you want a photo sent back when it is done.",
+    ],
+    includesHeading: "Maintenance we can take on",
+    scopeNote: "Licensed plumbing or electrical work is identified before we book, and quoted as that trade if the fault requires it.",
+    includes: [
+      "We repair the specific fault you describe.",
+      "We can return on a round so faults are caught earlier.",
+      "We use the access method you set, whether that is a lockbox or a person on site.",
+      "We send a photograph back when you ask for one.",
+    ],
+    relatedIntro: "Preventative maintenance is the building-wide version of this idea. Use that page if you manage a whole block rather than one property.",
+    ctaTitle: "Name the fault or the schedule",
+    ctaBody: "Tell us what is broken, how we get in, and whether you want one visit or a round every couple of months.",
+  },
+  "rubbish-removal": {
+    meta: "Rubbish removal in Melbourne, priced from the load, the stairs and where a vehicle can stop.",
+    overviewHeading: "The load, not a guess from the street",
+    overview: [
+      "Tell us what is actually there: a garage, a spare room, or the items a tenant has left. A short list and a few photographs are enough for a first price.",
+      "Stairs, whether the lift will take a bulky item, and where a ute can stop without blocking a tram are the details that set the quote.",
+    ],
+    expectHeading: "Agree the load before the day",
+    expect: [
+      "We confirm what will be taken before the vehicle arrives, so the scope is settled in writing.",
+      "Houses, apartments and shop clear-outs are all fine. Say which one it is, because the access is different.",
+    ],
+    includesHeading: "A rubbish removal is based on",
+    scopeNote: "Items that appear on the day and were not on the list are priced before they are loaded.",
+    includes: [
+      "We remove the household junk and general waste you have listed.",
+      "We allow for stairs and lift access in the price.",
+      "We plan a stopping place for the vehicle before the day.",
+      "We take the load from houses, apartments and shops.",
+    ],
+    relatedIntro: "Furniture that has to come out in one piece, or a house that is full to the door, may fit furniture removal or a property clean-out more closely.",
+    ctaTitle: "List what has to go",
+    ctaBody: "Add photographs, and note the stairs, the lift and where a ute can stop.",
   },
   "furniture-removal": {
+    meta: "Furniture removal in Melbourne for single pieces or whole rooms, including tight lifts and stairs.",
+    overviewHeading: "Pieces that have to leave the building",
+    overview: [
+      "Furniture removal might be a sofa that will not fit in the lift, or a bedroom of flat-pack that nobody wants. We take it off the property.",
+      "Measure the lift if you know the dimensions. A sofa that looks manageable in a photograph often does not fit, and the stairs then become the job.",
+    ],
+    expectHeading: "How to describe the pieces",
     expect: [
-      "Measure the lift if you know it. A sofa that looked fine in the photo regularly doesn’t fit.",
+      "Name the items rather than writing “some furniture”. A photograph of anything wedged in a stairwell saves a wrong price.",
+      "This service takes furniture away. If you need it moved into another room of the same home, say that, because it is a different task.",
     ],
+    includesHeading: "What the removal covers",
+    scopeNote: "The quote lists the pieces. A second load that was not described is agreed before we take it.",
     includes: [
-      "The pieces, not “some furniture”",
-      "Stairs or a lift",
-      "Out of the place, not into another room",
-      "A photo if it’s wedged",
+      "We remove the specific pieces you name.",
+      "We plan for the stairs or the lift you describe.",
+      "We take the furniture off the property.",
+      "We use a photograph when an item is wedged or oversized.",
     ],
+    relatedIntro: "If the furniture is only one part of a house that still has to be emptied, a property clean-out is the broader job.",
+    ctaTitle: "Name the furniture",
+    ctaBody: "List the pieces, and tell us about the lift or the stairs they have to pass.",
   },
   "property-clean-outs": {
+    meta: "Property clean-outs in Melbourne for vacant or heavily cluttered houses, including garages and sheds.",
+    overviewHeading: "When the property has been left full",
+    overview: [
+      "A clean-out is for a house or apartment someone has left full. Garages, sheds and rooms that are difficult to walk into are part of the brief when you include them.",
+      "The aim is a property clear enough that the next clean is not working around piles of remaining items.",
+    ],
+    expectHeading: "A full house takes longer than a few bags",
     expect: [
-      "Slower than a few bags of rubbish. If the house is full to the door, say that.",
+      "If the place is full to the door, say that plainly. A modest description produces a quote that will not match the day.",
+      "Anything you want kept should be left where we can see it, and named in the request, before we start.",
     ],
+    includesHeading: "A clean-out can include",
+    scopeNote: "We clear to the rooms you list. A later discovery in a locked shed is a separate visit.",
     includes: [
-      "The rooms that are full",
-      "Garage and shed, if they’re in it",
-      "Anything you want kept, left where we can see it",
-      "Cleared properly, not half done",
+      "We clear the rooms you say are full.",
+      "We include the garage and the shed when you put them on the list.",
+      "We leave aside anything you have marked to keep.",
+      "We finish the property to the scope agreed on the quote.",
     ],
+    relatedIntro: "Once the contents are gone, an end-of-lease or deep clean is usually the next booking, and it should be quoted on its own.",
+    ctaTitle: "Tell us how full it is",
+    ctaBody: "Describe the rooms, the garage and anything you need kept, and send photographs if you can stand in the doorway.",
   },
   "hard-waste": {
+    meta: "Hard waste removal in Melbourne for mattresses, timber and whitegoods when council collection will not meet the date.",
+    overviewHeading: "Items the council collection will not take in time",
+    overview: [
+      "Council hard-rubbish bookings have a queue, and a list of things they will not accept. If the keys are due before that collection, we remove mattresses, timber, whitegoods and similar items directly.",
+      "Getting the items from an apartment to the street is a large part of the work, so access belongs in the quote.",
+    ],
+    expectHeading: "When this is the right service",
     expect: [
-      "Council hard rubbish has a queue, and a list of things it won’t take. If the keys are due before that, this is the other way.",
+      "Use this page when the items are bulky and the council slot is too late or will not accept them. General household bags fit rubbish removal better.",
+      "Tell us whether we are collecting from a house, an apartment or a shop, and how the pieces reach the kerb.",
     ],
+    includesHeading: "Hard waste we collect",
+    scopeNote: "Hazardous materials are not part of a standard hard-waste load. Ask before you include anything you are unsure about.",
     includes: [
-      "Mattresses, timber, whitegoods",
-      "A unit, a house or a shop",
-      "How it gets to the street",
-      "A date, if the council slot is too late",
+      "We collect mattresses, timber and whitegoods.",
+      "We work from houses, apartments and shops.",
+      "We move items from inside the property to the vehicle.",
+      "We can attend on a date when the council booking is too late.",
     ],
+    relatedIntro: "A property that is full of mixed household goods, not only bulky items, is a clean-out rather than a hard-waste collection.",
+    ctaTitle: "List the bulky items",
+    ctaBody: "Say what they are, which floor they are on, and the date you need them gone.",
   },
   "move-in-out": {
+    meta: "Move-in and move-out services in Melbourne, coordinating the clean and related tasks before keys change hands.",
+    overviewHeading: "Several tasks, one handover",
+    overview: [
+      "A typical sequence is a photographer on Thursday, keys on Friday and a new tenant on Saturday. The clean, the rubbish, a door and the garden can be planned for that same stretch of days.",
+      "Write the dates in order. We plan backwards from the one that cannot slip.",
+    ],
+    expectHeading: "What to put on the note",
     expect: [
-      "Write the dates in order. Photographer, keys, new tenant. The one that can’t slip is the one we work backwards from.",
+      "List every task that has to be finished before handover, not only the clean. A door or a garden left off the note becomes a second booking you may not have time for.",
+      "If the property is already empty, access the day before often makes the handover morning calmer. Say if that is possible.",
     ],
+    includesHeading: "A move-out visit can combine",
+    scopeNote: "Each task on your list is itemised on the quote, so you can drop one without losing the rest.",
     includes: [
-      "The clean",
-      "Rubbish, a door, the garden — if they’re on the list",
-      "The handover morning",
-      "Access the day before, if it’s already empty",
+      "We include the clean required for the handover.",
+      "We can add rubbish, a door repair or the garden when they are on your list.",
+      "We work to the handover morning you give us.",
+      "We can start the day before if the property is already vacant.",
     ],
+    relatedIntro: "End-of-lease cleaning is the right page when the only task is the bond clean. Use this page when several jobs share the deadline.",
+    ctaTitle: "Send the dates in order",
+    ctaBody: "List the photographer, the keys and the new occupant, and every task that has to be done before them.",
   },
   "property-presentation": {
+    meta: "Property presentation in Melbourne: the clean, small repairs and rooms buyers or tenants will see before a lease or sale.",
+    overviewHeading: "The practical version of getting a property ready",
+    overview: [
+      "Property presentation is the clean, the obvious repairs, and the rooms a buyer or tenant will actually stand in. Furniture is included only when you ask for it.",
+      "It is the step before photographs or an inspection, when the property has to look finished without becoming a full restyle.",
+    ],
+    expectHeading: "Who is about to walk through",
     expect: [
-      "The practical version. Clean, the obvious fixes, the rooms someone will actually stand in. Not a furniture package unless you ask.",
+      "Tell us whether the audience is a tenant, a buyer or a photographer, and which morning they arrive. That decides how far the preparation goes.",
+      "Small repairs that will show in photographs should be on the same list as the clean, so they are not still outstanding on the day.",
     ],
+    includesHeading: "Presentation usually includes",
+    scopeNote: "A full staging package is a different service. We add furniture only when your brief asks for it.",
     includes: [
-      "The rooms a buyer or tenant sees",
-      "Small repairs that show in photos",
-      "Timed to the photographer or the inspection",
-      "Not a full restyle unless you want one",
+      "We prepare the rooms a buyer or tenant will see.",
+      "We include smaller repairs that would show in photographs.",
+      "We time the work to the photographer or the inspection.",
+      "We keep the brief practical unless you ask for a fuller restyle.",
     ],
+    relatedIntro: "Property staging and interior styling are the next step if the rooms need furniture or a dressed look, not only a clean and minor repairs.",
+    ctaTitle: "Say who is coming through",
+    ctaBody: "Tell us the inspection or photography morning, and which rooms people will stand in.",
   },
   "property-staging": {
+    meta: "Property staging in Melbourne for leases and sales, timed to open inspections and photography.",
+    overviewHeading: "Staged for the open and the shoot",
+    overview: [
+      "Staging is for a lease or a sale, and it is timed to the open inspections. Tell us which rooms people will stand in, and the morning the photographs are booked.",
+      "An empty property and a furnished one are photographed differently. Say which result you need, because the furniture plan follows that choice.",
+    ],
+    expectHeading: "The dates that drive the stage",
     expect: [
-      "The open and the photo morning drive this. Furniture that arrives the day after the shoot is just storage.",
+      "Furniture has to be in place before the shoot. A delivery the day after the photographs is storage, not staging, so the photo morning leads the schedule.",
+      "Tell us how long the furniture needs to stay, through to the last open, if it is not remaining with the property.",
     ],
+    includesHeading: "A staging brief covers",
+    scopeNote: "We quote the rooms you name. Staging an entire house when only the living room will be photographed is a different price, and we will not assume it.",
     includes: [
-      "Lease or sale",
-      "Which rooms people stand in",
-      "The morning the photos are booked",
-      "Empty or furnished — say which",
+      "We stage for a lease or a sale, according to the campaign.",
+      "We focus on the rooms people will stand in.",
+      "We have the property ready for the photography morning.",
+      "We work to whether you need the home empty or furnished in the images.",
     ],
+    relatedIntro: "Furniture supply and placement is the page to use when you already know you need pieces delivered and later collected.",
+    ctaTitle: "Send the campaign dates",
+    ctaBody: "Include the photo morning, the first open, and whether the property should look empty or furnished.",
   },
   "interior-styling": {
+    meta: "Interior styling in Melbourne for the rooms that appear in property photographs and open inspections.",
+    overviewHeading: "A lighter hand than a full stage",
+    overview: [
+      "Styling is cushions, a table, and the way a living room reads when someone comes in from the street. It uses less furniture than a full stage, and it is more considered than leaving the rooms bare.",
+      "Styling sits on top of a clean. If the property is still grubby, include the clean in the same request so the styling is not placed on an unfinished room.",
+    ],
+    expectHeading: "What you want left behind",
     expect: [
-      "Styling sits on top of a clean. It doesn’t replace one. If the place is still grubby, say so.",
+      "Tell us which rooms will end up in the photographs, and the morning of the open or the shoot.",
+      "Say what, if anything, should stay after the campaign. Styling that is hired needs a collection plan as well as a delivery.",
     ],
+    includesHeading: "Styling is built around",
+    scopeNote: "We do not treat styling as a substitute for cleaning, painting or repairs. Those are added only when you include them.",
     includes: [
-      "The rooms that end up in the photos",
-      "Less furniture than a full stage",
-      "The morning of the open or the shoot",
-      "What you want left behind, if anything",
+      "We style the rooms that will appear in the photographs.",
+      "We use a lighter fit-out than a full furniture stage.",
+      "We work to the morning of the open inspection or the shoot.",
+      "We leave in place only what you have asked to keep.",
     ],
+    relatedIntro: "Interior design is the longer brief, for a home someone will live in or a rental whose layout needs to change, not only its photographs.",
+    ctaTitle: "Name the rooms in the photos",
+    ctaBody: "Tell us the shoot or open-inspection morning, and whether the property still needs a clean first.",
   },
   "interior-design": {
+    meta: "Interior design advice in Melbourne for homes you will live in and rentals being refreshed for lease.",
+    overviewHeading: "A home to live in, or a rental to lease",
+    overview: [
+      "Interior design here is for a property that has to work, not only look tidy for a weekend of inspections. A rental being refreshed and a home you will actually live in are different briefs.",
+      "Tell us which one applies, and what has to change. If the work is tied to a leasing or sales campaign, send the date that campaign starts.",
+    ],
+    expectHeading: "Three briefs we keep separate",
     expect: [
-      "Someone living here, a rental that has to lease, or a weekend of inspections. Those are three different briefs.",
+      "Someone living in the home, a rental that has to lease, and a short run of inspections are three different pieces of work. The first message should say which one you mean.",
+      "The rest of the preparation, such as paint or a clean, can be coordinated with the design if you want one schedule rather than three.",
     ],
+    includesHeading: "A design enquiry should cover",
+    scopeNote: "We scope the change you describe. We do not assume a full renovation unless that is the brief you have written.",
     includes: [
-      "A home, or a rental being refreshed",
-      "What has to change",
-      "A date, if it’s tied to a campaign",
-      "The rest of the prep, if you want it together",
+      "We advise on a home you will occupy, or a rental you are refreshing.",
+      "We start from the change you want, room by room.",
+      "We can work to a campaign date when the property has to be ready to lease or sell.",
+      "We can coordinate the surrounding preparation when you want it on the same plan.",
     ],
+    relatedIntro: "If you only need the living room dressed for photographs, interior styling is the smaller engagement.",
+    ctaTitle: "Describe the change",
+    ctaBody: "Say whether this is a home, a rental refresh, or a campaign, and what has to be different when we finish.",
   },
   "furniture-supply": {
+    meta: "Furniture supply and placement in Melbourne for empty properties, delivered before photography and collected after the campaign.",
+    overviewHeading: "Furniture in before the photographer",
+    overview: [
+      "We supply sofas, beds and the other pieces that make an empty apartment look lived in. Delivery has to beat the photographer.",
+      "If the furniture is hired, collection needs a day after the last open inspection, not an open-ended “sometime afterwards”.",
+    ],
+    expectHeading: "The lift is part of the job",
     expect: [
-      "Delivery has to beat the photographer. If the furniture isn’t staying, pickup needs a day after the last open — not whenever.",
+      "Tell us about the lift or the stairs before we promise a sofa. Access that looked fine on a floor plan regularly is not.",
+      "Say whether the pieces stay with the property or come back to us at the end of the campaign.",
     ],
+    includesHeading: "Supply and placement includes",
+    scopeNote: "The quote lists the pieces, the delivery morning and, where they are hired, the collection day.",
     includes: [
-      "Pieces for an empty unit",
-      "In before the shoot",
-      "Pickup after the campaign, if it’s hired",
-      "The lift or the stairs",
+      "We supply pieces suited to an empty apartment or house.",
+      "We deliver them before the photography.",
+      "We collect hired furniture after the campaign on an agreed day.",
+      "We plan the move around the lift or the stairs.",
     ],
+    relatedIntro: "Property staging is the wider brief if you want the rooms planned, not only the furniture delivered.",
+    ctaTitle: "Tell us the shoot date",
+    ctaBody: "Include the lift or stair access, and whether the furniture is hired or staying.",
   },
   "property-preparation": {
+    meta: "Property preparation in Melbourne, combining clean, paint and garden work before the next lease or a listing.",
+    overviewHeading: "Everything that has to be finished by one morning",
+    overview: [
+      "Property preparation is the stretch between one tenant and the next, or the stretch before a property goes to market. The clean, a section of paint and the garden often have to be finished together.",
+      "If the painter and the gardener cannot overlap, the date is already tight. We need to know that when we quote, not on the second-last day.",
+    ],
+    expectHeading: "Put the whole list in one place",
     expect: [
-      "List everything that has to be finished by the same morning. If the painter and the gardener can’t overlap, the date is already tight.",
+      "List every task that shares the deadline. A clean booked on its own, with paint remembered later, is how the morning gets missed.",
+      "Access usually starts once the outgoing tenant has left. Tell us the day the property is actually empty.",
     ],
+    includesHeading: "Preparation can bring together",
+    scopeNote: "Each trade on the list is itemised. You can remove one and keep the rest without starting the enquiry again.",
     includes: [
-      "Clean, paint, garden — whatever the list is",
-      "Between tenants, or before it lists",
-      "One morning it all has to be done",
-      "Access once the last tenant is out",
+      "We combine cleaning, paint and garden work according to your list.",
+      "We plan the work between tenants, or before the property is listed.",
+      "We work towards the single morning by which everything must be done.",
+      "We start once you confirm the outgoing tenant has left.",
     ],
+    relatedIntro: "Move-in and move-out services are the closer fit when the deadline is a key handover rather than a sales campaign.",
+    ctaTitle: "Send the full list and the morning",
+    ctaBody: "Include every task that shares the deadline, and the day the last tenant is out.",
   },
   "facility-management": {
+    meta: "Facility management in Melbourne for building managers who want cleaning, grounds and small repairs through one company.",
+    overviewHeading: "The year, through one office",
+    overview: [
+      "Facility management is for a manager who wants the cleaning, the garden and the items that fail in the foyer handled through one company.",
+      "The point is a continuing round, so a blown light or a garden that needs a cut does not become a fresh search for a contractor each time.",
+    ],
+    expectHeading: "What we take on for the year",
     expect: [
-      "For a manager who wants the year handled, not a fresh quote every time a light blows in the foyer.",
+      "Tell us the building, the services you want on the round, and who at your office should receive updates.",
+      "A first job can stand alone. If you already know you want it to become the year’s arrangement, say that in the enquiry.",
     ],
+    includesHeading: "A facilities round can include",
+    scopeNote: "We quote the services you want on the round. Specialist trades outside that list are added only when you approve them.",
     includes: [
-      "Cleans and the garden",
-      "The small things that break",
-      "One place to ring",
-      "A round, not a new brief each time",
+      "We include cleaning and garden care where you want them on the round.",
+      "We deal with the smaller repairs that come up in common areas.",
+      "We give the manager one place to call.",
+      "We keep a continuing schedule rather than opening a new brief for every item.",
     ],
+    relatedIntro: "Building support is the better page when you need help with this week’s fault, and you do not want a year-long arrangement yet.",
+    ctaTitle: "Describe the building’s year",
+    ctaBody: "List the services you want covered, and the person who should hear from us when something is finished.",
   },
   "building-support": {
+    meta: "Building support in Melbourne for doors, car parks and resident issues that need attention this week.",
+    overviewHeading: "The jobs that turn up in a week",
+    overview: [
+      "Building support is the call when something needs a person today or this week. A door that will not close, a mess in the car park, or a resident complaint that needs a practical response are typical.",
+      "It is not a full facilities contract. It is the work that appears between the planned visits.",
+    ],
+    expectHeading: "How urgent, and who to tell",
     expect: [
-      "Not a full facility contract. The jobs that turn up in a week: a door, the car park, a complaint that’s annoying and not quite an emergency.",
+      "Say how urgent the issue is, how we get into the building, and who should be told when it is done.",
+      "A photograph of the fault, if you have one, lets us bring the right tools on the first visit.",
     ],
+    includesHeading: "A support visit starts from",
+    scopeNote: "We quote the issue you describe. A second fault found on site is reported before extra work goes ahead.",
     includes: [
-      "The issue, and how urgent",
-      "How we get in",
-      "A photo if you’ve got one",
-      "Who to tell when it’s done",
+      "We respond to the issue you describe, at the urgency you set.",
+      "We use the access method the building already has.",
+      "We can work from a photograph when you have one.",
+      "We report to the person you name when the work is finished.",
     ],
+    relatedIntro: "If the same kinds of call are arriving every month, facility management is the arrangement that replaces a string of one-off visits.",
+    ctaTitle: "Describe this week’s issue",
+    ctaBody: "Tell us what has happened, how urgent it is, and how we get into the building.",
   },
   "preventative-maintenance": {
+    meta: "Preventative maintenance walks for Melbourne buildings, scheduled so small faults are found before they spread.",
+    overviewHeading: "A visit before anyone has to complain",
+    overview: [
+      "Preventative maintenance is a walk-through on a schedule, before a dripping tap becomes a damaged ceiling. It is for buildings that want attention on a plan.",
+      "If you only want us when something has already failed, that is a repair and it is quoted on its own. Say which of the two you mean.",
+    ],
+    expectHeading: "The building, not a single tap",
     expect: [
-      "The visit is meant to happen before anyone complains. If you only want us when something’s already broken, that’s a different job.",
+      "This visit is meant to cover the building, not one item that is already broken. Tell us the areas the walk should include.",
+      "We send a short note back to the manager after each round, so the faults are recorded while they are still small.",
     ],
+    includesHeading: "A preventative round includes",
+    scopeNote: "Repairs found on the walk are listed for approval. They are not carried out silently as part of the inspection fee.",
     includes: [
-      "A walk-through on a schedule",
-      "Small faults, before they spread",
-      "A building, not a single tap",
-      "A short note back to the manager",
+      "We walk the building on the schedule you set.",
+      "We record small faults before they spread.",
+      "We look at the building as a whole, rather than one reported item.",
+      "We send a short note to the manager after the visit.",
     ],
+    relatedIntro: "Property maintenance is the page for a single house or apartment with a known fault. Use this page when the asset is the building.",
+    ctaTitle: "Set the walk-through",
+    ctaBody: "Tell us how often you want the building checked, and which areas the first walk should cover.",
   },
   "apartment-turnover": {
+    meta: "Apartment turnover services in Melbourne, preparing vacant units between tenancies, including several in one building.",
+    overviewHeading: "Vacant apartments, ready for the next inspection",
+    overview: [
+      "A turnover might be one vacant apartment, or several in the same building across a fortnight. The clean and the agreed repairs are finished in time for the next inspection.",
+      "The date the keys have to be back is the deadline that organises the work. Send every vacant unit together if they share that fortnight.",
+    ],
+    expectHeading: "Several units are easier as one schedule",
     expect: [
-      "If four units are vacant in the same fortnight, send them together. One at a time is how the third one misses its inspection.",
+      "Booking apartments one at a time is how the third inspection gets missed. If you already know the next vacancies, include them now.",
+      "List the repairs as well as the clean. A turnover that discovers a broken lock on inspection morning is already late.",
     ],
+    includesHeading: "A turnover can include",
+    scopeNote: "Each apartment is listed on the quote with its own key date, so one delay does not hide the others.",
     includes: [
-      "The clean",
-      "A few repairs, if they’re on the list",
-      "The date the keys have to be back",
-      "Several units, if they’re moving at once",
+      "We clean the vacant apartment to the standard you set.",
+      "We complete the repairs you have already put on the list.",
+      "We work to the date the keys must be returned.",
+      "We can take several apartments when they are turning over together.",
     ],
+    relatedIntro: "End-of-lease cleaning is the single-property version of the clean. Use this page when you are turning apartments over as a building manager.",
+    ctaTitle: "Send the vacant apartments",
+    ctaBody: "Include each unit, its key date, and any repair you already know about.",
+  },
+  "strata-common": {
+    meta: "Strata and common property services in Melbourne for foyers, gardens, paths and bin areas, reported to one contact.",
+    overviewHeading: "Common property, one nominated contact",
+    overview: [
+      "This work covers the foyer, the common garden, the paths and the bin room for a strata scheme or an owners corporation.",
+      "We follow the building’s access rules, including any preference that noisy work happens outside busy hours. Updates go to one person you name, so the job is not waiting on a committee thread.",
+    ],
+    expectHeading: "What the committee has actually approved",
+    expect: [
+      "Send the scope the committee has agreed, not a wish list that is still being debated. We quote the approved work.",
+      "Tell us the access rules and the single contact who should receive the update when the visit is finished.",
+    ],
+    includesHeading: "Common property we take on",
+    scopeNote: "Work outside the approved scope goes back to your contact before it is added.",
+    includes: [
+      "We work on the foyer, garden, paths and bin area you include.",
+      "We follow the scope the committee has approved.",
+      "We observe the building’s access and after-hours rules.",
+      "We report to one nominated contact.",
+    ],
+    relatedIntro: "Apartment and common area cleaning is the recurring foyer clean. This page is for the broader common-property jobs a committee raises.",
+    ctaTitle: "Send the approved scope",
+    ctaBody: "Include the access rules and the name of the person who should receive the update.",
   },
 };
 
-function defaultOverview(service: Service): string[] {
-  return [service.body];
-}
-
 export function getServicePageContent(service: Service): ServicePageContent {
-  const group = groupCopy[service.group] ?? fallbackCopy;
-  const extra = overrides[service.id] ?? {};
-
-  return {
-    overview: extra.overview ?? defaultOverview(service),
-    expect: extra.expect ?? group.expect,
-    includes: extra.includes ?? group.includes,
-  };
+  const page = pages[service.id];
+  if (!page) {
+    throw new Error(`Missing unique page copy for service: ${service.id}`);
+  }
+  return page;
 }

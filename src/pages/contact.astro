@@ -14,7 +14,7 @@ const urgent = urgentParam === "1" || urgentParam === "true" || urgentParam === 
 
 <BaseLayout
   title="Request a Quote"
-  description="Request a quote or booking with Atlantis Property Services for cleaning, gardens, windows, waste and maintenance across Melbourne’s inner suburbs."
+  description="Request a quote or booking with Atlantis Property Services for cleaning, gardens, windows, waste removal and maintenance across Melbourne’s inner suburbs."
 >
   <PageBanner title={urgent ? "An urgent request" : "Tell us what you need"} image="/images/cta-building.jpg" wide />
 
@@ -22,10 +22,10 @@ const urgent = urgentParam === "1" || urgentParam === "true" || urgentParam === 
     <div class="wrap">
       <div class="contact-layout">
         <aside class="contact-layout__aside">
-          <h2 class="contact-layout__heading">Get a price, or book it</h2>
+          <h2 class="contact-layout__heading">Send the job from here</h2>
           <p class="page-intro__text">
-            Where’s the place, what’s the job, and when do you need it. We read everything that comes
-            in, including Brunswick East and the suburbs around it.
+            The form is the direct way to ask for a price. If you would rather talk it through, call or
+            email and we will take the same details from you.
           </p>
           <div class="contact-rows">
             <div class="contact-row">
@@ -50,7 +50,7 @@ const urgent = urgentParam === "1" || urgentParam === "true" || urgentParam === 
             </div>
           </div>
           <p class="muted contact-details__note">
-            Put the postcode in. If you’re a bit outside where we usually work, we’ll still read it.
+            The postcode tells us how long the trip is. You do not need to judge the distance yourself before you write.
           </p>
         </aside>
 
@@ -91,8 +91,8 @@ const urgent = urgentParam === "1" || urgentParam === "true" || urgentParam === 
               <p class="page-intro__text" style="margin-bottom: 0;">
                 {
                   urgent
-                    ? "You’ve marked this urgent. What’s gone wrong, when does it have to be done, and how do we get in?"
-                    : "A few lines is fine. Photos help if you’ve got them."
+                    ? "This form is marked urgent. Describe the fault, the time it has to be finished, and who can let us in."
+                    : "Name the rooms or the areas, and mention anything that affects access, such as a lockbox, a pet or a loading dock."
                 }
               </p>
               <RequestForm service={service} property={property} urgent={urgent} />

@@ -1,34 +1,34 @@
 export const faqs = [
   {
-    q: "What do you actually do?",
-    a: "Cleaning, bond cleans, windows, gardens, pressure washing, painting, fences, rubbish and hard waste, handyman bits, pest control, staging, and work in apartment buildings. Homes and commercial. You deal with us — we book people we already work with to do the job.",
+    q: "What services does Atlantis Property Services provide?",
+    a: "The services page lists cleaning, gardens, glass, waste, painting, smaller repairs, pest control, staging and building care. Homes and commercial premises are both included. The trades that carry out a visit are appointed by Atlantis after you enquire, so you do not assemble the job yourself.",
   },
   {
-    q: "Do you come to my suburb?",
-    a: "Most of our work is inner Melbourne, out to about 50 km from the CBD, and a lot of it is around Brunswick East. Put your postcode on the form anyway. If you’re a bit outside that, we’ll still have a look. We don’t bounce it automatically.",
+    q: "Which Melbourne suburbs do you service?",
+    a: "Put the property’s postcode on the form. Our regular work is in inner Melbourne, centred on Brunswick East, and we read enquiries that sit a little further out instead of rejecting them on the form.",
   },
   {
-    q: "How do I get a price?",
-    a: "Use Request / book a service. What’s the job, where is it, and when do you need it. Photos if you’ve got them. We’ll send a price before anyone’s booked. If it’s a call-out and there’s an extra charge, we’ll say so first.",
+    q: "How do I get a quote?",
+    a: "Open Request / book a service and name the tasks, the address and the timing. We reply with a price before anyone is placed on the job. A call-out fee, when the timing requires one, is part of that reply.",
   },
   {
-    q: "Can I pick my own cleaner or tradie off this site?",
-    a: "No. There’s no list to scroll through. You ask us, we send someone we use, and if you’ve got a question afterwards you come back to us.",
+    q: "Can I choose my own cleaner or tradesperson on this website?",
+    a: "The site does not publish a directory. Your request comes to Atlantis, we appoint someone from the businesses we already use, and questions after the visit come back to the same office.",
   },
   {
-    q: "Can it be a regular clean or a regular garden visit?",
-    a: "Yes. Tick recurring and choose weekly, fortnightly or monthly. Same as a one-off — you sort the days with us, not with a different person each time.",
+    q: "Do you offer regular cleaning or garden maintenance?",
+    a: "Yes. Choose recurring on the form, then weekly, fortnightly or monthly. The days are agreed with Atlantis, including when a regular visit has to move.",
   },
   {
-    q: "When is it actually booked?",
-    a: "When you’ve said yes to the price and the time. We’ll confirm it. If the day has to move, call or email us.",
+    q: "When is a job confirmed?",
+    a: "The job is confirmed once you accept both the price and the proposed time. We send that confirmation to you. Call or email us if the day later has to change.",
   },
   {
-    q: "Are they insured?",
-    a: "Yes. The people on site have the insurance, and the licences, the job needs. They’re not listed here for you to compare. If something’s wrong, it’s our problem to sort.",
+    q: "Are the people on site insured?",
+    a: "The people who attend carry the insurance the job requires, and the licences where a licence applies. If the result is not right, you raise it with Atlantis and we sort it out.",
   },
   {
     q: "What if I need someone today?",
-    a: "Go to Emergency / Urgent, or tick urgent on the form, and tell us the deadline. We’ll say what we can actually do. If you’d rather talk, call 03 7023 9460.",
+    a: "Use the urgent page, or mark the request urgent, and give us the deadline. We will tell you what can be done in that time. You can also call 03 7023 9460 if you would rather explain it by phone.",
   },
 ];
