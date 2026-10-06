@@ -1,66 +1,62 @@
 export const site = {
   name: "Atlantis Property Services",
   legalName: "Atlantis Property Services",
-  tagline: "Cleaning, gardens, windows, waste and repairs for homes and buildings across Melbourne.",
+  tagline: "Property services. Made simple.",
   description:
-    "Request a quote for cleaning, gardening, windows, waste removal and repairs for homes and buildings across Melbourne’s inner suburbs, including Brunswick East.",
+    "From cleaning and gardening to maintenance, repairs and property preparation, Atlantis brings the services your property needs together through one reliable point of contact across Melbourne.",
   email: "info@atlantisps.com.au",
   phone: "03 7023 9460",
-  serviceArea:
-    "Melbourne’s inner suburbs, within about 50 km of the CBD, with a focus on Brunswick East and nearby postcodes",
-  copyright:
-    "© {year} Atlantis Property Services. Melbourne property services. All rights reserved.",
+  serviceArea: "Melbourne and surrounding areas",
+  copyright: "© {year} Atlantis Property Services. All rights reserved.",
   howItWorks: [
     {
       step: "1",
       title: "Tell us what you need",
-      body: "Share the property, the work required, and any date that cannot move. That is enough for us to start.",
+      body: "Send the details of the job, the property and your preferred timing. One service is fine. Several jobs at the same address can go on the same request.",
     },
     {
       step: "2",
-      title: "We arrange it",
-      body: "We review the request, send a written quote, and book the work once you approve the price.",
+      title: "Receive your quote",
+      body: "We look at the scope, location, timing and access, then send a clear price. Photos help us get that right. Nothing proceeds until you approve it.",
     },
     {
       step: "3",
-      title: "We get it done",
-      body: "The work is completed as quoted. If you have a question afterwards, you contact Atlantis.",
+      title: "We organise the job",
+      body: "Once you approve the quote, Atlantis coordinates the service and keeps you informed while the work is underway.",
+    },
+    {
+      step: "4",
+      title: "Consider it handled",
+      body: "Questions, changes or anything you need afterwards come back to Atlantis. You do not have to start again with someone new.",
     },
   ],
   why: [
     {
-      title: "One conversation",
-      body: "Cleaning, gardens, glass, waste and repairs can be included on a single request.",
+      title: "One point of contact",
+      body: "One company to call for a wide range of property needs, from a single clean through to several jobs on the same visit.",
     },
     {
-      title: "Written for Melbourne properties",
-      body: "Access, parking, strata rules and vacate dates are part of how we price the work.",
+      title: "Trusted professionals",
+      body: "Work is carried out by vetted service professionals with appropriate insurance and licensing where required.",
     },
     {
-      title: "A quote before anyone arrives",
-      body: "You see the price and the scope before work is booked. There is no provider list to compare on this site.",
+      title: "Multiple services",
+      body: "Need the garden, the cleaning and a repair finished at the same property? Send the whole list in one request.",
     },
     {
-      title: "Insured people on site",
-      body: "Approved partners carry out the work. The booking remains in the name of Atlantis Property Services.",
-    },
-  ],
-  testimonials: [
-    {
-      quote:
-        "Our end-of-lease inspection was on the Friday, and we still needed a proper bathroom clean and a door that would not latch. Atlantis took both on the one request. I did not have to arrange three separate trades.",
-      name: "Property manager",
-      company: "Residential portfolio",
+      title: "One-off or ongoing",
+      body: "Use Atlantis for a single job, or arrange regular weekly, fortnightly or monthly services.",
     },
     {
-      quote:
-        "We used Atlantis on a unit in Brunswick East before the new tenant moved in. The clean was thorough, and they replied promptly when I asked about the arrival time.",
-      name: "Property owner",
-      company: "Brunswick East",
+      title: "Residential and commercial",
+      body: "We support homeowners, landlords, property managers, businesses and owners corporations.",
+    },
+    {
+      title: "Local knowledge",
+      body: "Melbourne-based property services, with a strong focus on being responsive and reliable when the timing matters.",
     },
   ],
   social: {
-    // Add live profile URLs when accounts are ready — footer links appear automatically.
     linkedin: "",
     facebook: "",
     instagram: "",
@@ -68,11 +64,13 @@ export const site = {
 } as const;
 
 export const customerTypes = [
-  "Owner",
+  "Homeowner",
   "Tenant",
-  "Landlord / Investor",
+  "Landlord",
   "Property Manager",
-  "Business Representative",
+  "Owners Corporation / Strata",
+  "Business",
+  "Other",
 ] as const;
 
-export const frequencies = ["Weekly", "Fortnightly", "Monthly"] as const;
+export const frequencies = ["Weekly", "Fortnightly", "Monthly", "Other"] as const;

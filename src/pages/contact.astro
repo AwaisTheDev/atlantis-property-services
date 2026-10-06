@@ -10,22 +10,27 @@ const service = params.get("service") ?? "";
 const property = params.get("property") ?? "";
 const urgentParam = params.get("urgent");
 const urgent = urgentParam === "1" || urgentParam === "true" || urgentParam === "yes";
+const tab = params.get("tab");
+const requestHeading = urgent ? "Need it sorted quickly?" : "Tell us what your property needs.";
+const contactHeading = "Have a question?";
+const bannerTitle = tab === "contact" ? contactHeading : requestHeading;
 ---
 
 <BaseLayout
   title="Request a Quote"
-  description="Request a quote or booking with Atlantis Property Services for cleaning, gardens, windows, waste removal and maintenance across Melbourne’s inner suburbs."
+  description="Tell Atlantis what your property needs. One job or several. Request a quote for cleaning, gardens, maintenance, removals and property support across Melbourne."
 >
-  <PageBanner title={urgent ? "An urgent request" : "Tell us what you need"} image="/images/cta-building.jpg" wide />
+  <PageBanner title={bannerTitle} titleId="page-title" image="/images/cta-building.jpg" wide />
 
   <section class="page-body">
     <div class="wrap">
       <div class="contact-layout">
         <aside class="contact-layout__aside">
-          <h2 class="contact-layout__heading">Send the job from here</h2>
+          <h2 class="contact-layout__heading">Prefer to talk?</h2>
           <p class="page-intro__text">
-            The form is the direct way to ask for a price. If you would rather talk it through, call or
-            email and we will take the same details from you.
+            One job or several. Send us the details and we will take it from there. Tell us what needs
+            doing, where the property is, and when you would ideally like it completed. Photos are welcome
+            and can help us understand the job and prepare your quote.
           </p>
           <div class="contact-rows">
             <div class="contact-row">
@@ -50,7 +55,8 @@ const urgent = urgentParam === "1" || urgentParam === "true" || urgentParam === 
             </div>
           </div>
           <p class="muted contact-details__note">
-            The postcode tells us how long the trip is. You do not need to judge the distance yourself before you write.
+            If you are looking for a quote, use the request form so we have the information needed to help
+            you quickly. For general enquiries, partnerships or anything else, use Contact.
           </p>
         </aside>
 
@@ -66,7 +72,7 @@ const urgent = urgentParam === "1" || urgentParam === "true" || urgentParam === 
                 aria-selected="true"
                 data-tab="request"
               >
-                Request / book a service
+                Request a Quote
               </button>
               <button
                 type="button"
@@ -91,8 +97,8 @@ const urgent = urgentParam === "1" || urgentParam === "true" || urgentParam === 
               <p class="page-intro__text" style="margin-bottom: 0;">
                 {
                   urgent
-                    ? "This form is marked urgent. Describe the fault, the time it has to be finished, and who can let us in."
-                    : "Name the rooms or the areas, and mention anything that affects access, such as a lockbox, a pet or a loading dock."
+                    ? "This request is marked urgent. Tell us what needs doing, where the property is, when it has to be finished, and how we can get in."
+                    : "Include as much detail as you can. Access notes, such as a lockbox, a pet or a loading dock, help us prepare an accurate quote."
                 }
               </p>
               <RequestForm service={service} property={property} urgent={urgent} />
@@ -121,6 +127,11 @@ const urgent = urgentParam === "1" || urgentParam === "true" || urgentParam === 
     const tabs = root.querySelectorAll("[data-tab]");
     const panels = root.querySelectorAll("[data-panel]");
 
+    const pageTitle = document.getElementById("page-title");
+    const requestHeading = new URLSearchParams(window.location.search).get("urgent")?.match(/^(1|true|yes)$/)
+      ? "Need it sorted quickly?"
+      : "Tell us what your property needs.";
+
     function activate(name, updateUrl = true) {
       tabs.forEach((tab) => {
         const on = tab.dataset.tab === name;
@@ -132,6 +143,9 @@ const urgent = urgentParam === "1" || urgentParam === "true" || urgentParam === 
         panel.classList.toggle("is-active", on);
         panel.hidden = !on;
       });
+      if (pageTitle) {
+        pageTitle.textContent = name === "contact" ? "Have a question?" : requestHeading;
+      }
 
       if (updateUrl) {
         const url = new URL(window.location.href);

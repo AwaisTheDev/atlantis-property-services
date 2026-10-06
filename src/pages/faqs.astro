@@ -6,14 +6,14 @@ import PageCta from "../components/PageCta.astro";
 import { faqs } from "../data/faqs";
 ---
 
-<BaseLayout title="Property Service FAQs" description="Answers on services, quotes, regular visits and urgent jobs from Atlantis Property Services across Melbourne’s inner suburbs, including Brunswick East.">
+<BaseLayout title="Property Service FAQs" description="Answers on Atlantis property services, quotes, recurring visits and urgent jobs across Melbourne and surrounding areas.">
   <PageBanner title="Frequently asked questions" image="/images/interior-clean.jpg" />
 
   <section class="page-body">
     <div class="wrap page-body--narrow">
       <p class="page-intro__text" style="margin-bottom: 2.5rem;">
-        These are the questions people ask before they send a job: where a property can be, how a price
-        is agreed, and what changes when the work is urgent.
+        These are the questions people ask before they send a job: what Atlantis can organise, who the
+        service is for, how a quote is agreed, and what changes when the work is urgent.
       </p>
       <div class="faq">
         {
@@ -26,13 +26,13 @@ import { faqs } from "../data/faqs";
         }
       </div>
       <div class="faq-footer">
-        <ArrowLink href="/contact?tab=request" label="Request / book a service" dark />
+        <ArrowLink href="/contact?tab=request" label="Request a Quote" dark />
       </div>
     </div>
   </section>
 
   <PageCta
-    title="Still deciding which service fits?"
-    body="Describe the property in your own words. We will match it to the right work and send a price."
+    title="Not sure which service you need?"
+    body="Tell us what is happening at the property in your own words. We will help work out what is required, then send a price before any work begins."
   />
 </BaseLayout>

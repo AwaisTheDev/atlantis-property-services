@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageBanner from "../components/PageBanner.astro";
+import PageCta from "../components/PageCta.astro";
+---
+
+<BaseLayout
+  title="About Atlantis"
+  description="Atlantis Property Services brings cleaning, gardening, maintenance and property preparation together through one reliable point of contact across Melbourne."
+>
+  <PageBanner title="Property services should be easier." image="/images/hero-property.jpg" wide />
+
+  <section class="page-body">
+    <div class="wrap page-body--narrow">
+      <p class="page-intro__text">
+        Atlantis Property Services was created around a simple idea: property owners should not have to
+        chase multiple providers every time something needs doing.
+      </p>
+      <p class="page-intro__text">
+        Homes, investment properties, apartment buildings and commercial premises rarely need just one
+        type of service. They need cleaning. Gardens need maintaining. Things break. Properties need
+        painting. Rubbish needs removing. Tenants move in and out.
+      </p>
+      <p class="page-intro__text">
+        Atlantis brings those services together. Instead of starting from scratch every time, our clients
+        have one place to contact for the work their property needs. We coordinate trusted, vetted service
+        professionals, and we remain your central point of contact from the quote through to any follow-up.
+      </p>
+      <p class="page-intro__text">
+        Whether you need a cleaner once, ongoing garden maintenance, or several services coordinated across
+        more than one property, the goal is the same: make property services simpler. You tell us what the
+        property needs. We organise the right service and keep you informed.
+      </p>
+      <p class="page-intro__text">
+        Atlantis is Melbourne-based and works across Melbourne and surrounding areas. Enter your postcode
+        when you request a quote and we will confirm availability for that location.
+      </p>
+    </div>
+  </section>
+
+  <PageCta
+    title="One property. Multiple jobs. One call."
+    body="Whatever your property needs, start with Atlantis. Tell us what needs doing and we will take it from there."
+  />
+</BaseLayout>

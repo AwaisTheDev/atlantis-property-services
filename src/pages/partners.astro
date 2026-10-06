@@ -6,29 +6,56 @@ import PartnerForm from "../components/PartnerForm.astro";
 
 <BaseLayout
   title="Become a Service Partner"
-  description="Apply to carry out approved work for Atlantis Property Services in Melbourne. Every application is reviewed. Approval does not guarantee a set volume of work."
+  description="Apply to carry out approved work for Atlantis Property Services in Melbourne. Every application is reviewed before approval."
 >
-  <PageBanner title="Become a service partner" image="/images/garden-care.jpg" wide />
+  <PageBanner title="Grow your business with Atlantis." image="/images/garden-care.jpg" wide />
 
   <section class="page-body">
     <div class="wrap">
       <p class="page-intro__text" style="margin-bottom: 2.5rem;">
-        Atlantis appoints other businesses to carry out work for our clients, while the client
-        relationship stays with us. We are looking for operators who already hold the licences and
-        insurance their trade requires, and who can take both single jobs and repeat visits. You will
-        not be given a public profile on this website.
+        Atlantis works with experienced service providers across Melbourne to deliver cleaning,
+        maintenance, gardening, property care and other services for our clients. We are building a
+        network of reliable professionals who take pride in their work, communicate well and deliver
+        consistently. If that sounds like your business, we would like to hear from you.
+      </p>
+      <p class="partner-apply">
+        <a class="btn btn-primary" href="#partner-form">Apply to Become a Service Partner</a>
       </p>
       <div class="page-split">
         <div>
-          <h2 style="margin-top: 0; font-size: clamp(22px, 18px + 0.8vw, 28px);">Before you apply</h2>
+          <h2 style="margin-top: 0; font-size: clamp(22px, 18px + 0.8vw, 28px);">Why partner with Atlantis?</h2>
           <ul class="page-points">
-            <li>Applications are subject to review and approval.</li>
-            <li>Atlantis may request extra information or documents.</li>
-            <li>Approved partners accept separate <a href="/partner-terms">Service Partner Terms</a> before onboarding is final.</li>
             <li>
-              In time, suitable work and pricing will be offered through a private Atlantis system. Partners are not given public profiles.
+              <strong>More opportunities.</strong> Access additional work without having to generate every lead yourself.
+            </li>
+            <li>
+              <strong>Work that suits your business.</strong> Tell us the services you provide, the areas you cover and your availability.
+            </li>
+            <li>
+              <strong>Repeat work.</strong> Suitable partners may receive both individual jobs and recurring service opportunities.
+            </li>
+            <li>
+              <strong>Straightforward communication.</strong> Atlantis coordinates the client relationship and provides the job information you need.
+            </li>
+            <li>
+              <strong>A long-term relationship.</strong> We want dependable service partners we can continue working with as Atlantis grows.
             </li>
           </ul>
+
+          <h2 style="font-size: clamp(22px, 18px + 0.8vw, 28px);">What we look for</h2>
+          <p class="page-intro__text">We are looking for established operators who:</p>
+          <ul class="page-points">
+            <li>Hold a current ABN</li>
+            <li>Carry appropriate insurance</li>
+            <li>Hold relevant licences where required</li>
+            <li>Communicate professionally and arrive when agreed</li>
+            <li>Deliver quality workmanship and treat clients and properties respectfully</li>
+            <li>Respond to Atlantis within reasonable timeframes</li>
+          </ul>
+          <p class="muted" style="margin-top: 1.25rem;">
+            All applications are reviewed before approval. Approved partners accept the
+            <a href="/partner-terms">Service Partner Terms</a> before onboarding is final. You will not be given a public profile on this website, and approval does not guarantee a set volume of work.
+          </p>
         </div>
         <div>
           <PartnerForm />

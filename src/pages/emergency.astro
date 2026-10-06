@@ -6,30 +6,38 @@ import { site } from "../data/site";
 ---
 
 <BaseLayout
-  title="Urgent Help in Melbourne"
-  description="Urgent cleaning, maintenance and property help in Melbourne. Tell Atlantis Property Services the deadline and we will confirm what we can do, and when."
+  title="Urgent Property Service"
+  description="Need a property job sorted quickly in Melbourne? Tell Atlantis the deadline and we will confirm what can realistically be arranged, with the price agreed before anyone attends."
 >
-  <PageBanner title="When the work cannot wait" image="/images/cta-building.jpg" wide />
+  <PageBanner title="Need it sorted quickly?" image="/images/cta-building.jpg" wide />
 
   <section class="page-body">
     <div class="wrap page-body--narrow">
       <p class="page-intro__text">
-        Some jobs have a deadline a standard booking will miss. The keys may be due back tomorrow, an
-        inspection may be set for the morning, or a fault may not be safe to leave over the weekend.
-        Send the suburb, the deadline and how we get into the property, and we will tell you whether
-        we can attend.
+        Some property jobs cannot wait for a standard booking. You might have an inspection tomorrow, keys
+        being handed over, rubbish that needs clearing, a property that needs cleaning, or an unexpected
+        maintenance issue.
       </p>
-      <p class="page-intro__text">
-        You still receive a price before the visit. Any fee for attending at short notice is included
-        in that price, so you can decide before a vehicle leaves.
+      <p class="page-intro__text">Tell Atlantis:</p>
+      <ul class="page-points">
+        <li>What needs doing</li>
+        <li>Where the property is</li>
+        <li>When it needs to be completed</li>
+        <li>How we can access the property</li>
+        <li>Any photographs that help explain the job</li>
+      </ul>
+      <p class="page-intro__text" style="margin-top: 2rem;">
+        We will review the request and let you know what can realistically be arranged. Where additional
+        charges apply for urgent or short-notice attendance, they are included in your quote before the
+        work proceeds.
       </p>
 
       <div class="emergency-actions">
-        <ArrowLink href="/contact?tab=request&urgent=1" label="Start an urgent request" dark />
+        <ArrowLink href="/contact?tab=request&urgent=1" label="Start an Urgent Request" dark />
         {
           site.phone ? (
             <a class="btn btn-ghost" href={`tel:${site.phone.replace(/\s/g, "")}`}>
-              Call {site.phone}
+              Prefer to talk? Call {site.phone}
             </a>
           ) : null
         }
@@ -37,7 +45,7 @@ import { site } from "../data/site";
 
       <p class="muted" style="margin-top: 2rem;">
         If the work can wait, use the standard
-        <a href="/contact?tab=request">request form</a>.
+        <a href="/contact?tab=request">quote request</a>.
       </p>
     </div>
   </section>

@@ -3,12 +3,14 @@ type Props = {
   title: string;
   image?: string;
   wide?: boolean;
+  titleId?: string;
 };
 
 const {
   title,
   image = "/images/interior-clean.jpg",
   wide = false,
+  titleId,
 } = Astro.props;
 ---
 
@@ -23,7 +25,7 @@ const {
     <div class="wrap">
       <div class:list={["banner__inner", { "banner__inner--wide": wide }]}>
         <div class="banner__text">
-          <h1>{title}</h1>
+          <h1 id={titleId}>{title}</h1>
         </div>
       </div>
     </div>

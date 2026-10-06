@@ -1,5 +1,5 @@
 ---
-import { services } from "../data/services";
+import { formServiceId, servicesForForms } from "../data/services";
 import { customerTypes, frequencies } from "../data/site";
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 };
 
 const { service = "", property = "", urgent = false } = Astro.props;
-const selected = service ? service.split(",").filter(Boolean) : [];
+const selected = service ? service.split(",").filter(Boolean).map((id) => formServiceId(id)) : [];
 const propertyType =
   property.toLowerCase() === "commercial"
     ? "Commercial"
@@ -26,17 +26,17 @@ const propertyType =
     <span data-bar="2"></span>
     <span data-bar="3"></span>
   </div>
-  <p class="muted" id="step-label">Step 1 of 3 — What you need</p>
+  <p class="muted" id="step-label">Step 1 of 3 — What do you need?</p>
   <p class="error" id="form-error" hidden></p>
 
   <section class="step active" data-step="1">
     <h2>What do you need?</h2>
-    <p class="muted">Tick every task that belongs to this visit. If you want the work to repeat, set that in the field below before you continue.</p>
+    <p class="muted">Select everything you need completed at this property.</p>
     <fieldset>
-      <legend class="eyebrow">Services</legend>
+      <legend class="eyebrow">Services required</legend>
       <div class="checkbox-grid">
         {
-          services.map((item) => (
+          servicesForForms().map((item) => (
             <label>
               <input type="checkbox" name="services" value={item.id} checked={selected.includes(item.id)} />
               {item.name}
@@ -46,14 +46,14 @@ const propertyType =
       </div>
     </fieldset>
     <label>
-      One-off or recurring
+      One-off or recurring?
       <select name="cadence" required>
         <option value="one-off">One-off</option>
         <option value="recurring">Recurring</option>
       </select>
     </label>
     <label id="frequency-field" hidden>
-      Recurring frequency
+      How often?
       <select name="frequency">
         {frequencies.map((f) => <option value={f}>{f}</option>)}
       </select>
@@ -61,30 +61,31 @@ const propertyType =
     <label class="urgent-flag">
       <input type="checkbox" name="urgent" value="yes" checked={urgent} />
       <span>
-        <strong>Urgent / emergency</strong>
-        <span class="muted">Select this if the work cannot wait for a standard booking.</span>
+        <strong>This job is urgent</strong>
+        <span class="muted">Select this if the work needs to be completed urgently or within a specific short timeframe.</span>
       </span>
     </label>
   </section>
 
   <section class="step" data-step="2">
-    <h2>Job details</h2>
+    <h2>Tell us about the job</h2>
     <label>
-      Describe what you need
-      <textarea name="description" required minlength="10" placeholder="Describe the work, access notes, and anything else we should know."></textarea>
+      What needs doing?
+      <textarea name="description" required minlength="10" placeholder="Tell us what you need in your own words. Include as much detail as you can."></textarea>
     </label>
     <label>
-      Preferred date / time
-      <input type="text" name="preferredTime" placeholder="e.g. weekday mornings, or 12 Sep after 2pm" />
+      Preferred date or timeframe
+      <input type="text" name="preferredTime" placeholder="e.g. Friday morning, sometime next week, before 12 October" />
     </label>
     <label>
-      Photos or files (optional)
+      Upload photos or files
       <input type="file" name="files" multiple accept="image/*,.pdf" />
+      <span class="muted">Photos can help us understand the work and prepare your quote.</span>
     </label>
   </section>
 
   <section class="step" data-step="3">
-    <h2>You and the property</h2>
+    <h2>Your details</h2>
     <label>
       Name
       <input type="text" name="name" required autocomplete="name" />
@@ -98,7 +99,7 @@ const propertyType =
       <input type="email" name="email" required autocomplete="email" />
     </label>
     <label>
-      Postcode
+      Property postcode
       <input type="text" name="postcode" required inputmode="numeric" pattern="[0-9]{4}" maxlength="4" />
     </label>
     <label>
@@ -115,20 +116,20 @@ const propertyType =
       </select>
     </label>
     <label>
-      Preferred contact method
+      Preferred contact
       <select name="contactMethod" required>
         <option value="Phone">Phone</option>
         <option value="SMS">SMS</option>
         <option value="Email">Email</option>
       </select>
     </label>
-    <p class="muted">A four-digit postcode is enough for us to plan the trip.</p>
+    <p class="muted">Enter the property postcode and we will confirm availability for that location.</p>
   </section>
 
   <div class="form-actions">
     <button class="btn btn-ghost" type="button" id="back-btn" hidden>Back</button>
     <button class="btn btn-primary" type="button" id="next-btn">Continue</button>
-    <button class="btn btn-primary" type="submit" id="submit-btn" hidden>Send request</button>
+    <button class="btn btn-primary" type="submit" id="submit-btn" hidden>Request My Quote</button>
   </div>
 </form>
 
@@ -149,9 +150,9 @@ const propertyType =
     const freq = document.getElementById("frequency-field") as HTMLElement;
 
     const labels = [
-      "Step 1 of 3 — What you need",
-      "Step 2 of 3 — Job details",
-      "Step 3 of 3 — You and the property",
+      "Step 1 of 3 — What do you need?",
+      "Step 2 of 3 — Tell us about the job",
+      "Step 3 of 3 — Your details",
     ];
 
     function showError(message: string) {
@@ -229,9 +230,13 @@ const propertyType =
 
     const params = new URLSearchParams(window.location.search);
     const servicesParam = params.get("service");
+    const serviceAliases: Record<string, string> = {
+      "property-presentation": "property-preparation",
+    };
     if (servicesParam) {
       servicesParam.split(",").forEach((id) => {
-        const box = form.querySelector<HTMLInputElement>(`[name="services"][value="${id}"]`);
+        const value = serviceAliases[id] ?? id;
+        const box = form.querySelector<HTMLInputElement>(`[name="services"][value="${value}"]`);
         if (box) box.checked = true;
       });
     }

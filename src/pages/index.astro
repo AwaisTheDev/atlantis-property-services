@@ -2,10 +2,48 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ArrowLink from "../components/ArrowLink.astro";
 import { site } from "../data/site";
+
+const homeServices = [
+  {
+    title: "Cleaning",
+    body: "Reliable cleaning for homes, businesses, apartments and shared spaces, from regular cleaning to deep cleans, end-of-lease and builders cleans.",
+    href: "/services/cleaning-hygiene",
+    label: "Explore Cleaning",
+  },
+  {
+    title: "Gardens and outdoor care",
+    body: "Gardening, landscaping, pressure washing, exterior cleaning and general outdoor property care.",
+    href: "/services/property-exterior-care",
+    label: "Explore Outdoor Services",
+  },
+  {
+    title: "Maintenance and repairs",
+    body: "Painting, handyman services, fence repairs and general property maintenance, including the smaller jobs that do not need a separate trade each.",
+    href: "/services/property-exterior-care",
+    label: "Explore Maintenance",
+  },
+  {
+    title: "Rubbish and removal",
+    body: "From unwanted furniture and hard waste to a complete clean-out of a house, apartment or garage.",
+    href: "/services/waste-removal",
+    label: "Explore Removal Services",
+  },
+  {
+    title: "Moving and property preparation",
+    body: "Cleaning, repairs, presentation and other services coordinated around moving, leasing or selling a property.",
+    href: "/services/move-in-move-out",
+    label: "Explore Property Preparation",
+  },
+  {
+    title: "Building and facilities",
+    body: "Ongoing cleaning, maintenance and property support for apartment buildings, owners corporations and commercial properties.",
+    href: "/services/building-facilities",
+    label: "Explore Building Services",
+  },
+];
 ---
 
 <BaseLayout title="Melbourne Property Services" description={site.description}>
-  <!-- 1. Homepage banner -->
   <section class="banner banner--homepage">
     <div class="banner__bg" aria-hidden="true">
       <div class="banner__image">
@@ -23,47 +61,124 @@ import { site } from "../data/site";
       <div class="wrap">
         <div class="banner__inner">
           <div class="banner__text">
-            <h1>Melbourne property services for homes, apartments and commercial buildings</h1>
+            <h1>Property services. Made simple.</h1>
+            <p class="banner__lead">
+              Cleaning, gardening, maintenance, repairs and more, organised through one reliable point of
+              contact. From a single job to ongoing property care, tell us what you need and Atlantis will
+              take care of the rest. We support residential and commercial properties, property managers and
+              owners corporations.
+            </p>
           </div>
           <div class="banner__links">
-            <ArrowLink href="/contact?tab=request&property=residential" label="Residential" />
-            <ArrowLink href="/contact?tab=request&property=commercial" label="Commercial" />
+            <ArrowLink href="/contact?tab=request" label="Request a Quote" />
+            <ArrowLink href="/services" label="Explore Our Services" />
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 2. One point of contact -->
   <section class="section text-columns">
     <div class="wrap">
       <div class="text-columns__inner">
         <div class="text-columns__col text-columns__col--left">
-          <h2>One company for the jobs a property collects at once</h2>
+          <h2>Everything your property needs. All in one place.</h2>
         </div>
         <div class="text-columns__col text-columns__col--right">
           <div class="text-columns__text">
             <p>
-              Most homes and buildings need more than a single trade. A vacate might still need a proper
-              bathroom clean and a door that will not latch. An open inspection might need the windows
-              finished and the garden cut before the photographer arrives. Hard rubbish can still be in
-              the garage when the rest of the work has already been booked.
+              Looking after a property can mean dealing with cleaners, gardeners, handymen, maintenance
+              providers and several trades. Atlantis makes that simpler. We bring a wide range of property
+              services together through one point of contact, so the work is easier to organise, coordinate
+              and finish.
             </p>
             <p>
-              Atlantis Property Services handles that mix from Brunswick East, for properties within about
-              50 kilometres of the Melbourne CBD. You speak to us about the job, the quote comes from us,
-              and you call us if something needs attention afterwards.
+              Homes, investment properties, apartment buildings and commercial premises rarely need just one
+              type of service. Gardens need maintaining. Things break. Rubbish needs removing. Tenants move
+              in and out. Whether it is one job, several at once, or ongoing care, you tell us what the
+              property needs and we take it from there.
             </p>
           </div>
           <div class="text-columns__links">
-            <ArrowLink href="/services" label="View all services" dark />
+            <ArrowLink href="/services" label="Explore Our Services" dark />
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3. Image left + body -->
+  <section class="section section-tint home-services">
+    <div class="wrap">
+      <h2>Our services</h2>
+      <p class="page-intro__text home-services__intro">
+        Choose a starting point below, or tell us what needs doing and we will help organise the rest.
+        More than one job at the same property can go on a single request.
+      </p>
+      <ul class="home-services__grid">
+        {
+          homeServices.map((item) => (
+            <li>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+              <ArrowLink href={item.href} label={item.label} dark />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="text-columns__inner">
+        <div class="text-columns__col text-columns__col--left">
+          <h2>One call. One point of contact.</h2>
+        </div>
+        <div class="text-columns__col text-columns__col--right">
+          <div class="text-columns__text">
+            <p>
+              You should not have to spend the day searching for a different person every time something
+              needs doing. With Atlantis, you tell us what the property needs. We organise the right
+              service, coordinate the work, and remain your point of contact throughout.
+            </p>
+          </div>
+        </div>
+      </div>
+      <ol class="home-steps">
+        {
+          site.howItWorks.map((item) => (
+            <li class="home-steps__item">
+              <span class="home-steps__num">{item.step}</span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="home-section__action">
+        <ArrowLink href="/contact?tab=request" label="Request a Quote" dark />
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="wrap">
+      <h2>Why Atlantis?</h2>
+      <ul class="home-why">
+        {
+          site.why.map((item) => (
+            <li>
+              <strong>{item.title}</strong>
+              <span>{item.body}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
   <section class="section textbox-image textbox-image--image-left">
     <div class="wrap">
       <div class="textbox-image__inner">
@@ -79,23 +194,24 @@ import { site } from "../data/site";
         </div>
         <div class="textbox-image__body">
           <div class="textbox-image__text">
-            <h2>Access and timing belong in the quote</h2>
+            <p class="eyebrow">Managing more than one property?</p>
+            <h2>Make property maintenance easier to manage.</h2>
             <p>
-              A single-front terrace, a third-floor apartment and a shopfront on Sydney Road are priced
-              differently, because the way we get in is part of the work. Tell us about lift bookings,
-              where a van can stop, and any owners corporation rule that limits balcony access.
+              Atlantis provides one point of contact for multiple property services across residential and
+              commercial properties. We can coordinate ongoing work and one-off jobs for property managers,
+              landlords, owners corporations, strata managers, commercial owners, short-stay operators and
+              homeowners.
             </p>
-            <p>
-              When several tasks have to land on the same morning, put them in the one request. We will
-              tell you whether that morning is realistic before we schedule anyone.
-            </p>
+            <p>Instead of managing several providers yourself, send the work to Atlantis.</p>
+          </div>
+          <div class="textbox-image__buttons">
+            <ArrowLink href="/contact?tab=contact" label="Talk to Atlantis" dark />
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. Quote before booking -->
   <section class="section textbox-image textbox-image--image-right">
     <div class="wrap">
       <div class="textbox-image__inner">
@@ -111,66 +227,32 @@ import { site } from "../data/site";
         </div>
         <div class="textbox-image__body">
           <div class="textbox-image__text">
-            <h2>You approve the price before we attend</h2>
+            <h2>Need something done urgently?</h2>
             <p>
-              Describe the property and the work in plain sentences. Add photographs when the job is a
-              garden, a load of rubbish, or a fault that is awkward to explain. We reply with a price and
-              a scope, and the work starts only after you accept that quote.
+              Sometimes property work cannot wait. If you are dealing with an urgent clean, a last-minute
+              inspection, a property handover, a removal or a maintenance issue, contact Atlantis and tell
+              us your deadline.
             </p>
             <p>
-              Urgent work is quoted the same way. If a call-out fee applies, it is written into the quote
-              before anyone travels. The people who attend are insured, and the booking stays with
-              Atlantis.
+              We will let you know what can realistically be arranged. Where a short-notice attendance
+              changes the price, that is included in the quote before anyone travels.
             </p>
           </div>
           <div class="textbox-image__buttons">
-            <ArrowLink href="/services" label="See all services" dark />
+            <ArrowLink href="/contact?tab=request&urgent=1" label="Request Urgent Service" dark />
+            {
+              site.phone ? (
+                <a class="btn btn-ghost" href={`tel:${site.phone.replace(/\s/g, "")}`}>
+                  Call {site.phone}
+                </a>
+              ) : null
+            }
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 5. Words from clients -->
-  <section class="section testimonial">
-    <div class="wrap">
-      <div class="testimonial__card" data-testimonial-banner>
-        <p class="testimonial__eyebrow">Words from clients</p>
-        {
-          site.testimonials.map((item, index) => (
-            <div class:list={["testimonial__slide", { active: index === 0 }]} data-slide={index}>
-              <div class="testimonial__row">
-                <div class="testimonial__quote">
-                  <p>“{item.quote}”</p>
-                </div>
-                <span class="testimonial__divider" aria-hidden="true" />
-                <div class="testimonial__author">
-                  <p class="testimonial__name">{item.name}</p>
-                  <p class="testimonial__role">{item.company}</p>
-                </div>
-              </div>
-            </div>
-          ))
-        }
-        {
-          site.testimonials.length > 1 && (
-            <div class="testimonial__nav" aria-label="Testimonial navigation">
-              {site.testimonials.map((_, index) => (
-                <button
-                  type="button"
-                  class:list={["testimonial__dot", { active: index === 0 }]}
-                  data-goto={index}
-                  aria-label={`Show testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
-          )
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. Closing CTA -->
   <section class="cta">
     <div class="cta__bg" aria-hidden="true">
       <div class="cta__image">
@@ -182,39 +264,14 @@ import { site } from "../data/site";
       <div class="wrap">
         <div class="cta__inner">
           <div class="cta__text">
-            <h2>Start with the property</h2>
-            <p>
-              If you already know the address and the tasks, send them through and we will price the visit.
-            </p>
+            <h2>One property. Multiple jobs. One call.</h2>
+            <p>Whatever your property needs, start with Atlantis. Tell us what needs doing and we will take it from there.</p>
           </div>
           <div class="cta__buttons">
-            <ArrowLink href="/contact?tab=request" label="Request a quote" />
+            <ArrowLink href="/contact?tab=request" label="Request a Quote" />
           </div>
         </div>
       </div>
     </div>
   </section>
 </BaseLayout>
-
-<script>
-  const banner = document.querySelector("[data-testimonial-banner]");
-  if (banner) {
-    const slides = banner.querySelectorAll("[data-slide]");
-    const dots = banner.querySelectorAll("[data-goto]");
-    let current = 0;
-
-    function show(index) {
-      current = index;
-      slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
-      dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
-    }
-
-    dots.forEach((dot) => {
-      dot.addEventListener("click", () => show(Number(dot.dataset.goto)));
-    });
-
-    if (slides.length > 1) {
-      setInterval(() => show((current + 1) % slides.length), 7000);
-    }
-  }
-</script>

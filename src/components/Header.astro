@@ -7,6 +7,8 @@ const path = Astro.url.pathname;
 const servicesActive = path === "/services" || path.startsWith("/services/");
 
 const links = [
+  { href: "/how-it-works", label: "How it works" },
+  { href: "/about", label: "About" },
   { href: "/gallery", label: "Gallery" },
   { href: "/faqs", label: "FAQs" },
   { href: "/partners", label: "Become a Service Partner" },
@@ -67,7 +69,7 @@ const links = [
           </a>
         ) : null
       }
-      <ArrowLink href="/contact?tab=request" label="Request / book a service" class="header-cta" />
+      <ArrowLink href="/contact?tab=request" label="Request a Quote" class="header-cta" />
       <button
         class="menu-toggle"
         type="button"
@@ -101,13 +103,13 @@ const links = [
         <a href={link.href}>{link.label}</a>
       ))
     }
-    <a href="/emergency">Emergency / Urgent</a>
+    <a href="/emergency">Urgent Service</a>
     {
       site.phone ? (
         <a href={`tel:${site.phone.replace(/\s/g, "")}`}>Call {site.phone}</a>
       ) : null
     }
-    <ArrowLink href="/contact?tab=request" label="Request / book a service" />
+    <ArrowLink href="/contact?tab=request" label="Request a Quote" />
   </div>
 </header>
 

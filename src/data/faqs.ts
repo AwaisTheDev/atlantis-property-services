@@ -1,34 +1,50 @@
 export const faqs = [
   {
-    q: "What services does Atlantis Property Services provide?",
-    a: "The services page lists cleaning, gardens, glass, waste, painting, smaller repairs, pest control, staging and building care. Homes and commercial premises are both included. The trades that carry out a visit are appointed by Atlantis after you enquire, so you do not assemble the job yourself.",
+    q: "What services does Atlantis provide?",
+    a: "Atlantis coordinates a wide range of residential and commercial property services, including cleaning, gardening, window cleaning, pressure washing, rubbish removal, painting, handyman work, property maintenance, pest control, property preparation and building support. You can request one service, or several services for the same property.",
   },
   {
-    q: "Which Melbourne suburbs do you service?",
-    a: "Put the property’s postcode on the form. Our regular work is in inner Melbourne, centred on Brunswick East, and we read enquiries that sit a little further out instead of rejecting them on the form.",
+    q: "Who can use Atlantis?",
+    a: "We work with homeowners, tenants, landlords, property managers, owners corporations, businesses, and other people who own or look after a property. If you are not sure which of those you are, tell us in your own words and we will take it from there.",
+  },
+  {
+    q: "Which areas do you service?",
+    a: "Atlantis services Melbourne and surrounding areas. Enter your postcode when you request a quote and we will confirm availability for that location before any work is arranged.",
   },
   {
     q: "How do I get a quote?",
-    a: "Open Request / book a service and name the tasks, the address and the timing. We reply with a price before anyone is placed on the job. A call-out fee, when the timing requires one, is part of that reply.",
+    a: "Complete the quote request form and tell us what you need. Include photographs where they help, and mention access, timing, or anything else that could affect the job. We review the request and send the proposed price and scope before work begins.",
   },
   {
-    q: "Can I choose my own cleaner or tradesperson on this website?",
-    a: "The site does not publish a directory. Your request comes to Atlantis, we appoint someone from the businesses we already use, and questions after the visit come back to the same office.",
+    q: "Can I request several services at once?",
+    a: "Yes. That is one of the main reasons Atlantis exists. If a property needs cleaning, gardening, rubbish removal and a repair, include everything in the same request and we will coordinate it together.",
   },
   {
-    q: "Do you offer regular cleaning or garden maintenance?",
-    a: "Yes. Choose recurring on the form, then weekly, fortnightly or monthly. The days are agreed with Atlantis, including when a regular visit has to move.",
+    q: "Do you provide recurring services?",
+    a: "Yes. Depending on the service and the location, regular work can be arranged weekly, fortnightly, monthly, or on another schedule we agree with you.",
   },
   {
-    q: "When is a job confirmed?",
-    a: "The job is confirmed once you accept both the price and the proposed time. We send that confirmation to you. Call or email us if the day later has to change.",
+    q: "Are your service providers insured?",
+    a: "Atlantis works with vetted service providers who are required to hold appropriate insurance, and the relevant licences where their work requires them.",
   },
   {
-    q: "Are the people on site insured?",
-    a: "The people who attend carry the insurance the job requires, and the licences where a licence applies. If the result is not right, you raise it with Atlantis and we sort it out.",
+    q: "Do I deal with the service provider directly?",
+    a: "Atlantis remains your central point of contact for the booking. That keeps the communication, the scheduling and any follow-up in one place.",
   },
   {
-    q: "What if I need someone today?",
-    a: "Use the urgent page, or mark the request urgent, and give us the deadline. We will tell you what can be done in that time. You can also call 03 7023 9460 if you would rather explain it by phone.",
+    q: "When is my booking confirmed?",
+    a: "Your job is confirmed once you have accepted the scope, the price and the proposed timing. Until then, nothing is booked.",
+  },
+  {
+    q: "Can I change or cancel a booking?",
+    a: "Contact Atlantis as soon as possible if something changes. Any cancellation or rescheduling conditions that apply to your booking are explained when the service is arranged.",
+  },
+  {
+    q: "What if I need something done urgently?",
+    a: "Submit an urgent request, or call us on 03 7023 9460. Tell us what needs doing, where the property is, and your deadline. We will let you know what can realistically be arranged, and we will provide pricing before anyone attends.",
+  },
+  {
+    q: "What if I'm not sure which service I need?",
+    a: "You do not need to choose the perfect category. Tell us what is happening at the property in your own words and we will help work out what is required.",
   },
 ];

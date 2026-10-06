@@ -1,0 +1,82 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageBanner from "../components/PageBanner.astro";
+import PageCta from "../components/PageCta.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout
+  title="How It Works"
+  description="Tell Atlantis what your property needs, receive a quote, and we coordinate the work. One point of contact from the request through to follow-up."
+>
+  <PageBanner title="Getting things done shouldn't be complicated." image="/images/cta-building.jpg" wide />
+
+  <section class="page-body">
+    <div class="wrap page-body--narrow">
+      <p class="page-intro__text" style="margin-bottom: 2.5rem;">
+        You should not have to search for a different person every time something needs doing. Submit a
+        request online or call us. One service is fine. Several jobs at the same property can go on the
+        same request.
+      </p>
+      <ol class="home-steps home-steps--stack">
+        <li class="home-steps__item">
+          <span class="home-steps__num">1</span>
+          <div>
+            <h2>Tell us what you need</h2>
+            <p>
+              Submit your request online or call {site.phone}. Include the property, the work, and your
+              preferred timing. You can request one service or several jobs at the same address.
+            </p>
+          </div>
+        </li>
+        <li class="home-steps__item">
+          <span class="home-steps__num">2</span>
+          <div>
+            <h2>We review the job</h2>
+            <p>
+              We look at the scope, location, timing and any access requirements. Photographs can help us
+              understand the work and provide an accurate quote.
+            </p>
+          </div>
+        </li>
+        <li class="home-steps__item">
+          <span class="home-steps__num">3</span>
+          <div>
+            <h2>You receive a quote</h2>
+            <p>
+              We provide the proposed scope and price before work begins. Nothing proceeds until you
+              approve it.
+            </p>
+          </div>
+        </li>
+        <li class="home-steps__item">
+          <span class="home-steps__num">4</span>
+          <div>
+            <h2>We coordinate the service</h2>
+            <p>
+              Once approved, Atlantis organises the work and keeps you informed. Your booking is confirmed
+              when the scope, price and proposed timing have been accepted.
+            </p>
+          </div>
+        </li>
+        <li class="home-steps__item">
+          <span class="home-steps__num">5</span>
+          <div>
+            <h2>We remain your point of contact</h2>
+            <p>
+              Questions, changes or follow-up come back to Atlantis. You do not need to deal with a
+              different provider for each part of the job.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <PageCta
+    title="Ready to get started?"
+    body="Tell us what the property needs. We will review the request and send a quote before any work begins."
+    label="Get Started"
+    href="/contact?tab=request"
+  />
+</BaseLayout>
